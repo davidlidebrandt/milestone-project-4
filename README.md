@@ -16,9 +16,12 @@
      alt=""
      style="height: 100px; width: 200px;" />
 
+This project intends to create a basic (fictional) e-commerce store that sells fitness equipment.
+By providing the user with the opportunity to purchase relevant equipment through a smooth user experience 
+the store looks to attract both new and revisiting customers.
 
 
-[Link to the deployed project](https://movie-r-and-r.herokuapp.com/)
+[Link to the deployed project]()
 
 # Table Of Contents
 
@@ -43,6 +46,17 @@
 
 ### User Stories
 
+#### Regular user 
+ 
+ * As a user I want to easily find relevant equipment so that I can compare and purchase any products I choose.
+
+ * As a user I want to be able to see my current items in my shopping bag/chart and the total prize so that I 
+ can keep track of how much I am spending.
+
+ * As a user I want to be able to easily add and remove items from my shopping bag/chart so that I get exactly
+ what I want.
+
+ * As a user I want any 
 
 
 #### Wireframes and Mockups

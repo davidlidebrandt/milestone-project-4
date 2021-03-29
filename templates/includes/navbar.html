@@ -1,14 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg bg-black">
   <div class="container-fluid position-relative">
     <button class="navbar-toggler position-absolute top-0 start-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <div class="hamburger-icon"></div>
+      <div class="hamburger-icon"></div>
+      <div class="hamburger-icon"></div>
     </button>
-    <a id="brand-name" class="navbar-brand" href="#">Fitness Equipment</a>
+    <a id="brand-name" class="navbar-brand light-green-text text-uppercase" href="#">Fitness Equipment</a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle light-green-text" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Products
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -19,7 +21,7 @@
           </ul>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="#">Account</a>
+          <a class="nav-link light-green-text" href="#">Contact</a>
         </li>
         <li>
           <form class="d-none d-lg-flex">
@@ -34,8 +36,23 @@
       </ul>
     
     </div>
-    <i class="fas fa-user"></i>
-    <i class="fas fa-shopping-cart"></i>
+    <div class="shop-icons-wrap">
+        <a class="black-text" href="">
+            <i class="fas fa-user header-icons light-green-text"></i>
+        </a>
+        <a class="black-text" href="">
+            <i class="fas fa-shopping-cart header-icons light-green-text"></i>
+        </a>
+    </div>
+    <div class="d-md-none mx-auto w-100">
+         <form class="d-flex">
+             <div class="input-group">
+                  <input id="custom-search-group-2" class="form-control" type="search" placeholder="Search for products" aria-label="Search">
+                  <span id="custom-search-icon-wrap-2" class="input-group-text">
+                      <button id="no-show-btn-2" type="submit"><i class="fas fa-search"></i></button>
+                  </span>
+              </div>
+          </form>
+    </div>
   </div>
-  
 </nav>

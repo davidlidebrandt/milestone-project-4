@@ -95,6 +95,13 @@ body {
 
 /*Media queries*/
 
+@media only screen and (min-width: 768px) {
+     .shop-icons-wrap {
+         margin: 0;
+         float: right;
+     }
+}
+
 @media only screen and (min-width: 992px) {
     #brand-name {
         margin-left: 10px;

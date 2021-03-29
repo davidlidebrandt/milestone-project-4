@@ -54,9 +54,37 @@ the store looks to attract both new and revisiting customers.
  can keep track of how much I am spending.
 
  * As a user I want to be able to easily add and remove items from my shopping bag/chart so that I get exactly
- what I want.
+ what I want without having to restart the process.
 
- * As a user I want any 
+ * As a user I want to be notified before and after any important actions are taken so that I do not accidentally
+ perform some unwanted action.
+
+ * As a user I want the navigation on the site to be consistent and easy to understand so that I do not spend 
+ unnecessary time trying to access different content.
+
+* As a user I want the checkout and payment process to be clear and fast so that I do not spend time and effort 
+on tasks that decrease positive experience of the site.
+
+* As a user I want conformation of any orders and payments so that I can keep track of what I have ordered.
+
+* As a user I want to be able to read reviews and ratings of products from other users so that I can decide
+if it is worth buying.
+
+* As a user I want to be able to sign up to save my contact details and credit card information for an even faster
+and smoother checkout and overall user experience.
+
+* As a user I want the sign up process to be fast, smooth and easy to understand so that I quickly get access to
+the features provided.
+
+#### Logged in/Signed up user
+
+* When signing up I want to confirm my email address to ensure my email is connected to my account.
+
+* As a logged in user I want to easily be able to edit my profile contact and credit card details incase that
+is needed.
+
+* As a logged in user I want to be able to write my own reviews and add ratings on the products on the page.
+
 
 
 #### Wireframes and Mockups

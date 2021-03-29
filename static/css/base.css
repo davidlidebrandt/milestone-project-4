@@ -1,0 +1,35 @@
+/*Header*/
+
+#custom-search-group, #custom-search-icon-wrap {
+    padding: 4px;
+    background-color: #ffffff;
+    border: none;
+}
+
+#custom-search-group {
+    margin-left: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#no-show-btn {
+   background-color: #ffffff;
+   border: none;
+}
+
+#brand-name {
+    margin-left: 70px;
+}
+
+.navbar {
+    padding: 20px;
+}
+
+
+/*Media queries*/
+
+@media only screen and (min-width: 992px) {
+    #brand-name {
+        margin-left: 10px;
+    }
+}

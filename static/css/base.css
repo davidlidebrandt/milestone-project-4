@@ -2,8 +2,18 @@ body {
     background: url("/media/images/dumbbell-bg.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
+    /* this part is taken from a post by user name m.spyratos to make the footer stick to the bottom: 
+    https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b  
+    */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+#main-content {
+    /* this part is also taken from the same post as the mentioned in the body*/
+    flex: 1;
+}
 
 .bg-black {
     background-color: #000000;
@@ -13,12 +23,21 @@ body {
     color: #000000;
 }
 
+.black-text:hover {
+    text-decoration: none;
+}
+
 .light-green-text {
     color: #a5d6a7;
 }
 
 .light-green-text:hover {
-    color: #4caf50
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.text-decor-none {
+    text-decoration: none;
 }
 
 
@@ -52,12 +71,6 @@ body {
     opacity: 0.8;
 }
 
-.header-icons {
-    font-size: x-large;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
 .hamburger-icon {
     height: 6px;
     width: 40px;
@@ -69,6 +82,13 @@ body {
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+/*Footer*/
+
+.custom-footer {
+    min-height: 200px;
+    background-color: #000000;
 }
 
 

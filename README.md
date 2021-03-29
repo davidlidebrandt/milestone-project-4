@@ -100,6 +100,56 @@ is needed.
 
 ## Database
 
+Relational SQL databases will be used in this project, in development the built in to Django SQlite database will
+be used and in production a PostgreSQL database will be used.
+
+The models that will be stored in the database are:
+
+* Order 
+* User
+* Product 
+* Category 
+* Manufacturer 
+* Review 
+
+### Order fields
+
+* id 
+* total_cost
+* user_name: foreign key User, optional 
+* user_email: foreign key User, optional 
+
+### User fields
+
+* name
+* email
+* credit_card_details
+
+### Product fields
+
+* category: foreign key Category
+* manufacturer: foreign key Category
+* name
+* description
+* size: optional
+
+### Category
+
+* name
+
+### Manufacturer
+
+* name
+
+### Review 
+
+* user_name: foreign key User
+* description
+
+
+
+
+
 
    
 

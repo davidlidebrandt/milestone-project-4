@@ -40,6 +40,12 @@ body {
     text-decoration: none;
 }
 
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /*Header*/
 
@@ -89,6 +95,7 @@ body {
 .custom-footer {
     min-height: 200px;
     background-color: #000000;
+    opacity: 0.8;
 }
 
 

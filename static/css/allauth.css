@@ -21,9 +21,19 @@
     outline: none;
 }
 
+.form-bg button {
+    background-color: #a5d6a7;
+    margin-bottom: 20px;
+}
+
 .form-bg button:hover {
     color: #a5d6a7;
     background-color: #000000;
+}
+
+.form-bg h1 {
+    text-transform: uppercase;
+    margin-top: 20px;
 }
 
 #id_login, #id_password, #id_username, #id_email, #id_password1, #id_password2 {

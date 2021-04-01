@@ -4,7 +4,8 @@
     min-height: 200px;
     background-color: #ffffff;
     border-radius: .25rem;
-    opacity: 0.9;
+    opacity: 0.8;
+    font-weight: 600;
 }
 
 .custom-h1 {

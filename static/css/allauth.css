@@ -1,10 +1,48 @@
-.login input {
-
-}
-
 .form-bg {
     background-color: #ffffff;
     border-radius: 0.25rem;
+    opacity: 0.8;
+    color: #000000;
+    font-weight: 600;
+}
+
+.form-bg input, .form-bg button {
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 5px 1px #263238;
+    border: none;
+    text-align: center;
+}
+
+.form-bg input:focus {
+    outline: 3px solid #a5d6a7;
+}
+
+.form-bg input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.form-bg button:hover {
+    color: #a5d6a7;
+    background-color: #000000;
+}
+
+#id_login, #id_password, #id_username, #id_email, #id_password1, #id_password2 {
+    width: 80%;
+    background-color: #ffffff;
+}
+
+.form-bg a {
+    color: #000000;
+    font-weight: 700;
+}
+
+.form-bg a:hover {
+    color: #1b5e20;
+}
+
+.form-bg label {
+    font-style: italic;
+    display: block;
 }
 
 .menu-bg {

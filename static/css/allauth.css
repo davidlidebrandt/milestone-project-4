@@ -49,3 +49,23 @@
     margin-top: 0px;
     margin-bottom: 20px;
 }
+
+.message-container {
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+    top: 120px;
+    background-color: #000000;
+    border: 1px solid #a5d6a7;
+    color: #a5d6a7;
+    border-radius: 0.25rem;
+}
+
+.menu-bg a {
+    color: #000000;
+    font-weight: 600;
+}
+
+.menu-bg a:hover {
+    color: #1b5e20;
+}

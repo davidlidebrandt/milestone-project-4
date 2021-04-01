@@ -20,13 +20,10 @@
     {% block body %}
 
     {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
+    <div class="message-container">
         {% for message in messages %}
-        <li>{{message}}</li>
+            <p class="p-3">{{message}}</p>
         {% endfor %}
-      </ul>
     </div>
     {% endif %}
     <div class="text-center menu-bg light-green-bg p-0">

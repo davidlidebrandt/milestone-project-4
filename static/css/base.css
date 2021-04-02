@@ -15,6 +15,16 @@ body {
     flex: 1;
 }
 
+.main-window {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 200px;
+    background-color: #ffffff;
+    border-radius: .25rem;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
 .bg-black {
     background-color: #000000;
 }

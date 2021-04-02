@@ -19,6 +19,7 @@ class Manufacturer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     description = models.CharField(max_length=200, null=False, blank=False)
+    image_url = models.URLField(blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True)
     manufacturer = models.ForeignKey(

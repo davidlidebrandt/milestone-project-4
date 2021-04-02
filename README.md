@@ -126,6 +126,7 @@ The models that will be stored in the database are:
 * name
 * description
 * size: optional
+* image_url: optional
 
 ### Category 
 

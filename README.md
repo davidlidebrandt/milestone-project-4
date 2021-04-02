@@ -106,7 +106,6 @@ be used and in production a PostgreSQL database will be used.
 The models that will be stored in the database are:
 
 * Order 
-* User
 * Product 
 * Category 
 * Manufacturer 
@@ -119,16 +118,11 @@ The models that will be stored in the database are:
 * user_name: foreign key User, optional 
 * user_email: foreign key User, optional 
 
-### User fields
-
-* name
-* email
-* credit_card_details
 
 ### Product fields
 
 * category: foreign key Category
-* manufacturer: foreign key Category
+* manufacturer: foreign key Manufacturer
 * name
 * description
 * size: optional

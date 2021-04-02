@@ -28,6 +28,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    objects = models.Manager()
+
 
 class Review(models.Model):
     by_user = models.ForeignKey(

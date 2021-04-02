@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.form-bg button, .form-bg input[type="submit"] {
+    background-color: #a5d6a7;
+    margin-bottom: 20px;
+}
+
 .form-bg input:focus {
     outline: 3px solid #a5d6a7;
 }
@@ -21,12 +26,7 @@
     outline: none;
 }
 
-.form-bg button {
-    background-color: #a5d6a7;
-    margin-bottom: 20px;
-}
-
-.form-bg button:hover {
+.form-bg button:hover, .form-bg input[type="submit"]:hover {
     color: #a5d6a7;
     background-color: #000000;
 }

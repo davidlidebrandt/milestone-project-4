@@ -63,7 +63,6 @@ body {
 .black-button, .green-button {
     border: none;
     border-radius: 0.25rem;
-    box-shadow: 1px 1px 5px 1px #263238;
 }
 
 .black-button, .green-button:hover {
@@ -74,6 +73,10 @@ body {
 .green-button, .black-button:hover {
     color: #000000;
     background-color: #a5d6a7;
+}
+
+.large-button {
+    padding: 15px;
 }
 
 /*Header*/

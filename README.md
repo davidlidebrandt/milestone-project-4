@@ -130,6 +130,7 @@ The models that will be stored in the database are:
 * image_url: optional
 * has_size:
 * quantity: optional
+* prize
 
 ### Category 
 

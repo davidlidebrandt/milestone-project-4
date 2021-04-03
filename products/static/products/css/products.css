@@ -4,7 +4,6 @@
 }
 
 .product-list-div {
-    border-bottom: 1px solid #000000;
-    border-right: 1px solid #000000;
-    margin-left: 10px;
+    border-bottom: 0.5px solid #000000;
+    border-right: 0.5px solid #000000;
 }

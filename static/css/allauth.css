@@ -6,9 +6,12 @@
     font-weight: 600;
 }
 
+.form-bg input {
+    box-shadow: 1px 1px 5px 1px #263238;
+}
+
 .form-bg input, .form-bg button {
     border-radius: 0.25rem;
-    box-shadow: 1px 1px 5px 1px #263238;
     border: none;
     text-align: center;
 }

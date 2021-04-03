@@ -1,9 +1,10 @@
 .list-image {
-    height: 200px;
+    height: 300px;
     width: 100%;
 }
 
 .product-list-div {
     border-bottom: 1px solid #000000;
     border-right: 1px solid #000000;
+    margin-left: 10px;
 }

@@ -21,7 +21,6 @@ body {
     min-height: 200px;
     background-color: #ffffff;
     border-radius: .25rem;
-    opacity: 0.8;
     font-weight: 600;
 }
 
@@ -59,6 +58,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.black-button, .green-button {
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 5px 1px #263238;
 }
 
 .black-button, .green-button:hover {
@@ -119,7 +124,6 @@ body {
 .custom-footer {
     min-height: 200px;
     background-color: #000000;
-    opacity: 0.8;
 }
 
 

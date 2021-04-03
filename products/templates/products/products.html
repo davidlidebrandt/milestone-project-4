@@ -7,10 +7,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-10 offset-1 main-window">
-            <div class="">
-                <div class="col-12">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            <h2 class="text-center text-uppercase my-3">Products</h2>
+            <div class="row">
+                <div class="col-12 col-md-6 my-2">
+                    <div class="dropdown text-center">
+                        <button class="btn btn-secondary dropdown-toggle black-button" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Category
                         </button>
@@ -21,9 +22,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                <div class="col-12 col-md-6 my-2">
+                    <div class="dropdown text-center">
+                        <button class="btn btn-secondary dropdown-toggle green-button" type="button" id="dropdownMenuButton2"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By
                         </button>
@@ -39,16 +40,19 @@
                 {%  for product in all_products %}
                 <div class="col-12 col-md-6 col-lg-4 my-2 product-list-div">
                     <div class="row">
-                        <div class="col-6">
-                            <p class="text-uppercase text-bold">
+                        <div class="col-12">
+                            <img class="list-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="col-12 my-2">
+                            <p class="text-uppercase text-bold text-center">
                                 {{ product.name }}
                             </p>
-                            <p>
+                            <p class="text-center">
                                 {{ product.manufacturer }}
                             </p>
                         </div>
-                        <div class="col-6">
-                            <img class="list-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+                        <div class="col-12 my-3 text-center">
+                            <button class="black-button">More Info</button>
                         </div>
                     </div>
                 </div>

@@ -110,6 +110,7 @@ The models that will be stored in the database are:
 * Category 
 * Manufacturer 
 * Review 
+* Size
 
 ### Order fields
 
@@ -127,6 +128,8 @@ The models that will be stored in the database are:
 * description
 * size: optional
 * image_url: optional
+* has_size:
+* quantity: optional
 
 ### Category 
 
@@ -136,8 +139,16 @@ The models that will be stored in the database are:
 
 * name
 
+### Size
+
+* product: foreign key Product
+* size
+* size_unit
+* quantity 
+
 ### Review 
 
+* product: foreign key Product
 * user_name: foreign key User
 * description
 

@@ -24,6 +24,8 @@ class Product(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True)
     manufacturer = models.ForeignKey(
         Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
+    has_size = models.BooleanField(null=False, blank=False, default=False)
+    quantity = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -40,3 +42,13 @@ class Review(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class Size(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size = models.IntegerField(null=False, blank=False)
+    size_unit = models.CharField(max_length=50, null=False, blank=False)
+    quantity = models.IntegerField(null=False, blank=False)
+
+    def __str__(self):
+        return self.size

@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from . models import Product
+from . models import Product, Category
 
 
 def products(request):
-    all_products = Product.objects.all()
+    if request.GET.get("category"):
+        all_products = Product.objects.filter(
+            category__name=request.GET.get("category"))
+    else:
+        all_products = Product.objects.all()
     context = {
         "all_products": all_products,
     }

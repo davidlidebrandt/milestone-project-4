@@ -5,7 +5,7 @@
       <div class="hamburger-icon"></div>
       <div class="hamburger-icon"></div>
     </button>
-    <a id="brand-name" class="navbar-brand light-green-text text-uppercase fw-bold" href="#">Fitness Equipment</a>
+    <a id="brand-name" class="navbar-brand light-green-text text-uppercase fw-bold" href="{% url 'index' %}">Fitness Equipment</a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -14,10 +14,12 @@
             Products
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+            {% for category in categories %}
+                <li>
+                    <a class="dropdown-item" href="{% url 'products' %}">{{ category }}</a>
+                </li>
+            {% endfor %}
           </ul>
         </li>
           <li class="nav-item">

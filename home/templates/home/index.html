@@ -20,10 +20,17 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="text-center text-decoration-underline fw-bolder custom-h5">Category</h5>
+                        <h5 class="text-center text-uppercase fw-bolder custom-h5">Categories</h5>
+                        {% for category in categories %}
+                            <div class="text-center my-3">
+                                <a href="{% url 'products' %}?category={{ category }}" class="black-text">
+                                    {{ category }}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                     <div class="col-6">
-                        <h5 class="text-center text-decoration-underline fw-bolder custom-h5">Category</h5>
+                        <h5 class="text-center text-uppercase fw-bolder custom-h5">Products</h5>
                     </div>
                 </div>
             </div>

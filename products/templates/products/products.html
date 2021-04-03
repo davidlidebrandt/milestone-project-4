@@ -1,29 +1,57 @@
 {% extends "base.html"  %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock %}
 {% block main_content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-10 offset-1 main-window">
+            <div class="">
+                <div class="col-12">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort By
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 {%  for product in all_products %}
-                    <div class="col-12 col-md-6 col-lg-4 my-2 product-list-div">
-                        <div class="row">
-                            <div class="col-6">
-                                <p class="text-uppercase text-bold">
-                                    {{ product.name }}
-                                </p>
-                                <p>
-                                    {{ product.manufacturer }}
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <img class="list-image" src="{{ product.image_url }}" alt="{{ product.name }}">
-                            </div>
+                <div class="col-12 col-md-6 col-lg-4 my-2 product-list-div">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="text-uppercase text-bold">
+                                {{ product.name }}
+                            </p>
+                            <p>
+                                {{ product.manufacturer }}
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <img class="list-image" src="{{ product.image_url }}" alt="{{ product.name }}">
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>

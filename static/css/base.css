@@ -61,6 +61,15 @@ body {
     align-items: center;
 }
 
+.black-button, .green-button:hover {
+    color: #a5d6a7;
+    background-color: #000000;
+}
+
+.green-button, .black-button:hover {
+    color: #000000;
+    background-color: #a5d6a7;
+}
 
 /*Header*/
 

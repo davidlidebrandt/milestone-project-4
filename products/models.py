@@ -26,7 +26,7 @@ class Product(models.Model):
         Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
     has_size = models.BooleanField(null=False, blank=False, default=False)
     quantity = models.IntegerField(null=True, blank=True)
-    prize = models.IntegerField(null=True, blank=True)
+    prize = models.IntegerField(null=False, blank=False)
 
     def __str__(self):
         return self.name

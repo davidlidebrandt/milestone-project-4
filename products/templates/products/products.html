@@ -11,21 +11,26 @@
             <div class="row">
                 <div class="col-12 col-md-6 my-2">
                     <div class="dropdown text-center">
-                        <button class="btn btn-secondary dropdown-toggle black-button" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle black-button" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Category
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+                            {% for category in categories %}
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{% url 'products' %}?category={{ category }}">{{ category }}
+                                </a>
+                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 my-2">
                     <div class="dropdown text-center">
-                        <button class="btn btn-secondary dropdown-toggle green-button" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle green-button" type="button"
+                            id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
@@ -37,6 +42,7 @@
                 </div>
             </div>
             <div class="row px-2">
+                {% if all_products %}
                 {%  for product in all_products %}
                 <div class="col-12 col-md-6 col-lg-4 my-2 product-list-div">
                     <div class="row">
@@ -55,11 +61,17 @@
                             </p>
                         </div>
                         <div class="col-12 my-3 text-center">
-                            <a href="{% url 'product_page' id=product.id %}" class="black-button large-button">More Info</a>
+                            <a href="{% url 'product_page' id=product.id %}" class="black-button large-button">More
+                                Info</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                    <p class="text-center fw-bold fs-2 my-3">
+                        No search results
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>

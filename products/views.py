@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from . models import Product
 
 
@@ -6,6 +7,11 @@ def products(request):
     if request.GET.get("category"):
         all_products = Product.objects.filter(
             category__name=request.GET.get("category"))
+    elif request.GET.get("search"):
+        all_products = Product.objects.filter(
+            Q(name__contains=request.GET.get("search")) | Q(
+                description__contains=request.GET.get("search")) | Q(
+                    manufacturer__name__contains=request.GET.get("search")))
     else:
         all_products = Product.objects.all()
     context = {

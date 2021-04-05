@@ -19,12 +19,22 @@
                     <p class="fst-italic text-center">{{ product.manufacturer }}</p>
                     <p class="text-center">{{ product.prize }} $</p>
                     <p class="text-center">{{ product.description }}</p>
-                    <p class="text-center my-5">
-                        <button class="black-button large-button">Add To Chart</button>
-                    </p>
+                    <form class="text-center my-5">
+                        <div>
+                            <i id="increase-quantity" class="fas fa-plus-square fs-3"></i>
+                            <input id="quantity-input" class="w-25 text-center" value="1" type="number" min="1" max="10">
+                            <i id="decrease-quantity" class="fas fa-minus-square fs-3"></i>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="black-button large-button">Add To Chart</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}

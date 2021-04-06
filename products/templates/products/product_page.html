@@ -31,6 +31,40 @@
                     </form>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-lg-8 offset-lg-2 mt-5">
+                    <p>
+                        <i class="far fa-star"></i>
+                        {% if rating %}
+                            {{ rating }}
+                        {% else %}
+                            No rating yet
+                        {% endif %}
+                    </p>
+                    <button id="show-reviews" class="text-decoration-underline mx-2">Reviews</button>
+                    <button id="show-write-review" class="mx-2">Write a review</button>
+                    <hr>
+                    <div class="row">
+                        <div class="reviews-div col-12">
+                            {% if reviews %}
+                                {% for review in reviews %}
+                                    {{ review }}
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-center">No reviews yet</p>
+                            {% endif %}
+                        </div>
+                        <div class="write-reviews-div col-12">
+                            {% if user.is_authenticated %}
+                            {% else %}
+                                <p class="text-center">
+                                    <a class="custom-a" href="/accounts/login/">Log in</a> to leave a review
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

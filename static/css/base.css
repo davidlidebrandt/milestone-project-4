@@ -85,6 +85,14 @@ body {
     padding: 5px;
 }
 
+.custom-a {
+    color: #4caf50;
+}
+
+.custom-a:hover {
+    color: #a5d6a7;
+}
+
 /*Header*/
 
 #custom-search-group, #custom-search-group-2, #custom-search-icon-wrap, #custom-search-icon-wrap-2 {

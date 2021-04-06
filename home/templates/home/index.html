@@ -11,10 +11,11 @@
                     <div class="col-12 center-div">
                         <h2 class="custom-h1">Fitness Equipment <i class="fas fa-dumbbell light-green-text fs-2"></i></h2>
                     </div>
-                    <div class="col-6 offset-3 my-3">
-                             <p class="black-text">
+                    <div class="col-12 my-3">
+                             <p class="black-text text-center">
                              Welcome to Fitness Equipment, here you will find all the equipment you need to get and
-                             stay in shape. Browse through our products and categories to find what you need.
+                             stay in shape. Browse through our products and categories to find what you need, you can shop
+                             online or search for any of out physical stores in your area.
                             </p>
                     </div>
                 </div>
@@ -22,15 +23,28 @@
                     <div class="col-6">
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Categories</h5>
                         {% for category in categories %}
-                            <div class="text-center my-3">
-                                <a href="{% url 'products' %}?category={{ category }}" class="black-text">
-                                    {{ category }}
-                                </a>
+                            <div class="row text-center my-3">
+                                <div class="col-12">
+                                    <img class="small-image" src="{{ category.image_url }}" alt="{{ category.name }}">
+                                    <a href="{% url 'products' %}?category={{ category }}" class="black-text">
+                                        {{ category }}
+                                    </a>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
                     <div class="col-6">
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Products</h5>
+                        <div class="row text-center my-3">
+                            {% for product in products %}
+                                <div class="col-4">
+                                    <img class="small-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                    <a class="black-text" href="/products/{{ product.id }}">
+                                        {{ product.name }}
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

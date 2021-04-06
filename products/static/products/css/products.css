@@ -24,3 +24,7 @@
     color: #000000;
     font-weight: 600;
 }
+
+#quantity-input {
+    width: max-content;
+}

@@ -317,6 +317,10 @@ the URL and Git Bash.
 
 ### Media
 
+Background image came from https://pixabay.com/sv/photos/hantel-idrott-vikter-gym-1966247/ by user Jonas_Fehre.
+
+
+
 
 
 ### Acknowledgments

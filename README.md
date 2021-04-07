@@ -106,6 +106,9 @@ be used and in production a PostgreSQL database will be used.
 The models that will be stored in the database are:
 
 * Order 
+
+* Store
+
 * Product 
 * Category 
 * Manufacturer 
@@ -152,6 +155,14 @@ The models that will be stored in the database are:
 * product: foreign key Product
 * user_name: foreign key User
 * description
+* rating
+
+### Store
+
+* city
+* address
+* phone_number
+* open_hours
 
 
 

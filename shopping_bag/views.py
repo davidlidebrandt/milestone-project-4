@@ -18,5 +18,4 @@ def add_to_bag(request, id):
     else:
         bag["total_cost"] = product.prize
     request.session["shopping_bag"] = bag
-    print(request.session["shopping_bag"])
     return redirect("checkout")

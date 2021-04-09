@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'fitness_equipment.custom_context.show_categories',
+                'shopping_bag.shopping_bag_context.bag'
             ],
         },
     },

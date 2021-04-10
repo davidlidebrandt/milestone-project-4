@@ -15,9 +15,11 @@ def add_to_bag(request, id):
     else:
         bag.update({id: {"quantity": int(request.POST.get("quantity-input"))}})
     if "total_cost" in bag.keys():
-        bag["total_cost"] += product.prize
+        bag["total_cost"] += product.prize * int(
+            request.POST.get("quantity-input"))
     else:
-        bag["total_cost"] = product.prize
+        bag["total_cost"] = product.prize * int(
+            request.POST.get("quantity-input"))
     request.session["shopping_bag"] = bag
     return redirect("view_bag")
 
@@ -36,9 +38,14 @@ def add_to_quantity(request, id):
 def delete_from_quantity(request, id):
     product = get_object_or_404(Product, id=id)
     bag = request.session.get("shopping_bag", {})
-    old_quantity = bag[str(id)]["quantity"]
+    try:
+        old_quantity = bag[str(id)]["quantity"]
+    except KeyError:
+        old_quantity = 1
     if old_quantity > 0:
         bag[str(id)]["quantity"] = old_quantity - 1
         bag["total_cost"] -= product.prize
     request.session["shopping_bag"] = bag
-    return redirect("view_bag")
+    if bag[str(id)]["quantity"] <= 0:
+        request.session.pop("shopping_bag", str(id))
+    return render(request, "shopping_bag/bag.html")

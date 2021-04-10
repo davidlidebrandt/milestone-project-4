@@ -109,9 +109,12 @@ body {
     padding-right: 30px;
 }
 
-#no-show-btn, #no-show-btn-2 {
+#no-show-btn, #no-show-btn-2, .no-bg-button {
    background-color: #ffffff;
    border: none;
+   padding: 0;
+   margin-left: 5px;
+   margin-right: 5px;
 }
 
 #brand-name {

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#quantity-input").val("1")
     $("#increase-quantity").click(function () {
         currentValue = parseInt($("#quantity-input").val())
         if (currentValue > 0 && currentValue < 10) {

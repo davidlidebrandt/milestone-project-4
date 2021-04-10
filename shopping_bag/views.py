@@ -22,14 +22,23 @@ def add_to_bag(request, id):
     return redirect("view_bag")
 
 
-@require_http_methods(["POST"])
-def update_bag(request, id, quantity):
+def add_to_quantity(request, id):
     product = get_object_or_404(Product, id=id)
-    if quantity == 0:
-        request.session.pop(str(id))
-    else:
-        bag = request.session.get("shopping_bag", {})
-        bag[str(id)]["quantity"] = quantity
-        request.session["shopping_bag"] = bag
-    return "Bag Updated"
+    bag = request.session.get("shopping_bag", {})
+    old_quantity = bag[str(id)]["quantity"]
+    if old_quantity < 10:
+        bag[str(id)]["quantity"] = old_quantity + 1
+        bag["total_cost"] += product.prize
+    request.session["shopping_bag"] = bag
+    return redirect("view_bag")
 
+
+def delete_from_quantity(request, id):
+    product = get_object_or_404(Product, id=id)
+    bag = request.session.get("shopping_bag", {})
+    old_quantity = bag[str(id)]["quantity"]
+    if old_quantity > 0:
+        bag[str(id)]["quantity"] = old_quantity - 1
+        bag["total_cost"] -= product.prize
+    request.session["shopping_bag"] = bag
+    return redirect("view_bag")

@@ -18,18 +18,17 @@
                     <span>{{ product.product }}</span>
                 </div>
                 <div class="col-4">
-                  <form method="POST" id="update-quantity-form">
-                    <span id="csrf-token" class="d-none">{% csrf_token %}</span>   
+                  <form method="POST">
+                    {% csrf_token %}
                     <span>
-                      <button id="increase-bag-quantity"  type="submit">
+                      <button formaction="{% url 'add_to_quantity' id=product.product.id%}" id="increase-bag-quantity"  type="submit">
                         <i class="fas fa-plus-square fs-3"></i>
                       </button>
                       <input id="update-quantity-input" name="update-quantity-input" class="text-center" value="{{ product.quantity }}" type="number" min="1" max="10">
-                      <button id="decrease-bag-quantity" type="submit">
+                      <button formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
                         <i class="fas fa-minus-square fs-3"></i>
                       </button>
                     </span>
-                         <span id="product-id" class="d-none">{{ product.product.id }}</span>
                     </form>
                 </div>
                 <div class="col-4">

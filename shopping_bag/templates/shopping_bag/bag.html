@@ -10,14 +10,37 @@
       <h1 class="text-uppercase text-center my-3">
         Your bag
       </h1>
-      {% for id, product in context.items %}
-          <div>
-              {{ product.product }} 
-              {{ product.quantity }}
-              <img class="product-bag-image" src="{{ product.product.image_url }}" alt="{{ product.product.name }}">
+      <div class="row">
+          {% for id, product in context.items %}
+          <div class="col-12 my-3">
+              <div class="row">
+                <div class="col-4">
+                    <span>{{ product.product }}</span>
+                </div>
+                <div class="col-4">
+                  <form method="POST" id="update-quantity-form">
+                    <span id="csrf-token" class="d-none">{% csrf_token %}</span>   
+                    <span>
+                      <button id="increase-bag-quantity"  type="submit">
+                        <i class="fas fa-plus-square fs-3"></i>
+                      </button>
+                      <input id="update-quantity-input" name="update-quantity-input" class="text-center" value="{{ product.quantity }}" type="number" min="1" max="10">
+                      <button id="decrease-bag-quantity" type="submit">
+                        <i class="fas fa-minus-square fs-3"></i>
+                      </button>
+                    </span>
+                         <span id="product-id" class="d-none">{{ product.product.id }}</span>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <img class="product-bag-image" src="{{ product.product.image_url }}" alt="{{ product.product.name }}">
+                </div>
+              </div>
           </div>
           <hr>
-      {% endfor %}
+          {% endfor %}
+      </div>
+     
       <div class="row">
         <div class="col-12">
             <p class="text-center fw-bold my-3 text-uppercase">Total Cost:</p>
@@ -30,4 +53,7 @@
     </div>
   </div>
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'shopping_bag/js/shopping_bag.js' %}"></script>
 {% endblock %}

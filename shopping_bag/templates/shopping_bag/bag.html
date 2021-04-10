@@ -8,13 +8,13 @@
   <div class="row">
     <div class="col-10 offset-1 main-window">
       <h1 class="text-uppercase text-center my-3">
-        Checkout
+        Your bag
       </h1>
       {% for id, product in context.items %}
           <div>
               {{ product.product }} 
               {{ product.quantity }}
-              <img class="checkout-image" src="{{ product.product.image_url }}" alt="{{ product.product.name }}">
+              <img class="product-bag-image" src="{{ product.product.image_url }}" alt="{{ product.product.name }}">
           </div>
           <hr>
       {% endfor %}

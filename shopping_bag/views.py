@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product
 
 
-def checkout(request):
-    return render(request, "shopping_bag/checkout.html")
+def view_bag(request):
+    return render(request, "shopping_bag/bag.html")
 
 
 def add_to_bag(request, id):
@@ -18,4 +18,4 @@ def add_to_bag(request, id):
     else:
         bag["total_cost"] = product.prize
     request.session["shopping_bag"] = bag
-    return redirect("checkout")
+    return redirect("view_bag")

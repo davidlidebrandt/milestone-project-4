@@ -36,14 +36,23 @@ class Product(models.Model):
 
 
 class Review(models.Model):
+    class Stars(models.IntegerChoices):
+        ONE = 1
+        TWO = 2
+        THREE = 3
+        FOUR = 4
+        FIVE = 5
     by_user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=False, blank=False)
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, null=False, blank=False)
-    description = models.CharField(max_length=400, null=False, blank=False)
+    description = models.CharField(max_length=400, null=False, blank=False, )
+    rating = models.IntegerField(choices=Stars.choices)
 
     def __str__(self):
         return self.description
+
+    objects = models.Manager()
 
 
 class Size(models.Model):

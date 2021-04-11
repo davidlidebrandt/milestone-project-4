@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 
 def bag(request):
     bag = request.session.get("shopping_bag", {})
-    print(bag)
     context = {}
     try:
         total_cost = request.session["shopping_bag"]["total_cost"]

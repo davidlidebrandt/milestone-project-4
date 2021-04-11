@@ -24,7 +24,7 @@
                       <button class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}" id="increase-bag-quantity"  type="submit">
                         <i class="fas fa-plus-square fs-3"></i>
                       </button>
-                      <input class="text-center" value="{{ product.quantity }}" type="number" min="1" max="10">
+                      <input class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" min="1" pattern="[0-9]|[10]">
                       <button class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
                         <i class="fas fa-minus-square fs-3"></i>
                       </button>

@@ -23,7 +23,7 @@
                         {% csrf_token %}
                         <div>
                             <i id="increase-quantity" class="fas fa-plus-square fs-3"></i>
-                            <input id="quantity-input" name="quantity-input" class="text-center" value="1" type="number" min="1" max="10">
+                            <input id="quantity-input" name="quantity-input" class="text-center" value="1" type="text" inputmode="numeric" min="1" pattern="[0-9]|[10]">
                             <i id="decrease-quantity" class="fas fa-minus-square fs-3"></i>
                         </div>
                         <div class="mt-2">
@@ -49,7 +49,20 @@
                         <div class="reviews-div col-12">
                             {% if reviews %}
                                 {% for review in reviews %}
-                                    {{ review }}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="fw-bold">{{ review.by_user }}</h5>
+                                            <div>
+                                                {% with ''|center:review.rating as range %}
+                                                {% for _ in range %}
+                                                    <i class="far fa-star"></i>
+                                                {% endfor %}
+                                                {% endwith %}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-center">{{ review }}</div>
+                                    </div>
+                                    <hr>
                                 {% endfor %}
                             {% else %}
                                 <p class="text-center">No reviews yet</p>

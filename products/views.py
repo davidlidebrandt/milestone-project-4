@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
 from django.db.models import Q
 from . models import Product, Review
-from . forms import ReviewForm
+from . forms import PartialReviewForm
 
 
 def products(request):
@@ -25,8 +25,7 @@ def products(request):
 def product_page(request, id):
     product = get_object_or_404(Product, id=id)
     reviews = Review.objects.filter(product=product)
-    form = ReviewForm(initial={"by_user": request.user, "product":
-                      Product.objects.get(id=id)})
+    form = PartialReviewForm()
     context = {
         "product": product,
         "form": form,
@@ -37,7 +36,9 @@ def product_page(request, id):
 
 @require_http_methods(["POST"])
 def post_review(request, id):
-    form = ReviewForm(request.POST)
+    product = get_object_or_404(Product, id=id)
+    user_and_product = Review(by_user=request.user, product=product)
+    form = PartialReviewForm(request.POST, instance=user_and_product)
     if form.is_valid():
         form.save()
         print("saved")

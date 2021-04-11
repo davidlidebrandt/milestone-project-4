@@ -43,9 +43,9 @@ class Review(models.Model):
         FOUR = 4
         FIVE = 5
     by_user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=False, blank=False)
+        User, on_delete=models.CASCADE, null=True, blank=False)
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, null=False, blank=False)
+        Product, on_delete=models.CASCADE, null=True, blank=False)
     description = models.CharField(max_length=400, null=False, blank=False, )
     rating = models.IntegerField(choices=Stars.choices)
 

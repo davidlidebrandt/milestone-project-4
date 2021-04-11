@@ -44,9 +44,9 @@
             <div class="row px-2">
                 {% if all_products %}
                 {%  for product in all_products %}
-                <div class="col-12 col-md-6 col-lg-4 my-2 product-list-div">
-                    <div class="row">
-                        <div class="col-12">
+                <div class="col-12 col-md-6 col-lg-4 my-2">
+                    <div class="row product-list-div">
+                        <div class="col-12 text-center">
                             <img class="list-image" src="{{ product.image_url }}" alt="{{ product.name }}">
                         </div>
                         <div class="col-12 my-2">

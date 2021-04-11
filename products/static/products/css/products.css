@@ -1,6 +1,6 @@
 .list-image {
     height: 300px;
-    width: 100%;
+    width: 60%;
 }
 
 .product-image {
@@ -12,6 +12,8 @@
 .product-list-div {
     border-bottom: 0.5px solid #000000;
     border-right: 0.5px solid #000000;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .write-reviews-div {

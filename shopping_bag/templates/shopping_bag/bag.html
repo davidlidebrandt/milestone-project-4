@@ -42,7 +42,7 @@
      
       <div class="row">
         <div class="col-12">
-            {% if not context %}
+            {% if not total_cost %}
             <p class="text-center">Your bag is empty</p>
             {% else %}
             <p class="text-center fw-bold my-3 text-uppercase">Total Cost:</p>
@@ -50,7 +50,7 @@
             {% endif %}
         </div>
         <div class="col-12 my-5 text-center">
-          {% if not context %}
+          {% if not total_cost %}
           <a class="green-button large-button" href="{% url 'products' %}">Back to products</a>
           {% else %}
           <button class="green-button large-button my-5">Payment</button>

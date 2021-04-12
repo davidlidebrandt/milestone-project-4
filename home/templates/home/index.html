@@ -15,7 +15,7 @@
                              <p class="black-text text-center">
                              Welcome to Fitness Equipment, here you will find all the equipment you need to get and
                              stay in shape. Browse through our products and categories to find what you need, you can shop
-                             online or search for any of out physical stores in your area.
+                             online or look for any of our physical stores in your area.
                             </p>
                     </div>
                 </div>
@@ -54,6 +54,16 @@
                                             </a>
                                         </div>
                                     </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <h5 class="text-center text-uppercase fw-bolder custom-h5">Manufacturers</h5>
+                        <div class="row text-center my-3">
+                            {% for manufacturer in manufacturers %}
+                                <div class="col-12 my-3 text-center">
+                                   <a class="custom-a" href="{% url 'products' %}?manufacturer={{ manufacturer }}">{{ manufacturer }}</a>
                                 </div>
                             {% endfor %}
                         </div>

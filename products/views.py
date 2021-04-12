@@ -17,6 +17,15 @@ def products(request):
             all_products = Product.objects.filter(
                 category__name=request.GET.get("category"))
 
+    elif request.GET.get("manufacturer"):
+        if request.GET.get("sort"):
+            all_products = Product.objects.filter(
+                manufacturer__name=request.GET.get(
+                    "manufacturer")).order_by(request.GET.get("sort"))
+        else:
+            all_products = Product.objects.filter(
+                manufacturer__name=request.GET.get("manufacturer"))
+
     elif request.GET.get("sort"):
         all_products = Product.objects.all().order_by(request.GET.get("sort"))
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
 from django.db.models import Q
+from django.core.paginator import Paginator
 from django.contrib import messages
 from . models import Product, Review
 from . forms import PartialReviewForm
@@ -35,7 +36,11 @@ def products(request):
 
 def product_page(request, id):
     product = get_object_or_404(Product, id=id)
-    reviews = Review.objects.filter(product=product)
+    reviews_list = Review.objects.filter(product=product)
+    paginator = Paginator(reviews_list, 5)
+    current_page = request.GET.get("page", 1)
+    reviews = paginator.get_page(current_page)
+
     form = PartialReviewForm()
     context = {
         "product": product,

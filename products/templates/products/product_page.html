@@ -67,6 +67,21 @@
                                     </div>
                                     <hr>
                                 {% endfor %}
+                                <div class="pagination row">
+                                    <div class="col-12 text-center my-3">
+                                        {% if reviews.has_previous %}
+                                            <a class="mx-2 custom-a" href="?page=1">First</a>
+                                            <a class="mx-2 custom-a" href="?page={{ reviews.previous_page_number }}">Previous</a>
+                                        {% endif %}
+                                        {% if reviews.has_next %}
+                                            <a class="mx-2 custom-a" href="?page={{ reviews.next_page_number }}">Next</a>
+                                            <a class="mx-2 custom-a" href="?page={{ reviews.paginator.num_pages }}">Last</a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-12 text-center my-3">
+                                        Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}.
+                                    </div>
+                                </div>
                             {% else %}
                                 <p class="text-center">No reviews yet</p>
                             {% endif %}

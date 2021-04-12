@@ -53,9 +53,9 @@
           {% if not total_cost %}
           <a class="green-button large-button" href="{% url 'products' %}">Back to products</a>
           {% else %}
-          <button class="green-button large-button my-5">Payment</button>
+          <button id="checkout-button" class="green-button large-button my-5">Payment</button>
           {% endif %}
-          
+          <script> let csrf = "{{ csrf_token }}" </script>
         </div>
       </div>
     </div>
@@ -63,5 +63,6 @@
 </div>
 {% endblock %}
 {% block extra_js %}
+<script src="{% static 'payment/js/payment.js' %}"></script>
 <script src="{% static 'shopping_bag/js/shopping_bag.js' %}"></script>
 {% endblock %}

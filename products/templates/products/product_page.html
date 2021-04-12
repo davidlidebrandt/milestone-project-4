@@ -53,6 +53,9 @@
                                         <div class="col-12">
                                             <h5 class="fw-bold">{{ review.by_user }}</h5>
                                             <div>
+                                                <!--This part was taken from this post on how to loop over a range 
+                                                https://django.cowhite.com/blog/numeric-for-loop-in-django-templates/
+                                                -->
                                                 {% with ''|center:review.rating as range %}
                                                 {% for _ in range %}
                                                     <i class="far fa-star"></i>

@@ -1,88 +1,169 @@
 <nav class="navbar navbar-expand-lg bg-black">
-    <div class="container-fluid position-relative">
-        <button class="navbar-toggler position-absolute top-0 start-0" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <div class="hamburger-icon"></div>
-            <div class="hamburger-icon"></div>
-            <div class="hamburger-icon"></div>
-        </button>
-        <a id="brand-name" class="navbar-brand light-green-text text-uppercase fw-bold" href="{% url 'index' %}">Fitness
-            Equipment</a>
+  <div class="container-fluid position-relative">
+    <button
+      class="navbar-toggler position-absolute top-0 start-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <div class="hamburger-icon"></div>
+      <div class="hamburger-icon"></div>
+      <div class="hamburger-icon"></div>
+    </button>
+    <a
+      id="brand-name"
+      class="navbar-brand light-green-text text-uppercase fw-bold"
+      href="{% url 'index' %}"
+      >Fitness Equipment</a
+    >
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle light-green-text" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Products
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
-                        {% for category in categories %}
-                        <li>
-                            <a class="dropdown-item"
-                                href="{% url 'products' %}?category={{ category }}">{{ category }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link light-green-text" href="#custom-footer">Find Stores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link light-green-text" href="#custom-footer">Contact</a>
-                </li>
-                <li>
-                    <form id="product-search" class="d-none d-lg-flex" method="GET">
-                        <div class="input-group">
-                            <input id="custom-search-group" class="form-control" type="search"
-                                placeholder="Search for products" aria-label="Search">
-                            <span id="custom-search-icon-wrap" class="input-group-text">
-                                <button id="no-show-btn" type="submit"><i class="fas fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                </li>
-            </ul>
-
-        </div>
-        <div class="shop-icons-wrap">
-            <div class="dropdown btn-group dropstart d-inline">
-                <a class="text-decor-none" href="#" role="button" id="dropdownMenuLink"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                     <i class="fas fa-user fs-2 mx-3 light-green-text"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    {% if user.is_authenticated %}
-                        <li><a class="dropdown-item" href="/accounts/profile/">Account</a></li>
-                        <li><a class="dropdown-item" href="/accounts/logout/">Log Out</a></li>
-                    {% else %}
-                        <li><a class="dropdown-item" href="/accounts/login/">Log In</a></li>
-                        <li><a class="dropdown-item" href="/accounts/signup/">Sign Up</a></li>
-                    {% endif %}
-                </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle light-green-text"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'products' %}"
+                >All Products</a
+              >
+            </li>
+            {% for category in categories %}
+            <li>
+              <a
+                class="dropdown-item"
+                href="{% url 'products' %}?category={{ category }}"
+                >{{ category }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link light-green-text" href="#custom-footer"
+            >Find Stores</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link light-green-text" href="#custom-footer">Contact</a>
+        </li>
+        <li>
+          <form id="product-search" class="d-none d-lg-flex" method="GET">
+            <div class="input-group">
+              <input
+                id="custom-search-group"
+                class="form-control"
+                type="search"
+                placeholder="Search for products"
+                aria-label="Search"
+              />
+              <span id="custom-search-icon-wrap" class="input-group-text">
+                <button id="no-show-btn" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </span>
             </div>
-             <div class="dropdown btn-group dropstart d-inline">
-                <a class="text-decor-none" href="#" role="button" id="dropdownMenuLink2"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                       <i class="fas fa-shopping-cart fs-2 mx-3 light-green-text"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'view_bag' %}">View Bag</a></li>
-                </ul>
-            </div>   
-        </div>
-        <div class="d-lg-none mx-auto w-100">
-            <form class="d-flex">
-                <div class="input-group">
-                    <input id="custom-search-group-2" class="form-control" type="search"
-                        placeholder="Search for products" aria-label="Search">
-                    <span id="custom-search-icon-wrap-2" class="input-group-text">
-                        <button id="no-show-btn-2" type="submit"><i class="fas fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-        </div>
+          </form>
+        </li>
+      </ul>
     </div>
+    <div class="shop-icons-wrap">
+      <div class="dropdown btn-group dropstart d-inline">
+        <a
+          class="text-decor-none"
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-user fs-2 mx-3 light-green-text"></i>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          {% if user.is_authenticated %}
+          <li>
+            <a class="dropdown-item" href="/accounts/profile/">Account</a>
+          </li>
+          <li><a class="dropdown-item" href="/accounts/logout/">Log Out</a></li>
+          {% else %}
+          <li><a class="dropdown-item" href="/accounts/login/">Log In</a></li>
+          <li><a class="dropdown-item" href="/accounts/signup/">Sign Up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="dropdown btn-group dropstart d-inline">
+        <a
+          class="text-decor-none"
+          href="#"
+          role="button"
+          id="dropdownMenuLink2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-shopping-cart fs-2 mx-3 light-green-text"></i>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li>
+            <a class="dropdown-item" href="{% url 'view_bag' %}">View Bag</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-lg-none mx-auto w-100">
+      <form class="d-flex">
+        <div class="input-group">
+          <input
+            id="custom-search-group-2"
+            class="form-control"
+            type="search"
+            placeholder="Search for products"
+            aria-label="Search"
+          />
+          <span id="custom-search-icon-wrap-2" class="input-group-text">
+            <button id="no-show-btn-2" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
 </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-4">
+      {% if messages %}
+      <div class="message-container">
+        {% for message in messages %}
+        <div>
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <i class="fas fa-exclamation-circle fs-2 red-text"></i>
+          {% else %}
+          <i class="fas fa-thumbs-up fs-2 green-text"></i>
+          {% endif %}
+        </div>
+        <div>
+            <p class="fw-bold mt-3">
+                {{ message }}
+            </p> 
+        </div>
+        {% endfor %}
+        <button class="close-message-container no-bg-button">
+            <i class="fas fa-times fs-3"></i>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

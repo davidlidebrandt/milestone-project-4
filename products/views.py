@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_http_methods
 from django.db.models import Q
+from django.contrib import messages
 from . models import Product, Review
 from . forms import PartialReviewForm
 
@@ -41,5 +42,7 @@ def post_review(request, id):
     form = PartialReviewForm(request.POST, instance=user_and_product)
     if form.is_valid():
         form.save()
-        print("saved")
+        messages.success(request, "Your review was saved")
+    else:
+        messages.error(request, "Error when saving your review, please try again or contact us")
     return redirect("product_page", id=id)

@@ -15,6 +15,8 @@ $(document).ready(function () {
     });
 
     $("#show-write-review").click(ShowAddReviewModal);
+
+    $("#sort-prize").click(sortByPrize);
 });
 
 function ShowAddReviewModal() {
@@ -33,4 +35,14 @@ function showReviewModal() {
     $(this).toggleClass("text-decoration-underline")
     $("#show-write-review").click(ShowAddReviewModal);
     $(this).off()
+}
+
+function sortByPrize() {
+    get_current_url = window.location.href;
+    if (get_current_url.includes("category")) {
+        window.location.href = get_current_url + "&sort=prize"
+    }
+    else {
+        window.location.href = get_current_url + "?sort=prize"
+    };
 }

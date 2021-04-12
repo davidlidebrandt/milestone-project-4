@@ -8,13 +8,23 @@ from . forms import PartialReviewForm
 
 def products(request):
     if request.GET.get("category"):
-        all_products = Product.objects.filter(
-            category__name=request.GET.get("category"))
+        if request.GET.get("sort"):
+            all_products = Product.objects.filter(
+                category__name=request.GET.get(
+                    "category")).order_by(request.GET.get("sort"))
+        else:
+            all_products = Product.objects.filter(
+                category__name=request.GET.get("category"))
+
+    elif request.GET.get("sort"):
+        all_products = Product.objects.all().order_by(request.GET.get("sort"))
+
     elif request.GET.get("search"):
         all_products = Product.objects.filter(
             Q(name__contains=request.GET.get("search")) | Q(
                 description__contains=request.GET.get("search")) | Q(
                     manufacturer__name__contains=request.GET.get("search")))
+
     else:
         all_products = Product.objects.all()
     context = {

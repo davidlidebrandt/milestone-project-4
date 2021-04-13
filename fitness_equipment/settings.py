@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'products',
     'shopping_bag',
     'stores',
-    'djstripe',
     'payment',
 ]
 
@@ -161,6 +160,4 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY")
 STRIPE_TEST_PUBLIC_KEY = os.environ.get("STRIPE_TEST_PUBLIC_KEY")
-DJSTRIPE_WEBHOOK_VALIDATION = "retrieve_event"
-DJSTRIPE_USE_NATIVE_JSONFIELD = True
-DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
+

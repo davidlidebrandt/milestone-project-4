@@ -1,0 +1,32 @@
+.list-image {
+    height: 300px;
+    width: 60%;
+}
+
+.product-image {
+    height: 600px;
+    width: 80%;
+    padding: 40px;
+}
+
+.product-list-div {
+    border-bottom: 0.5px solid #000000;
+    border-right: 0.5px solid #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.write-reviews-div {
+    display: none;
+}
+
+#show-reviews, #show-write-review {
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+}
+
+#quantity-input {
+    width: max-content;
+}

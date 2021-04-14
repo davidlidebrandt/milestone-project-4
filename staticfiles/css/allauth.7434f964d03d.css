@@ -1,0 +1,83 @@
+.form-bg {
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+.form-bg input {
+    box-shadow: 1px 1px 5px 1px #263238;
+}
+
+.form-bg input, .form-bg button {
+    border-radius: 0.25rem;
+    border: none;
+    text-align: center;
+}
+
+.form-bg button, .form-bg input[type="submit"] {
+    background-color: #a5d6a7;
+    margin-bottom: 20px;
+}
+
+.form-bg input:focus {
+    outline: 3px solid #a5d6a7;
+}
+
+.form-bg input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.form-bg button:hover, .form-bg input[type="submit"]:hover {
+    color: #a5d6a7;
+    background-color: #000000;
+}
+
+.form-bg h1 {
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+#id_login, #id_password, #id_username, #id_email, #id_password1, #id_password2 {
+    width: 80%;
+    background-color: #ffffff;
+}
+
+.form-bg a {
+    color: #000000;
+    font-weight: 700;
+}
+
+.form-bg a:hover {
+    color: #1b5e20;
+}
+
+.form-bg label {
+    font-style: italic;
+    display: block;
+}
+
+.menu-bg {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.message-container {
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+    top: 120px;
+    background-color: #000000;
+    border: 1px solid #a5d6a7;
+    color: #a5d6a7;
+    border-radius: 0.25rem;
+}
+
+.menu-bg a {
+    color: #000000;
+    font-weight: 600;
+}
+
+.menu-bg a:hover {
+    color: #1b5e20;
+}

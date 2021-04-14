@@ -40,7 +40,7 @@ if DEVELOPMENT:
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "https://fitness-equipment.herokuapp.com/"]
+ALLOWED_HOSTS = ['localhost', 'fitness-equipment.herokuapp.com']
 
 
 # Application definition

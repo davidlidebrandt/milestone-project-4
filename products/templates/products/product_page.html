@@ -13,7 +13,12 @@
                 </div>
                 <div class="col-12 col-lg-6 order-lg-1">
                     <p class="my-4">
-                        <a class="green-button small-button" href="{% url 'products' %}"><i class="fas fa-arrow-circle-left fs-5"></i> Back to products</a>
+                        <a class="green-button small-button" href="{% url 'products' %}">
+                            <i class="fas fa-arrow-circle-left fs-5">
+                                <span class="sr-only">Back arrow</span>
+                            </i> 
+                            Back to products
+                        </a>
                     </p>
                     <h4 class="text-uppercase fw-bold mt-5 text-center">{{ product.name }}</h4>
                     <p class="fst-italic text-center">{{ product.manufacturer }}</p>
@@ -22,9 +27,9 @@
                     <form action="{% url 'add_to_bag' id=product.id %}" method="POST" class="text-center my-5">
                         {% csrf_token %}
                         <div>
-                            <i id="increase-quantity" class="fas fa-plus-square fs-3"></i>
+                            <i id="increase-quantity" class="fas fa-plus-square fs-3"><span class="sr-only">Plus sign</span></i>
                             <input id="quantity-input" name="quantity-input" class="text-center" value="1" type="text" inputmode="numeric" min="1" pattern="[0-9]|[10]">
-                            <i id="decrease-quantity" class="fas fa-minus-square fs-3"></i>
+                            <i id="decrease-quantity" class="fas fa-minus-square fs-3"><span class="sr-only">Minus Sign</span></i>
                         </div>
                         <div class="mt-2">
                             <button type="submit" class="black-button large-button">Add To Chart</button>
@@ -35,7 +40,7 @@
             <div class="row">
                 <div class="col-12 col-lg-8 offset-lg-2 mt-5">
                     <p>
-                        <i class="far fa-star"></i>
+                        <i class="far fa-star"><span class="sr-only">Star</span></i>
                         {% if rating %}
                             {{ rating }}
                         {% else %}
@@ -58,7 +63,7 @@
                                                 -->
                                                 {% with ''|center:review.rating as range %}
                                                 {% for _ in range %}
-                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"><span class="sr-only">Star icon</span></i>
                                                 {% endfor %}
                                                 {% endwith %}
                                             </div>

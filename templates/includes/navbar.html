@@ -70,7 +70,7 @@
               />
               <span id="custom-search-icon-wrap" class="input-group-text">
                 <button id="no-show-btn" type="submit">
-                  <i class="fas fa-search"></i>
+                  <i class="fas fa-search"><span class="sr-only">Search icon</span></i>
                 </button>
               </span>
             </div>
@@ -88,7 +88,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fas fa-user fs-2 mx-3 light-green-text"></i>
+          <i class="fas fa-user fs-2 mx-3 light-green-text"><span class="sr-only">Account icon</span></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {% if user.is_authenticated %}
@@ -111,7 +111,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fas fa-shopping-cart fs-2 mx-3 light-green-text"></i>
+          <i class="fas fa-shopping-cart fs-2 mx-3 light-green-text"><span class="sr-only">Shopping cart icon</span></i>
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           {% if total_cost %}
@@ -141,7 +141,7 @@
           />
           <span id="custom-search-icon-wrap-2" class="input-group-text">
             <button id="no-show-btn-2" type="submit">
-              <i class="fas fa-search"></i>
+              <i class="fas fa-search"><span class="sr-only">Search icon</span></i>
             </button>
           </span>
         </div>
@@ -157,9 +157,9 @@
         {% for message in messages %}
         <div>
           {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-          <i class="fas fa-exclamation-circle fs-2 red-text"></i>
+          <i class="fas fa-exclamation-circle fs-2 red-text"><span class="sr-only">Warning icon</span></i>
           {% else %}
-          <i class="fas fa-thumbs-up fs-2 green-text"></i>
+          <i class="fas fa-thumbs-up fs-2 green-text"><span class="sr-only">Success icon</span></i>
           {% endif %}
         </div>
         <div>
@@ -169,7 +169,7 @@
         </div>
         {% endfor %}
         <button class="close-message-container no-bg-button">
-            <i class="fas fa-times fs-3"></i>
+            <i class="fas fa-times fs-3"><span class="sr-only">Close icon</span></i>
         </button>
       </div>
       {% endif %}

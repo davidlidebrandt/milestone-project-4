@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'shopping_bag/css/shopping_bag.css' %}">
 {% endblock %}
 {% block main_content %}
-<!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap->
+<!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
 <div class="container-fluid">
   <div class="row">
     <div class="col-10 offset-1 main-window">
@@ -54,9 +54,14 @@
           {% if not total_cost %}
           <a class="green-button large-button" href="{% url 'products' %}">Back to products</a>
           {% else %}
-          <button id="checkout-button" class="green-button large-button my-5">Payment</button>
+          <form id="redirect-checkout" action="POST">
+            {% csrf_token %}
+            <button id="checkout-button" type="submit" class="green-button large-button my-5">Payment</button>
+            <script>
+                let CSRF = "{{ csrf_token }}";
+            </script>
+          </form>
           {% endif %}
-          <script> let csrf = "{{ csrf_token }}" </script>
         </div>
       </div>
     </div>

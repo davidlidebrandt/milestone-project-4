@@ -1,26 +1,29 @@
-let stripeInstance = Stripe("pk_test_51IfQReEg6TzYJMSJUwwscxw3gHeV7IasaIgvyOIGZ2RLgbm5EwmbJe6x6EmlRzqACprHd6mXYVODUl5Mw7HJJ6nw00fKMoxgT4")
+// The Stripe docs and another tutotial was uses as the base for this code.
+// https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=checkout#redirect-customers
+// https://testdriven.io/blog/django-stripe-tutorial/
 
-$(document).ready(function () { 
-    $("#checkout-button").click(function() {
-        $.ajax({
-            method: "POST",
-            headers: {
-                'X-CSRFToken': csrf
-            },
-            url: "/payment/create_checkout/"
-        }) .then(function (response) {
-            return response.json();
-          })
-          .then(function (session) {
-            return stripeInstance.redirectToCheckout({ sessionId: session.id });
-          })
-          .then(function (result) {
-            if (result.error) {
-              alert(result.error.message);
-            }
-          })
-          .catch(function (error) {
-            console.error("Error:", error);
-          });
-    })
+const stripe = Stripe('pk_test_51IfQReEg6TzYJMSJUwwscxw3gHeV7IasaIgvyOIGZ2RLgbm5EwmbJe6x6EmlRzqACprHd6mXYVODUl5Mw7HJJ6nw00fKMoxgT4');
+
+$(document).ready(function () {
+  $("#redirect-checkout").submit(function(e) {
+    e.preventDefault();
+    const request = new Request("/payment/create_checkout/",  {headers: {'X-CSRFToken': CSRF }})
+    fetch(request, {
+      method: 'POST',
+      mode: 'same-origin'
+  })
+      .then((result) => {
+        return result.json();
+      })
+      .then((data) => {
+        
+        return stripe.redirectToCheckout({
+          sessionId: data.sessionId,
+        });
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  })
+
 });

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.conf import settings
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -31,3 +31,29 @@ def create_checkout(request):
             return JsonResponse({'sessionId': checkout_session["id"]})
         except Exception as e:
             return JsonResponse({"error": str(e)})
+
+
+# The Stripe docs and another tutotial was uses as the base for this code.
+# https://stripe.com/docs/payments/handling-payment-events
+# https://testdriven.io/blog/django-stripe-tutorial/
+@csrf_exempt
+def confirmation_of_payment(request):
+    stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
+    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.async_payment_succeeded':
+        print("Payment was successful.")
+
+    return HttpResponse(status=200)

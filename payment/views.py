@@ -82,22 +82,6 @@ def confirmation_of_payment(request):
 
 
 def payment_success(request):
-    line_items = []
-    bag = request.session.get("shopping_bag")
-    total_cost = bag.get("total_cost")
-    bag.pop("total_cost")
-    for item in bag.items():
-        product = {"name": "", "quantity": "", "currency": "usd", "amount": ""}
-        for i in item:
-            if type(i) is not dict:
-                db_product = get_object_or_404(Product, id=i)
-                product["name"] = db_product.name
-                product["amount"] = str(db_product.prize * 10)
-            else:
-                for value in i.values():
-                    product["quantity"] = value
-        line_items.append(product)
-
     return render(request, "payment/success.html")
 
 

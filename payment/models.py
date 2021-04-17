@@ -10,6 +10,9 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              null=True, blank=True)
     amount_paid = models.IntegerField()
+    shipping_address = models.CharField(max_length=300)
+    customer_name = models.CharField(max_length=200)
+    customer_email = models.EmailField()
 
     def __str__(self):
         return self.date

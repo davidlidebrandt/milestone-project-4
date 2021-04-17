@@ -57,3 +57,11 @@ def confirmation_of_payment(request):
         print("Payment was successful.")
 
     return HttpResponse(status=200)
+
+
+def payment_success(request):
+    return render(request, "payment/success.html")
+
+
+def payment_error(request):
+    return render(request, "payment/error.html")

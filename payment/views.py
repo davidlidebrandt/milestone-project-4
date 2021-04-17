@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.conf import settings
 from django.http.response import JsonResponse
+from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
+from products.models import Product
 import stripe
 
 
@@ -11,23 +13,35 @@ import stripe
 @csrf_exempt
 def create_checkout(request):
     if request.method == "POST":
+        customer_email = []
+        if request.user.is_authenticated:
+            customer_email.append(request.user.email)
+        line_items = []
+        bag = request.session.get("shopping_bag")
+        bag.pop("total_cost")
+        for item in bag.items():
+            product = {"name": "", "quantity": "", "currency": "usd",
+                       "amount": ""}
+            for product_field in item:
+                if type(product_field) is not dict:
+                    db_product = get_object_or_404(Product, id=product_field)
+                    product["name"] = db_product.name
+                    product["amount"] = str(db_product.prize * 100)
+                else:
+                    for value in product_field.values():
+                        product["quantity"] = value
+            line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
         try:
             checkout_session = stripe.checkout.Session.create(
                 success_url="https://fitness-equipment.herokuapp.com/payment/success/",
                 cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
                 payment_method_types=["card"],
+                customer_email=[],
+                shipping_address_collection={'allowed_countries': ["SE"]},
                 mode="payment",
-                line_items=[
-                    {
-                        "name": 'Basic Barbell',
-                        "quantity": 1,
-                        "currency": 'usd',
-                        "amount": '10000',
-                    }
-                ]
+                line_items=line_items
             )
-            print(checkout_session)
             return JsonResponse({'sessionId': checkout_session["id"]})
         except Exception as e:
             return JsonResponse({"error": str(e)})
@@ -54,12 +68,33 @@ def confirmation_of_payment(request):
         return HttpResponse(status=400)
 
     if event['type'] == 'checkout.session.async_payment_succeeded':
-        print("Payment was successful.")
+        send_mail(
+            "Your order",
+            "Your oder was successful",
+            None,
+            ["dl_brd@hotmail.com"],
+            fail_silently=False,)
 
     return HttpResponse(status=200)
 
 
 def payment_success(request):
+    line_items = []
+    bag = request.session.get("shopping_bag")
+    total_cost = bag.get("total_cost")
+    bag.pop("total_cost")
+    for item in bag.items():
+        product = {"name": "", "quantity": "", "currency": "usd", "amount": ""}
+        for i in item:
+            if type(i) is not dict:
+                db_product = get_object_or_404(Product, id=i)
+                product["name"] = db_product.name
+                product["amount"] = str(db_product.prize * 10)
+            else:
+                for value in i.values():
+                    product["quantity"] = value
+        line_items.append(product)
+
     return render(request, "payment/success.html")
 
 

@@ -13,9 +13,9 @@ import stripe
 @csrf_exempt
 def create_checkout(request):
     if request.method == "POST":
-        customer_email = []
+        customer_email = ""
         if request.user.is_authenticated:
-            customer_email.append(request.user.email)
+            customer_email = request.user.email
         line_items = []
         bag = request.session.get("shopping_bag")
         bag.pop("total_cost")
@@ -33,11 +33,14 @@ def create_checkout(request):
             line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
         try:
+            stripe.Customer.create(
+                description="My First Test Customer (created for API docs)",
+)
             checkout_session = stripe.checkout.Session.create(
                 success_url="https://fitness-equipment.herokuapp.com/payment/success/",
                 cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
                 payment_method_types=["card"],
-                customer_email=[],
+                customer_email=customer_email,
                 shipping_address_collection={'allowed_countries': ["SE"]},
                 mode="payment",
                 line_items=line_items

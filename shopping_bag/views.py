@@ -5,7 +5,6 @@ from products.models import Product
 
 
 def view_bag(request):
-    print(request.session.get("shopping_bag", {}))
     return render(request, "shopping_bag/bag.html")
 
 

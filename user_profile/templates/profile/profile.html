@@ -11,7 +11,12 @@
                 <h3 class="text-center">Profile</h3>
                 <div class="row">
                     <div class="col-12">
-                        
+                        <h5>Contatc details</h5>
+                        <form method="POST" action="{% url 'update_profile' %}">
+                        {% csrf_token %}
+                        {{ user_profile_form.as_p }}
+                        <button class="black-button small-button" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -19,7 +24,11 @@
                         <h5 class="text-center">
                             Change password
                         </h5>
-                        {{ form.as_p }}
+                        <form method="POST" action="{% url 'change_password' %}">
+                        {% csrf_token %}
+                        {{ password_form.as_p }}
+                        <button class="black-button small-button" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -19,16 +19,23 @@
                         </form>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <h5 class="text-center">
+                <div class="row my-5">
+                    <div class="col-12 my-3">
+                        <a class="green-button small-button text-center" href="{% url 'account_change_password' %}">
                             Change password
-                        </h5>
-                        <form method="POST" action="{% url 'change_password' %}">
-                        {% csrf_token %}
-                        {{ password_form.as_p }}
-                        <button class="black-button small-button" type="submit">Update</button>
-                        </form>
+                        </a>
+                    </div>
+                    <div class="col-12 my-3">
+                        <a class="green-button small-button text-center" href="{% url 'account_email' %}">
+                            Manage your email
+                        </a>
+                    </div>
+                </div>
+                <div class="row my-5">
+                    <div class="col-12">
+                        <a class="green-button small-button text-center" href="{% url 'account_email' %}">
+                            Delete account
+                        </a>
                     </div>
                 </div>
             </div>

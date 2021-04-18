@@ -16,9 +16,11 @@ def create_checkout(request):
         customer_email = ""
         if request.user.is_authenticated:
             customer_email = request.user.email
+        meta_data = {}
         line_items = []
         bag = request.session.get("shopping_bag")
         bag.pop("total_cost")
+        count = 0
         for item in bag.items():
             product = {"name": "", "quantity": "", "currency": "usd",
                        "amount": ""}
@@ -30,6 +32,8 @@ def create_checkout(request):
                 else:
                     for value in product_field.values():
                         product["quantity"] = value
+            meta_data["Product" + str(count)] = db_product.id
+            count += 1
             line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
         try:
@@ -43,7 +47,8 @@ def create_checkout(request):
                 customer_email=customer_email,
                 shipping_address_collection={'allowed_countries': ["SE"]},
                 mode="payment",
-                line_items=line_items
+                line_items=line_items,
+                metadata=meta_data,
             )
             return JsonResponse({'sessionId': checkout_session["id"]})
         except Exception as e:

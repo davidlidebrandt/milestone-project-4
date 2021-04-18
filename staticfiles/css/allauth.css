@@ -18,6 +18,15 @@
 .form-bg button, .form-bg input[type="submit"] {
     background-color: #a5d6a7;
     margin-bottom: 20px;
+
+}
+
+.form-bg button {
+    border: none;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
 }
 
 .form-bg input:focus {

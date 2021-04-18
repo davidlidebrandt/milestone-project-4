@@ -1,0 +1,20 @@
+.main-window label {
+    display: block;
+    font-style: italic;
+}
+
+.main-window {
+    text-align: center;
+}
+
+.main-window input[type="text"] {
+    width: 80%;
+    border-radius: 0.25rem;
+    border: none;
+    text-align: center;
+    box-shadow: 1px 1px 5px 1px #263238;
+}
+
+.main-window input:focus {
+    outline: 3px solid #a5d6a7;
+}

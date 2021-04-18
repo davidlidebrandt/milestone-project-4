@@ -77,6 +77,7 @@ def confirmation_of_payment(request):
             None,
             ["dl_brd@hotmail.com"],
             fail_silently=False,)
+        print(event["data"]["object"])
 
     return HttpResponse(status=200)
 

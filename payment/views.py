@@ -83,7 +83,7 @@ def confirmation_of_payment(request):
             ["dl_brd@hotmail.com"],
             fail_silently=False,)
 
-    return HttpResponse(status=200)
+    return HttpResponse(status=200, content=event["data"])
 
 
 def payment_success(request):

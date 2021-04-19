@@ -75,12 +75,12 @@ def confirmation_of_payment(request):
     except stripe.error.SignatureVerificationError as e:
         return HttpResponse(status=400)
 
-    if event['type'] == 'checkout.session.completed':
+    if event["type"] == 'checkout.session.completed':
         send_mail(
             "Your order",
-            "Your oder was successful",
+            "Your order was successful" + event["data"]["metadata"],
             None,
-            ["dl_brd@hotmail.com"],
+            [event["data"]["customer_email"]],
             fail_silently=False,)
         print(event["data"]["object"])
 

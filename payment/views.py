@@ -78,11 +78,10 @@ def confirmation_of_payment(request):
     if event["type"] == 'checkout.session.completed':
         send_mail(
             "Your order",
-            "Your order was successful" + event["data"]["metadata"],
+            "Your order was successful",
             None,
-            [event["data"]["customer_email"]],
+            ["dl_brd@hotmail.com"],
             fail_silently=False,)
-        print(event["data"]["object"])
 
     return HttpResponse(status=200)
 

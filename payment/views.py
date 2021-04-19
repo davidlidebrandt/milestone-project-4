@@ -75,7 +75,7 @@ def confirmation_of_payment(request):
     except stripe.error.SignatureVerificationError as e:
         return HttpResponse(status=400)
 
-    if event['type'] == 'checkout.session.async_payment_succeeded':
+    if event['type'] == 'checkout.session.completed':
         send_mail(
             "Your order",
             "Your oder was successful",

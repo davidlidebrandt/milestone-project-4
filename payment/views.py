@@ -23,7 +23,8 @@ def create_checkout(request):
             customer_email = request.user.email
             user_id = request.user.id
         current_datetime = datetime.datetime.now()
-        meta_data = {"date": current_datetime, "user_id": user_id}
+        meta_data = {"date": current_datetime,
+                     "user_id": user_id}
         line_items = []
         bag = request.session.get("shopping_bag")
         bag.pop("total_cost")
@@ -39,7 +40,7 @@ def create_checkout(request):
                 else:
                     for value in product_field.values():
                         product["quantity"] = value
-            meta_data["products"]["product" + str(count)] = db_product.id
+            meta_data[str(count)] = str(db_product.id)
             count += 1
             line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
@@ -56,6 +57,7 @@ def create_checkout(request):
             )
             return JsonResponse({'sessionId': checkout_session["id"]})
         except Exception as e:
+            print(str(e))
             return JsonResponse({"error": str(e)})
 
 

@@ -88,7 +88,8 @@ def confirmation_of_payment(request):
             None,
             [event["data"]["object"]["customer_email"]],
             fail_silently=False,)
-        order_id = uuid.uuid4
+        print(event["data"]["object"]["metadata"]["date"])
+        """order_id = uuid.uuid4
         user_id = event["data"]["object"]["metadata"]["user_id"]
         order = None
         if user_id:
@@ -106,7 +107,7 @@ def confirmation_of_payment(request):
                           shipping_address=event["data"]["object"]["shipping"]["address"],
                           customer_name=event["data"]["object"]["customer_email"],
                           customer_email=event["data"]["object"]["shipping"]["name"])
-        order.save()
+        order.save()"""
 
     return HttpResponse(status=200)
 

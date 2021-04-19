@@ -4,7 +4,8 @@ from django.http.response import JsonResponse
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
-from products.models import Product, Order, OrderItem
+from products.models import Product
+from . models import Order, OrderItem
 import stripe
 import datetime
 import uuid

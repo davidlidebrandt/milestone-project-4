@@ -88,31 +88,38 @@ def confirmation_of_payment(request):
             None,
             [event["data"]["object"]["customer_email"]],
             fail_silently=False,)
-        print(event["data"]["object"]["metadata"]["date"])
-        """order_id = uuid.uuid4
         user_id = event["data"]["object"]["metadata"]["user_id"]
         order = None
         if user_id:
             user = get_object_or_404(User, id=user_id)
-            order = Order(id=order_id,
+            order = Order(
                           date=event["data"]["object"]["metadata"]["date"],
-                          user=user, amount_paid=event["data"]["object"]["amount_total"],
+                          user=user,
+                          amount_paid=int(event["data"]["object"]["amount_total"]),
                           shipping_address=event["data"]["object"]["shipping"]["address"],
                           customer_name=event["data"]["object"]["customer_email"],
                           customer_email=event["data"]["object"]["shipping"]["name"])
         else:
-            order = Order(id=order_id,
+            order = Order(
                           date=event["data"]["object"]["metadata"]["date"],
                           amount_paid=event["data"]["object"]["amount_total"],
                           shipping_address=event["data"]["object"]["shipping"]["address"],
                           customer_name=event["data"]["object"]["customer_email"],
                           customer_email=event["data"]["object"]["shipping"]["name"])
-        order.save()"""
+        order.save()
 
     return HttpResponse(status=200)
 
 
 def payment_success(request):
+    user = User(id=1)
+    order = Order(
+                  date=datetime.datetime.now(),
+                  amount_paid=int("100"),
+                  shipping_address="Street",
+                  customer_name="Me",
+                  customer_email="dl_brd@hotmail.com")
+    order.save()
     return render(request, "payment/success.html")
 
 

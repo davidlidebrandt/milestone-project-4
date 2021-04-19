@@ -15,7 +15,7 @@ class Order(models.Model):
     customer_email = models.EmailField()
 
     def __str__(self):
-        return self.date
+        return self.customer_name
 
 
 class OrderItem(models.Model):

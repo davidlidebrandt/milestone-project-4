@@ -22,9 +22,7 @@ def create_checkout(request):
         if request.user.is_authenticated:
             customer_email = request.user.email
             user_id = request.user.id
-        current_datetime = datetime.datetime.now()
-        meta_data = {"date": current_datetime,
-                     "user_id": user_id}
+        meta_data = {"user_id": user_id, }
         line_items = []
         bag = request.session.get("shopping_bag")
         bag.pop("total_cost")
@@ -92,27 +90,27 @@ def confirmation_of_payment(request):
         order = None
         if user_id:
             user = get_object_or_404(User, id=user_id)
+            current_date = datetime.datetime.now()
             order = Order(
-                          date=event["data"]["object"]["metadata"]["date"],
+                          date=current_date,
                           user=user,
                           amount_paid=int(event["data"]["object"]["amount_total"]),
                           shipping_address=event["data"]["object"]["shipping"]["address"],
-                          customer_name=event["data"]["object"]["customer_email"],
-                          customer_email=event["data"]["object"]["shipping"]["name"])
+                          customer_email=event["data"]["object"]["customer_email"],
+                          customer_name=event["data"]["object"]["shipping"]["name"])
         else:
             order = Order(
                           date=event["data"]["object"]["metadata"]["date"],
                           amount_paid=event["data"]["object"]["amount_total"],
                           shipping_address=event["data"]["object"]["shipping"]["address"],
-                          customer_name=event["data"]["object"]["customer_email"],
-                          customer_email=event["data"]["object"]["shipping"]["name"])
+                          customer_email=event["data"]["object"]["customer_email"],
+                          customer_name=event["data"]["object"]["shipping"]["name"])
         order.save()
 
     return HttpResponse(status=200)
 
 
 def payment_success(request):
-    user = User(id=1)
     order = Order(
                   date=datetime.datetime.now(),
                   amount_paid=int("100"),

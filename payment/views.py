@@ -91,33 +91,30 @@ def confirmation_of_payment(request):
         if user_id:
             user = get_object_or_404(User, id=user_id)
             current_date = datetime.datetime.now()
+            amount_paid = int(event["data"]["object"]["amount_total"])/100
+            shipping_address = event["data"]["object"]["shipping"]["address"]
+            customer_email = event["data"]["object"]["customer_email"]
+            customer_name = event["data"]["object"]["shipping"]["name"]
             order = Order(
                           date=current_date,
                           user=user,
-                          amount_paid=int(event["data"]["object"]["amount_total"]),
-                          shipping_address=event["data"]["object"]["shipping"]["address"],
-                          customer_email=event["data"]["object"]["customer_email"],
-                          customer_name=event["data"]["object"]["shipping"]["name"])
+                          amount_paid=amount_paid,
+                          shipping_address=shipping_address,
+                          customer_email=customer_email,
+                          customer_name=customer_name)
         else:
             order = Order(
-                          date=event["data"]["object"]["metadata"]["date"],
-                          amount_paid=event["data"]["object"]["amount_total"],
-                          shipping_address=event["data"]["object"]["shipping"]["address"],
-                          customer_email=event["data"]["object"]["customer_email"],
-                          customer_name=event["data"]["object"]["shipping"]["name"])
+                          date=current_date,
+                          amount_paid=amount_paid,
+                          shipping_address=shipping_address,
+                          customer_email=customer_email,
+                          customer_name=customer_name)
         order.save()
 
     return HttpResponse(status=200)
 
 
 def payment_success(request):
-    order = Order(
-                  date=datetime.datetime.now(),
-                  amount_paid=int("100"),
-                  shipping_address="Street",
-                  customer_name="Me",
-                  customer_email="dl_brd@hotmail.com")
-    order.save()
     return render(request, "payment/success.html")
 
 

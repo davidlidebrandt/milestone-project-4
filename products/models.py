@@ -17,6 +17,13 @@ class Manufacturer(models.Model):
         return self.name
 
 
+class Discount(models.Model):
+    rate = models.FloatField()
+
+    def __str__(self):
+        return self.rate
+
+
 class Product(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     description = models.CharField(max_length=200, null=False, blank=False)
@@ -27,6 +34,8 @@ class Product(models.Model):
         Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
     quantity = models.IntegerField(null=True, blank=True)
     prize = models.IntegerField(null=False, blank=False)
+    discount_rate = models.ForeignKey(
+        Discount, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name

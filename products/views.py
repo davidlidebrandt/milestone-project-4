@@ -46,6 +46,12 @@ def products(request):
 def product_page(request, id):
     product = get_object_or_404(Product, id=id)
     reviews_list = Review.objects.filter(product=product)
+    count = 0
+    rating = None
+    if reviews_list:
+        for review in reviews_list:
+            count += review.rating
+        rating = int(count/len(reviews_list))
     paginator = Paginator(reviews_list, 5)
     current_page = request.GET.get("page", 1)
     reviews = paginator.get_page(current_page)
@@ -55,6 +61,7 @@ def product_page(request, id):
         "product": product,
         "form": form,
         "reviews": reviews,
+        "rating": rating,
     }
     return render(request, "products/product_page.html", context)
 

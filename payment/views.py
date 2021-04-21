@@ -11,7 +11,7 @@ import datetime
 import uuid
 
 
-# The Stripe docs and another tutotial was uses as the base for this code.
+# The Stripe docs and another tutorial was uses as the base for this code.
 # https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=checkout#redirect-customers
 # https://testdriven.io/blog/django-stripe-tutorial/
 @csrf_exempt
@@ -55,11 +55,10 @@ def create_checkout(request):
             )
             return JsonResponse({'sessionId': checkout_session["id"]})
         except Exception as e:
-            print(str(e))
             return JsonResponse({"error": str(e)})
 
 
-# The Stripe docs and another tutotial was uses as the base for this code.
+# The Stripe docs and another tutorial was uses as the base for this code.
 # https://stripe.com/docs/payments/handling-payment-events
 # https://testdriven.io/blog/django-stripe-tutorial/
 @csrf_exempt
@@ -74,9 +73,9 @@ def confirmation_of_payment(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
-    except ValueError as e:
+    except ValueError:
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
 
     if event["type"] == 'checkout.session.completed':
@@ -110,6 +109,12 @@ def confirmation_of_payment(request):
                           customer_email=customer_email,
                           customer_name=customer_name)
         order.save()
+
+        for order_item in event["data"]["object"]["metadata"]:
+            if not order_item == "user_id":
+                product = get_object_or_404(Product, id=order_item)
+                new_item = OrderItem(product=product, order=order, quantity=1)
+                new_item.save()
 
     return HttpResponse(status=200)
 

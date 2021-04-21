@@ -7,7 +7,21 @@
 <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-10 offset-1 main-window"></div>
+    <div class="col-10 offset-1 main-window">
+      <div class="row">
+        <h2 class="text-center my-3">Find Stores</h2>
+        {% for store in stores %}
+        <div class="col-6 store-div">
+          <p>{{ store.city }}</p>
+          <p>{{ store.name }}</p>
+          <p>Address: {{ store.address }}</p>
+          <p>Phone number: {{ store.phone_number }}</p>
+          <p>Opening hours:</p>
+          <p>{{ store.open_hours }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

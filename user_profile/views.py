@@ -3,11 +3,13 @@ from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 from . forms import UserProfileForm
+from payment.models import Order
 
 
 def show_profile(request):
     user = get_object_or_404(User, id=request.user.id)
     user_profile_form = UserProfileForm()
+    orders = Order.objects.filter(user=user)
 
     try:
         user_profile_form = UserProfileForm(instance=user.userprofile)
@@ -18,6 +20,7 @@ def show_profile(request):
     context = {
         "user": user,
         "user_profile_form": user_profile_form,
+        "orders": orders,
     }
 
     return render(request, "profile/profile.html", context)

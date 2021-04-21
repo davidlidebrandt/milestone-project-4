@@ -7,11 +7,11 @@
     <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-10 offset-1 col-md-8 offset-md-2 main-window">
+            <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 main-window">
                 <h3 class="text-center">Profile</h3>
                 <div class="row">
                     <div class="col-12">
-                        <h5>Contatc details</h5>
+                        <h5>Contact details</h5>
                         <form method="POST" action="{% url 'update_profile' %}">
                         {% csrf_token %}
                         {{ user_profile_form.as_p }}
@@ -19,8 +19,20 @@
                         </form>
                     </div>
                 </div>
+                <div class="row my-3">
+                    <div class="col-12">
+                        <h5>Orders</h5>
+                        {% if orders %}
+                        {% for order in orders %}
+                            {{ order.id }}
+                            {{ order.date }}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="row my-5">
                     <div class="col-12 my-3">
+                        <h5>Password and email</h5>
                         <a class="green-button small-button text-center" href="{% url 'account_change_password' %}">
                             Change password
                         </a>

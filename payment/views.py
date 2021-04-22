@@ -79,12 +79,6 @@ def confirmation_of_payment(request):
         return HttpResponse(status=400)
 
     if event["type"] == 'checkout.session.completed':
-        send_mail(
-            "Your order",
-            "Your order was successful",
-            None,
-            [event["data"]["object"]["customer_email"]],
-            fail_silently=False,)
         user_id = event["data"]["object"]["metadata"]["user_id"]
         order = None
         if user_id:
@@ -109,6 +103,16 @@ def confirmation_of_payment(request):
                           customer_email=customer_email,
                           customer_name=customer_name)
         order.save()
+
+        message = ("Your order was successful, below you will find" +
+                   "the details of your order" +
+                   "Order id:" + order.id)
+        send_mail(
+            "Your order",
+            message,
+            None,
+            [event["data"]["object"]["customer_email"]],
+            fail_silently=False,)
 
         for order_item in event["data"]["object"]["metadata"]:
             if not order_item == "user_id":

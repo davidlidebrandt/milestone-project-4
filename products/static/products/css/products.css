@@ -30,3 +30,13 @@
 #quantity-input {
     width: max-content;
 }
+
+#delete-review-modal {
+    display: none;
+    position: relative;
+    top: 40px;
+    z-index: 10000;
+    border-radius: 0.25rem;
+    border: 0.5px solid #ff8a80;
+    background-color: #ffffff;
+}

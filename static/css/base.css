@@ -95,6 +95,7 @@ body {
 
 .custom-a {
     color: #4caf50;
+    text-decoration: underline;
 }
 
 .custom-a:hover {

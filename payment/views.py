@@ -120,6 +120,10 @@ def confirmation_of_payment(request):
 
 
 def payment_success(request):
+    try:
+        del request.session["shopping_bag"]
+    except KeyError:
+        request.session["shopping_bag"] = {}
     return render(request, "payment/success.html")
 
 

@@ -331,6 +331,8 @@ the URL and Git Bash.
 
 Background image came from https://pixabay.com/sv/photos/hantel-idrott-vikter-gym-1966247/ by user Jonas_Fehre.
 
+Favicon image came from https://pixabay.com/sv/vectors/skivst%C3%A5ng-vikt-pump-j%C3%A4rn-fitness-3573104/ by user b0red.
+
 
 
 

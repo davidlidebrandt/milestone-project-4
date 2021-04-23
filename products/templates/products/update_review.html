@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+{% block main_content %}
+<!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10 offset-1 main-window">
+            {{ form.as_p }}
+        </div>
+    </div>
+</div>
+{% endblock %}

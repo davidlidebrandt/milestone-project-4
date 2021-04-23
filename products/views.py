@@ -92,3 +92,26 @@ def delete_review(request, review_id, product_id):
     else:
         messages.error(request, "Error when trying to delete review")
     return redirect("product_page", id=product_id)
+
+
+def update_review(request, review_id, product_id):
+    review = get_object_or_404(Review, id=review_id)
+    author = get_object_or_404(User, id=review.by_user.id)
+    if request.user == author:
+        if request.method == "GET":
+            form = PartialReviewForm(instance=review)
+            context = {
+                "form": form
+            }
+            return render(request, "products/update_review.html", context)
+        elif request.method == "POST":
+            updated_form = PartialReviewForm(request.POST)
+            if updated_form.is_valid():
+                updated_form.save()
+                messages.success(request, "Review was updated")
+            else:
+                messages.error(request, "Error when updating your review")
+            return redirect("product_page", id=product_id)
+    else:
+        messages.error(request, "Action not allowed")
+        return redirect("home")

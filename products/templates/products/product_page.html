@@ -77,7 +77,7 @@
                                             <div class="col-121">
                                                 {% if request.user.id == review.by_user.id %}
                                                 <button id="delete-review-warn" class="no-bg-button custom-a fw-bold">Delete review</button>
-                                                <a class="no-bg-button custom-a" href="">Edit review</a>
+                                                <a class="no-bg-button custom-a" href="{% url 'update_review' review_id=review.id product_id=product.id%}">Edit review</a>
                                                 {% endif %}
                                             </div>
                                         </div>

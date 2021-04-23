@@ -81,13 +81,13 @@ def confirmation_of_payment(request):
     if event["type"] == 'checkout.session.completed':
         user_id = event["data"]["object"]["metadata"]["user_id"]
         order = None
+        current_date = datetime.datetime.now()
+        amount_paid = int(event["data"]["object"]["amount_total"])/100
+        shipping_address = event["data"]["object"]["shipping"]["address"]
+        customer_email = event["data"]["object"]["customer_email"]
+        customer_name = event["data"]["object"]["shipping"]["name"]
         if user_id:
             user = get_object_or_404(User, id=user_id)
-            current_date = datetime.datetime.now()
-            amount_paid = int(event["data"]["object"]["amount_total"])/100
-            shipping_address = event["data"]["object"]["shipping"]["address"]
-            customer_email = event["data"]["object"]["customer_email"]
-            customer_name = event["data"]["object"]["shipping"]["name"]
             order = Order(
                           date=current_date,
                           user=user,

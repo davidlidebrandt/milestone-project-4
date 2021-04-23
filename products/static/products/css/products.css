@@ -33,8 +33,8 @@
 
 #delete-review-modal {
     display: none;
-    position: relative;
-    top: 40px;
+    position: fixed;
+    top: 100px;
     z-index: 10000;
     border-radius: 0.25rem;
     border: 0.5px solid #ff8a80;

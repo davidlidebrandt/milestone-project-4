@@ -3,6 +3,7 @@ from django.views.decorators.http import require_http_methods
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.models import User
 from . models import Product, Review
 from . forms import PartialReviewForm
 
@@ -75,5 +76,19 @@ def post_review(request, id):
         form.save()
         messages.success(request, "Your review was saved")
     else:
-        messages.error(request, "Error when saving your review, please try again or contact us")
+        messages.error(request, ("Error when saving your review," +
+                       "please try again or contact us"))
     return redirect("product_page", id=id)
+
+
+def delete_review(request, review_id, product_id):
+    review = get_object_or_404(Review, id=review_id)
+    author = get_object_or_404(User, id=review.by_user.id)
+    current_user = request.user
+
+    if author == current_user:
+        review.delete()
+        messages.success(request, "Review was deleted")
+    else:
+        messages.error(request, "Error when trying to delete review")
+    return redirect("product_page", id=product_id)

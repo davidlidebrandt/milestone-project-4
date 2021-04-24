@@ -137,7 +137,7 @@ WSGI_APPLICATION = 'fitness_equipment.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
-DATABASE_URL = "postgres://uovnraewxurvjz:7beb0a32326b300a31590eefc99fc50e9f5118547ea35de857869cdf69c2e464@ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/dcqnp12h8mmb1r"
+
 
 if DATABASE_URL:
     DATABASES = {

@@ -7,8 +7,13 @@
 <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 main-window">
+        <div class="col-10 offset-1 main-window text-center">
+            <h2 class="text-center my-3">Edit your review</h2>
+            <form id="update-review-form" action="" method="POST">
+            {% csrf_token %}
             {{ form.as_p }}
+                <button type="submit" class="green-button large-button my-3">Update</button>
+            </form>
         </div>
     </div>
 </div>

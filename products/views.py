@@ -105,7 +105,7 @@ def update_review(request, review_id, product_id):
             }
             return render(request, "products/update_review.html", context)
         elif request.method == "POST":
-            updated_form = PartialReviewForm(request.POST)
+            updated_form = PartialReviewForm(request.POST, instance=review)
             if updated_form.is_valid():
                 updated_form.save()
                 messages.success(request, "Review was updated")

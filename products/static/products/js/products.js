@@ -1,4 +1,9 @@
 $(document).ready(function () {
+  $("#update-review-form").submit(function(event) {
+    event.preventDefault();
+  });
+
+
   $("#delete-review-warn").click(function() {
     $("#delete-review-modal").show();
   });
@@ -55,3 +60,7 @@ function sortByPrize() {
     window.location.href = get_current_url + "?sort=prize";
   }
 }
+
+
+
+

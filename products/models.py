@@ -18,10 +18,11 @@ class Manufacturer(models.Model):
 
 
 class Discount(models.Model):
+    name = models.CharField(max_length=10)
     rate = models.FloatField()
 
     def __str__(self):
-        return self.rate
+        return self.name
 
 
 class Product(models.Model):
@@ -36,6 +37,7 @@ class Product(models.Model):
     prize = models.IntegerField(null=False, blank=False)
     discount_rate = models.ForeignKey(
         Discount, on_delete=models.SET_NULL, null=True, blank=True)
+    units_sold = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

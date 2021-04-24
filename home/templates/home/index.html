@@ -21,6 +21,26 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12">
+                        <h5 class="text-center text-uppercase fw-bolder custom-h5">Limited offer! 50% discount</h5>
+                        {% for product in fifty_percent_discount %}
+                        <div class="col-2 my-3">
+                            <div class="row product-border">
+                                <div class="col-12">
+                                    <img class="small-image" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                </div>
+                                <div class="col-12">
+                                    <a href="/products/{{ product.id }}" class="black-text">
+                                        {{ product.name }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
                     <div class="col-12 col-md-6">
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Categories</h5>
                         <div class="row text-center my-3">
@@ -59,6 +79,7 @@
                             {% endfor %}
                         </div>
                     </div>
+                    <hr>
                     <div class="col-12 my-3">
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Manufacturers</h5>
                         <div class="row text-center my-3">

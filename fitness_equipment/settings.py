@@ -40,6 +40,7 @@ if DEVELOPMENT:
 else:
     DEBUG = False
 
+
 ALLOWED_HOSTS = ['localhost', 'fitness-equipment.herokuapp.com']
 
 
@@ -137,7 +138,6 @@ WSGI_APPLICATION = 'fitness_equipment.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
-
 
 if DATABASE_URL:
     DATABASES = {

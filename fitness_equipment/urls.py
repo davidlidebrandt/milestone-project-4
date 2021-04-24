@@ -28,3 +28,5 @@ urlpatterns = [
     path('profile/', include('user_profile.urls')),
     path('stores/', include('stores.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'home.views.custom_404_handler'

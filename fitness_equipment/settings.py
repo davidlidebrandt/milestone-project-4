@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'home',
     'products',
     'shopping_bag',
@@ -103,6 +104,29 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v7.0',
+    }
+}
+
 SITE_ID = 1
 
 WSGI_APPLICATION = 'fitness_equipment.wsgi.application'
@@ -112,6 +136,7 @@ WSGI_APPLICATION = 'fitness_equipment.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = "postgres://uovnraewxurvjz:7beb0a32326b300a31590eefc99fc50e9f5118547ea35de857869cdf69c2e464@ec2-54-216-185-51.eu-west-1.compute.amazonaws.com:5432/dcqnp12h8mmb1r"
 
 if DATABASE_URL:
     DATABASES = {

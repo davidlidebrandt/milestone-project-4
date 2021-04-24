@@ -333,6 +333,8 @@ Background image came from https://pixabay.com/sv/photos/hantel-idrott-vikter-gy
 
 Favicon image came from https://pixabay.com/sv/vectors/skivst%C3%A5ng-vikt-pump-j%C3%A4rn-fitness-3573104/ by user b0red.
 
+Main image on the index page came from https://pixabay.com/sv/photos/cross-fit-zimmer-h%C3%A4lsa-fitness-1126999/ by user GYMer_Jason 
+
 
 
 

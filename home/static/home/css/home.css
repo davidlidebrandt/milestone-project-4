@@ -26,3 +26,9 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
+#main-image {
+    height: 400px;
+    background: url("../../../static/images/dumbell-rack.jpg") no-repeat center center fixed;
+    background-size: cover;
+}

@@ -42,20 +42,36 @@ def create_checkout(request):
             count += 1
             line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                success_url="https://fitness-equipment.herokuapp.com/payment/success/",
-                cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
-                payment_method_types=["card"],
-                customer_email=customer_email,
-                shipping_address_collection={'allowed_countries': ["SE"]},
-                mode="payment",
-                line_items=line_items,
-                metadata=meta_data,
-            )
-            return JsonResponse({'sessionId': checkout_session["id"]})
-        except Exception as e:
-            return JsonResponse({"error": str(e)})
+        if request.user.is_authenticated:
+            try:
+                checkout_session = stripe.checkout.Session.create(
+                    success_url="https://fitness-equipment.herokuapp.com/payment/success/",
+                    cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
+                    payment_method_types=["card"],
+                    customer_email=customer_email,
+                    shipping_address_collection={'allowed_countries': ["SE"]},
+                    mode="payment",
+                    line_items=line_items,
+                    metadata=meta_data,
+                )
+                return JsonResponse({'sessionId': checkout_session["id"]})
+            except Exception as e:
+                print(str(e))
+                return JsonResponse({"error": str(e)})
+        else:
+            try:
+                checkout_session = stripe.checkout.Session.create(
+                    success_url="https://fitness-equipment.herokuapp.com/payment/success/",
+                    cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
+                    payment_method_types=["card"],
+                    shipping_address_collection={'allowed_countries': ["SE"]},
+                    mode="payment",
+                    line_items=line_items,
+                    metadata=meta_data,)
+                return JsonResponse({'sessionId': checkout_session["id"]})
+            except Exception as e:
+                print(str(e))
+                return JsonResponse({"error": str(e)})
 
 
 # The Stripe docs and another tutorial was uses as the base for this code.

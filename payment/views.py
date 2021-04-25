@@ -124,25 +124,32 @@ def confirmation_of_payment(request):
                           customer_email=customer_email,
                           customer_name=customer_name)
         order_id = order.id
+        order_name = order.customer_name
+        order_total = order.amount_paid
         order.save()
-
-        """" message = ("Your order was successful, below you will find" +
-        "the details of your order" +"Order id:" + order.id)
-        send_mail(
-            "Your order",
-            "Success",
-            None,
-            customer_email,
-            fail_silently=False,)"""
 
         product_list = event["data"]["object"]["metadata"]
         product_list.pop("user_id")
+
+        message = (f"Hello {order_name} Your order {order.id} was successful" +
+                   "below you will find the details of your order." +
+                   f"total cost: {order_total}")
 
         for key, value in product_list.items():
             product = get_object_or_404(Product, id=key)
             order = get_object_or_404(Order, id=order_id)
             new_item = OrderItem(product=product, order=order, quantity=value)
+            message += f"Product: {product.name}, quantity: {value}"
             new_item.save()
+
+        message += "Questions? contact us at fitness.equipment.fe@gmail.com"
+
+        send_mail(
+            "Your order",
+            message,
+            None,
+            customer_email,
+            fail_silently=False,)
 
     return HttpResponse(status=200)
 

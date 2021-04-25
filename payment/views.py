@@ -146,9 +146,9 @@ def confirmation_of_payment(request):
 
         send_mail(
             "Your order",
-            "success",
+            message,
             None,
-            "dl_brd@hotmail.com",
+            [customer_email],
             fail_silently=True,)
 
     return HttpResponse(status=200)

@@ -138,12 +138,11 @@ def confirmation_of_payment(request):
         product_list = event["data"]["object"]["metadata"]
         product_list.pop("user_id")
 
-        for order_item in product_list.values():
-            if not order_item == user_id:
-                product = get_object_or_404(Product, id=order_item)
-                order = get_object_or_404(Order, id=order_id)
-                new_item = OrderItem(product=product, order=order, quantity=1)
-                new_item.save()
+        for key, value in product_list.items():
+            product = get_object_or_404(Product, id=key)
+            order = get_object_or_404(Order, id=order_id)
+            new_item = OrderItem(product=product, order=order, quantity=value)
+            new_item.save()
 
     return HttpResponse(status=200)
 

@@ -148,8 +148,8 @@ def confirmation_of_payment(request):
             "Your order",
             "success",
             None,
-            customer_email,
-            fail_silently=False,)
+            "dl_brd@hotmail.com",
+            fail_silently=True,)
 
     return HttpResponse(status=200)
 

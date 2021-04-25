@@ -135,7 +135,7 @@ def confirmation_of_payment(request):
 
         product_list = event["data"]["object"]["metadata"]
         list = []
-        for i in product_list.items():
+        for i in product_list.values():
             list.append(i)
 
         """for order_item in event["data"]["object"]["metadata"]:

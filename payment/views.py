@@ -146,7 +146,7 @@ def confirmation_of_payment(request):
 
         send_mail(
             "Your order",
-            message,
+            "success",
             None,
             customer_email,
             fail_silently=False,)

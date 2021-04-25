@@ -121,6 +121,7 @@ def confirmation_of_payment(request):
                           shipping_address=shipping_address,
                           customer_email=customer_email,
                           customer_name=customer_name)
+        order_id = order.id
         order.save()
 
         """" message = ("Your order was successful, below you will find" +
@@ -133,8 +134,9 @@ def confirmation_of_payment(request):
             fail_silently=False,)"""
 
         for order_item in event["data"]["object"]["metadata"]:
-            if not order_item == "user_id":
+            if not order_item == user_id:
                 product = get_object_or_404(Product, id=order_item)
+                order = get_object_or_404(Order, id=order_id)
                 new_item = OrderItem(product=product, order=order, quantity=1)
                 new_item.save()
 

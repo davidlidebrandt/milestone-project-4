@@ -120,13 +120,14 @@ def confirmation_of_payment(request):
                           customer_name=customer_name)
         order.save()
 
-        # message = ("Your order was successful, below you will find" + "the details of your order" +"Order id:" + order.id)
+        """" message = ("Your order was successful, below you will find" +
+        "the details of your order" +"Order id:" + order.id)
         send_mail(
             "Your order",
             "Success",
             None,
             customer_email,
-            fail_silently=False,)
+            fail_silently=False,)"""
 
         """for order_item in event["data"]["object"]["metadata"]:
             if not order_item == "user_id":

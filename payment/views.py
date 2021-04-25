@@ -134,18 +134,15 @@ def confirmation_of_payment(request):
             fail_silently=False,)"""
 
         product_list = event["data"]["object"]["metadata"]
-        list = []
-        for i in product_list.values():
-            list.append(i)
 
-        """for order_item in event["data"]["object"]["metadata"]:
+        for order_item in product_list.values():
             if not order_item == user_id:
                 product = get_object_or_404(Product, id=order_item)
                 order = get_object_or_404(Order, id=order_id)
                 new_item = OrderItem(product=product, order=order, quantity=1)
-                new_item.save()"""
+                new_item.save()
 
-    return HttpResponse(list, status=200)
+    return HttpResponse(status=200)
 
 
 def payment_success(request):

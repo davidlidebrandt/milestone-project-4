@@ -95,7 +95,10 @@ def confirmation_of_payment(request):
         return HttpResponse(status=400)
 
     if event["type"] == 'checkout.session.completed':
-        user_id = event["data"]["object"]["metadata"]["user_id"]
+        try:
+            user_id = event["data"]["object"]["metadata"]["user_id"]
+        except KeyError:
+            user_id = None
         order = None
         current_date = datetime.datetime.now()
         amount_paid = int(event["data"]["object"]["amount_total"])/100

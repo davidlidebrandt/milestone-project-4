@@ -133,14 +133,16 @@ def confirmation_of_payment(request):
             customer_email,
             fail_silently=False,)"""
 
-        for order_item in event["data"]["object"]["metadata"]:
+        product_list = event["data"]["object"]["metadata"]
+
+        """for order_item in event["data"]["object"]["metadata"]:
             if not order_item == user_id:
                 product = get_object_or_404(Product, id=order_item)
                 order = get_object_or_404(Order, id=order_id)
                 new_item = OrderItem(product=product, order=order, quantity=1)
-                new_item.save()
+                new_item.save()"""
 
-    return HttpResponse(status=200)
+    return HttpResponse(product_list, status=200)
 
 
 def payment_success(request):
@@ -152,4 +154,17 @@ def payment_success(request):
 
 
 def payment_error(request):
+    current_date = datetime.datetime.now()
+    order = Order(
+                        date=current_date,
+                        amount_paid=100,
+                        shipping_address="big street",
+                        customer_email="david.lidebrandt@gmail.com",
+                        customer_name="David")
+    order_id = order.id
+    order.save()
+    product = get_object_or_404(Product, id=1)
+    order = get_object_or_404(Order, id=order_id)
+    new_item = OrderItem(product=product, order=order, quantity=1)
+    new_item.save()
     return render(request, "payment/error.html")

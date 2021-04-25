@@ -30,6 +30,7 @@ def create_checkout(request):
         for item in bag.items():
             product = {"name": "", "quantity": "", "currency": "usd",
                        "amount": ""}
+            quantity = ""
             for product_field in item:
                 if type(product_field) is not dict:
                     db_product = get_object_or_404(Product, id=product_field)
@@ -38,7 +39,8 @@ def create_checkout(request):
                 else:
                     for value in product_field.values():
                         product["quantity"] = value
-            meta_data[str(count)] = str(db_product.id)
+                        quantity = str(value)
+            meta_data[str(db_product.id)] = quantity
             count += 1
             line_items.append(product)
         stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
@@ -134,6 +136,7 @@ def confirmation_of_payment(request):
             fail_silently=False,)"""
 
         product_list = event["data"]["object"]["metadata"]
+        product_list.pop("user_id")
 
         for order_item in product_list.values():
             if not order_item == user_id:
@@ -154,17 +157,4 @@ def payment_success(request):
 
 
 def payment_error(request):
-    current_date = datetime.datetime.now()
-    order = Order(
-                        date=current_date,
-                        amount_paid=100,
-                        shipping_address="big street",
-                        customer_email="david.lidebrandt@gmail.com",
-                        customer_name="David")
-    order_id = order.id
-    order.save()
-    product = get_object_or_404(Product, id=1)
-    order = get_object_or_404(Order, id=order_id)
-    new_item = OrderItem(product=product, order=order, quantity=1)
-    new_item.save()
     return render(request, "payment/error.html")

@@ -132,11 +132,11 @@ def confirmation_of_payment(request):
             customer_email,
             fail_silently=False,)"""
 
-        """for order_item in event["data"]["object"]["metadata"]:
+        for order_item in event["data"]["object"]["metadata"]:
             if not order_item == "user_id":
                 product = get_object_or_404(Product, id=order_item)
                 new_item = OrderItem(product=product, order=order, quantity=1)
-                new_item.save()"""
+                new_item.save()
 
     return HttpResponse(status=200)
 

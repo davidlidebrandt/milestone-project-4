@@ -100,7 +100,7 @@ def confirmation_of_payment(request):
         current_date = datetime.datetime.now()
         amount_paid = int(event["data"]["object"]["amount_total"])/100
         shipping_address = event["data"]["object"]["shipping"]["address"]
-        customer_email = event["data"]["object"]["customer_email"]
+        customer_email = event["data"]["object"]["customer_details"]["email"]
         customer_name = event["data"]["object"]["shipping"]["name"]
         if user_id:
             user = get_object_or_404(User, id=user_id)
@@ -120,14 +120,12 @@ def confirmation_of_payment(request):
                           customer_name=customer_name)
         order.save()
 
-        message = ("Your order was successful, below you will find" +
-                   "the details of your order" +
-                   "Order id:" + order.id)
+        # message = ("Your order was successful, below you will find" + "the details of your order" +"Order id:" + order.id)
         send_mail(
             "Your order",
-            message,
+            "Success",
             None,
-            [event["data"]["object"]["customer_email"]],
+            customer_email,
             fail_silently=False,)
 
         for order_item in event["data"]["object"]["metadata"]:

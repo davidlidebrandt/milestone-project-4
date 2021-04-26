@@ -141,3 +141,17 @@ class TestViews(TestCase):
         self.assertEquals(test_response.status_code, 302)
         self.assertEquals(intended_message, message.__str__())
 
+
+class TestShoppingBagContext(TestCase):
+
+    def test_get_shopping_bag(self):
+
+        """
+        Gets the custom shopping bag context by
+        making a get request to the index page.
+        Ensures the context is equal to an empty
+        dictionary.
+        """
+
+        response = self.client.get("/")
+        self.assertEquals(response.context["context"], {})

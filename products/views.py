@@ -9,6 +9,14 @@ from . forms import PartialReviewForm
 
 
 def products(request):
+
+    """
+    Retrives products from the database.
+    Sorts and orders the products based on
+    query parameters if present.
+    Sends the products via the context and
+    renders a template.
+    """
     if request.GET.get("category"):
         if request.GET.get("sort"):
             if request.GET.get("sort") == "units_sold":
@@ -61,6 +69,18 @@ def products(request):
 
 
 def product_page(request, id):
+
+    """
+    Retrives a single product by the id sent via
+    the request.
+    Retrives all reviews present for the product
+    and calculates an average rating for the product.
+    Uses Djangos paginator class to paginate the
+    list of reviews.
+    Creates a form for adding new reviews.
+    Sends the product, review list, rating and
+    form via the context and renders a template.
+    """
     product = get_object_or_404(Product, id=id)
     reviews_list = Review.objects.filter(product=product)
     count = 0
@@ -97,6 +117,7 @@ def post_review(request, id):
     return redirect("product_page", id=id)
 
 
+@require_http_methods(["POST"])
 def delete_review(request, review_id, product_id):
     review = get_object_or_404(Review, id=review_id)
     author = get_object_or_404(User, id=review.by_user.id)
@@ -110,6 +131,7 @@ def delete_review(request, review_id, product_id):
     return redirect("product_page", id=product_id)
 
 
+@require_http_methods(["POST"])
 def update_review(request, review_id, product_id):
     review = get_object_or_404(Review, id=review_id)
     author = get_object_or_404(User, id=review.by_user.id)

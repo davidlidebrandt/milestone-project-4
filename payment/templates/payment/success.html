@@ -3,12 +3,16 @@
 {% block main_content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 col-md-8 offset-md-2 main-window">
-            <h3 class="text-center my-3">Success</h3>
-            <p>
-                Your payment was successful, as soon as your payment is confirmed you will recive a confirmation email.
+        <div class="col-10 offset-1 col-md-6 offset-md-3 main-window">
+            <h3 class="text-center my-4">Success</h3>
+            <p class="px-3">
+                Your payment was successful, as soon as your payment is confirmed you will recive a confirmation email with your order details.
+                If you have signed up you will also find all your previous ordes on your profile page.
                 If you do not recive a confirmation email within 15 miniutes please check your junk email folder and then contact us.
             </p>
+            <div class="my-5 text-center">
+                <a class="green-button large-button" href="{% url 'index' %}">Home</a>
+            </div>
         </div>
     </div>
 </div>

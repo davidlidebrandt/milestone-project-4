@@ -33,7 +33,6 @@ class Product(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True)
     manufacturer = models.ForeignKey(
         Manufacturer, on_delete=models.CASCADE, null=False, blank=False)
-    quantity = models.IntegerField(null=True, blank=True)
     prize = models.IntegerField(null=False, blank=False)
     discount_rate = models.ForeignKey(
         Discount, on_delete=models.SET_NULL, null=True, blank=True)

@@ -110,7 +110,7 @@ def post_review(request, id):
     the product sent via the request from the database.
     Validates the posted review form and saves it.
     Redirects to the product page and displays
-    success or error messages.
+    either success or error messages.
     """
     if request.user.is_authenticated:
         product = get_object_or_404(Product, id=id)
@@ -132,8 +132,8 @@ def delete_review(request, review_id, product_id):
 
     """
     Retrives the review and author of the review
-    that is to be deleted. Checks if the current
-    logged in user is the same as the author.
+    that is to be deleted from the database.
+    Checks if the current logged in user is the same as the author.
     If true deletes the review and sends a success
     message, if false sends an error message.
     Then redirects to the product page
@@ -157,10 +157,10 @@ def update_review(request, review_id, product_id):
     Retrives the review and author of the review
     that is to be updated. Checks if the current
     logged in user is the same as the author.
-    If get request renders a partial form with
+    If GET request renders a partial form with
     the prefilled values from the retrived review.
     Sends form via context and renders a template.
-    If post request checks if the posted review form is valid
+    If POST request checks if the posted review form is valid
     and then saves it.
     Then redirects to the product page and displays
     either success or error messages.

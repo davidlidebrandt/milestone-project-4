@@ -70,7 +70,7 @@ on tasks that decrease positive experience of the site.
 * As a user I want to be able to read reviews and ratings of products from other users so that I can decide
 if it is worth buying.
 
-* As a user I want to be able to sign up to save my contact details and credit card information for an even faster
+* As a user I want to be able to sign up to save my contact details for an even faster
 and smoother checkout and overall user experience.
 
 * As a user I want the sign up process to be fast, smooth and easy to understand so that I quickly get access to
@@ -100,60 +100,68 @@ is needed.
 
 ## Database
 
-Relational SQL databases will be used in this project, in development the built in to Django SQlite database will
+All models and data are stored via relational SQL databases in this project, in development the built in to Django SQlite database will
 be used and in production a PostgreSQL database will be used.
 
 The models that will be stored in the database are:
 
 * Order 
 
+* OrderItem
+
 * Store
 
 * Product 
+
 * Category 
+
 * Manufacturer 
+
 * Review 
-* Size
+
 
 ### Order fields
 
 * id 
-* total_cost
-* user_name: foreign key User, optional 
-* user_email: foreign key User, optional 
+* date
+* amount_paid
+* shipping_address
+* customer_name
+* customer_email
+* user: foreign key User, optional 
+
+
+### OrderItem fields
+
+* product: foreign key Product
+* order: foreign key Order
+* quantity
 
 
 ### Product fields
 
-* category: foreign key Category
-* manufacturer: foreign key Manufacturer
 * name
 * description
-* size: optional
 * image_url: optional
-* has_size:
-* quantity: optional
+* category: foreign key Category
+* manufacturer: foreign key Manufacturer
 * prize
+* discount_rate: foreign key Discount, optional
+* units_sold 
 
 ### Category 
 
 * name
+* image_url
 
 ### Manufacturer
 
 * name
 
-### Size
-
-* product: foreign key Product
-* size
-* size_unit
-* quantity 
-
 ### Review 
 
+* by_user: foreign key User
 * product: foreign key Product
-* user_name: foreign key User
 * description
 * rating
 
@@ -166,11 +174,6 @@ The models that will be stored in the database are:
 * open_hours
 
 
-
-
-
-
-   
 
 ## Features
 
@@ -199,15 +202,22 @@ To add interactivity to the project.
 
 * [Django](https://www.djangoproject.com/)
 
-
+Django was the backend web framework used to handle all backend processes such as interactions with the
+database, authentication and rendering of HTML templates and more.
 
 * [Python](https://www.python.org/)
 
-Custom Python code was written in conjunction with Flask to handle all of the backend processes.
+Custom Python code was written in conjunction with Django to handle all of the backend processes.
 
-* [MongoDB](https://www.mongodb.com/3)
+* [PostgreSQL](https://www.postgresql.org/)
 
-MongoDB was the database used to store all of the information about the movies and users in the project.
+PostgreSQL was the database used to store all the models in the production environment. All interactions with the database
+was handled through the Django Object-Relational Mapper (ORM) and no raw SQL queries where made.
+
+* [SQlite](https://www.sqlite.org/index.html)
+
+The Django preinstalled SQlite database was used as the database in the development environment. As with the production PostgreSQL 
+database all interactions where made through the Django ORM.
 
 * [JQuery](https://jquery.com/)
 
@@ -216,8 +226,9 @@ JQuery functions where used to manipulate the DOM, take actions and to make AJAX
 * [Bootstrap](https://getbootstrap.com/)
 
 Bootstrap was used to provide structure and responsiveness to the site by using their container
-, row and col classes. Carousels, a dropdown, a
-accordion, a pagination element and some cards were components that where included from Bootstrap.
+, row, offset and col classes. Helper classes for margin, padding, font weight and text transform such
+as their m, p, fw, text-uppercase classes where heavily used throughout the project to speed up the
+front end development. A navbar and some dropdown elements where components included in the project.
 
 * [Github](https://github.com/)
 
@@ -255,7 +266,7 @@ For testing the responsiveness across different devices.
 * The CSS was run through the https://jigsaw.w3.org/css-validator/ without any errors found.
 
 * The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
-the Jinja2 templating language. Since Flask is creating HTML files by using templates and injecting variables
+the Jinja2 templating language. Since Django is creating HTML files by using templates and injecting variables
 from the backend the validator gives errors that are not actually present at runtime.
 
 * The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 

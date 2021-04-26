@@ -137,6 +137,9 @@ def confirmation_of_payment(request):
 
         for key, value in product_list.items():
             product = get_object_or_404(Product, id=key)
+            units_sold = value + product_list.units_sold
+            product.units_sold = units_sold
+            product_list.save()
             order = get_object_or_404(Order, id=order_id)
             new_item = OrderItem(product=product, order=order, quantity=value)
             message += f"\nProduct: {product.name}, quantity: {value}"

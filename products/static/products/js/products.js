@@ -32,6 +32,8 @@ $(document).ready(function () {
   $("#show-write-review").click(ShowAddReviewModal);
 
   $("#sort-prize").click(sortByPrize);
+
+  $("#sort-popular").click(sortByPopularity)
 });
 
 function ShowAddReviewModal() {
@@ -60,6 +62,16 @@ function sortByPrize() {
     window.location.href = get_current_url + "?sort=prize";
   }
 }
+
+function sortByPopularity() {
+  get_current_url = window.location.href;
+  if (get_current_url.includes("category")) {
+    window.location.href = get_current_url + "&sort=units_sold";
+  } else {
+    window.location.href = get_current_url + "?sort=units_sold";
+  }
+}
+
 
 
 

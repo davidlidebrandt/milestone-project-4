@@ -8,6 +8,7 @@ def view_bag(request):
     return render(request, "shopping_bag/bag.html")
 
 
+@require_http_methods(["POST"])
 def add_to_bag(request, id):
     product = get_object_or_404(Product, id=id)
     bag = request.session.get("shopping_bag", {})
@@ -30,6 +31,7 @@ def add_to_bag(request, id):
     return redirect("view_bag")
 
 
+@require_http_methods(["POST"])
 def add_to_quantity(request, id):
     product = get_object_or_404(Product, id=id)
     bag = request.session.get("shopping_bag", {})
@@ -45,6 +47,7 @@ def add_to_quantity(request, id):
     return redirect("view_bag")
 
 
+@require_http_methods(["POST"])
 def delete_from_quantity(request, id):
     product = get_object_or_404(Product, id=id)
     bag = request.session.get("shopping_bag", {})

@@ -6,9 +6,8 @@
 
 {% block content %}
 <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
-<div class="container">
     <div class="row">
-        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center form-bg">
+        <div class="col-12 offset-0 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center form-bg">
             <h1 class="fw-bolder text-uppercase my-3">{% trans "Sign Up" %}</h1>
 
             <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">Log
@@ -26,6 +25,5 @@
             </form>
         </div>
     </div>
-</div>
 
 {% endblock %}

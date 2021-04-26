@@ -26,8 +26,8 @@
                     <div class="col-12">
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Limited offer! 50% discount</h5>
                         {% for product in fifty_percent_discount %}
-                        <div class="col-6 col-md-4 col-lg-2 my-3">
-                            <div class="row product-border">
+                        <div class="col-12 col-md-4 col-lg-2 my-3">
+                            <div class="row product-border text-center">
                                 <div class="col-12">
                                     <img class="small-image" src="{{ product.image_url }}" alt="{{ product.name }}">
                                 </div>
@@ -47,7 +47,7 @@
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Categories</h5>
                         <div class="row text-center my-3">
                         {% for category in categories %}
-                                <div class="col-6 col-md-4 my-3">
+                                <div class="col-12 col-sm-6 col-xl-4 my-3">
                                     <div class="row product-border">
                                         <div class="col-12">
                                             <img class="small-image" src="{{ category.image_url }}" alt="{{ category.name }}">
@@ -66,7 +66,7 @@
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Products</h5>
                         <div class="row text-center my-3">
                             {% for product in products %}
-                                <div class="col-6 col-md-4 my-3">
+                                <div class="col-12 col-sm-6 col-xl-4 my-3">
                                     <div class="row product-border">
                                         <div class="col-12">
                                             <img class="small-image" src="{{ product.image_url }}" alt="{{ product.name }}">
@@ -81,8 +81,8 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <hr>
                     <div class="col-12 my-3">
+                        <hr>
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Manufacturers</h5>
                         <div class="row text-center my-3">
                             {% for manufacturer in manufacturers %}

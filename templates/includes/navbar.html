@@ -1,5 +1,5 @@
 <!--Navbar from Bootstrap-->
-<nav class="navbar navbar-expand-lg bg-black">
+<nav class="navbar navbar-expand-xl bg-black">
   <div class="container-fluid position-relative">
     <button
       class="navbar-toggler position-absolute top-0 start-0"
@@ -60,7 +60,7 @@
           <a class="nav-link light-green-text" href="#custom-footer">Contact</a>
         </li>
         <li>
-          <form id="product-search" class="d-none d-lg-flex" method="GET">
+          <form id="product-search" class="d-none d-xl-flex" method="GET">
             <div class="input-group">
               <input
                 id="custom-search-group"
@@ -81,7 +81,7 @@
     </div>
     <div class="shop-icons-wrap">
       <!--Dropdown from Bootstrap-->
-      <div class="dropdown btn-group dropstart d-inline">
+      <div class="dropdown btn-group d-inline">
         <a
           class="text-decor-none"
           href="#"
@@ -92,7 +92,7 @@
         >
           <i class="fas fa-user fs-2 mx-3 light-green-text"><span class="sr-only">Account icon</span></i>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="dropdownMenuLink">
           {% if user.is_authenticated %}
           <li>
             <a class="dropdown-item" href="/profile/">Account</a>
@@ -105,7 +105,7 @@
         </ul>
       </div>
       <!--Dropdown from Bootstrap-->
-      <div class="dropdown btn-group dropstart d-inline">
+      <div class="dropdown btn-group d-inline">
         <a
           class="text-decor-none"
           href="#"
@@ -116,7 +116,7 @@
         >
           <i class="fas fa-shopping-cart fs-2 mx-3 light-green-text"><span class="sr-only">Shopping cart icon</span></i>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
           {% if total_cost %}
           <li>
             <a class="dropdown-item" href="{% url 'view_bag' %}">View Bag</a>
@@ -132,7 +132,7 @@
         </ul>
       </div>
     </div>
-    <div class="d-lg-none mx-auto w-100">
+    <div class="d-xl-none mx-auto w-100">
       <form class="d-flex">
         <div class="input-group">
           <input

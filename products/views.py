@@ -11,18 +11,29 @@ from . forms import PartialReviewForm
 def products(request):
     if request.GET.get("category"):
         if request.GET.get("sort"):
-            all_products = Product.objects.filter(
-                category__name=request.GET.get(
-                    "category")).order_by(request.GET.get("sort"))
+            if request.GET.get("sort") == "units_sold":
+                all_products = Product.objects.filter(
+                    category__name=request.GET.get(
+                        "category")).order_by("-units_sold")
+            else:
+                all_products = Product.objects.filter(
+                    category__name=request.GET.get(
+                        "category")).order_by(request.GET.get("sort"))
         else:
             all_products = Product.objects.filter(
                 category__name=request.GET.get("category"))
 
     elif request.GET.get("manufacturer"):
         if request.GET.get("sort"):
-            all_products = Product.objects.filter(
-                manufacturer__name=request.GET.get(
-                    "manufacturer")).order_by(request.GET.get("sort"))
+            print("here")
+            if request.GET.get("sort") == "units_sold":
+                all_products = Product.objects.filter(
+                    manufacturer__name=request.GET.get("manufacturer")
+                    ).order_by("-units_sold")
+            else:
+                all_products = Product.objects.filter(
+                    manufacturer__name=request.GET.get(
+                        "manufacturer")).order_by(request.GET.get("sort"))
         else:
             all_products = Product.objects.filter(
                 manufacturer__name=request.GET.get("manufacturer"))

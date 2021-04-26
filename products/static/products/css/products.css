@@ -1,6 +1,6 @@
 .list-image {
-    height: 300px;
-    width: 60%;
+    height: 200px;
+    width: 150px;
 }
 
 .product-image {
@@ -10,8 +10,8 @@
 }
 
 .product-list-div {
-    border-bottom: 0.5px solid #000000;
-    border-right: 0.5px solid #000000;
+    border-bottom: 0.5px solid #bdbdbd;
+    border-right: 0.5px solid #bdbdbd;
     margin-left: 5px;
     margin-right: 5px;
 }

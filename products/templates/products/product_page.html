@@ -9,18 +9,18 @@
     <div class="row">
         <div class="col-10 offset-1 main-window">
             <div class="row">
-                <div class="col-12 col-lg-6 order-lg-2">
+                <div class="col-12 my-4">    
+                    <a class="green-button small-button" href="{% url 'products' %}">
+                        <i class="fas fa-arrow-circle-left fs-5">
+                            <span class="sr-only">Back arrow</span>
+                        </i> 
+                        Back to products
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6 order-lg-2 text-center">
                     <img class="product-image" src="{{ product.image_url }}" alt="{{ product.name }}">  
                 </div>
                 <div class="col-12 col-lg-6 order-lg-1">
-                    <p class="my-4">
-                        <a class="green-button small-button" href="{% url 'products' %}">
-                            <i class="fas fa-arrow-circle-left fs-5">
-                                <span class="sr-only">Back arrow</span>
-                            </i> 
-                            Back to products
-                        </a>
-                    </p>
                     <h4 class="text-uppercase fw-bold mt-5 text-center">{{ product.name }}</h4>
                     <p class="fst-italic text-center">{{ product.manufacturer }}</p>
                     <p class="text-center">{{ product.prize }} $</p>

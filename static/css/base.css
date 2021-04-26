@@ -167,6 +167,14 @@ body {
 
 /*Media queries*/
 
+@media only screen and (min-width: 576px) {
+    .shop-icons-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
 @media only screen and (min-width: 768px) {
      .shop-icons-wrap {
          margin: 0;

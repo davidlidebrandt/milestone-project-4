@@ -11,9 +11,9 @@
       <div class="row">
         <h2 class="text-center my-3">Find Stores</h2>
         {% for store in stores %}
-        <div class="col-6 store-div">
+        <div class="col-6 store-div text-uppercase">
           <p>{{ store.city }}</p>
-          <p>{{ store.name }}</p>
+          <p class="fw-bold">{{ store.name }}</p>
           <p>Address: {{ store.address }}</p>
           <p>Phone number: {{ store.phone_number }}</p>
           <p>Opening hours:</p>

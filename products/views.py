@@ -14,9 +14,13 @@ def products(request):
     Retrives products from the database.
     Sorts and orders the products based on
     query parameters if present.
+    Paginates the products result with help of
+    the Django Paginator class.
     Sends the products via the context and
     renders a template.
     """
+    products = None
+
     if request.GET.get("category"):
         if request.GET.get("sort"):
             if request.GET.get("sort") == "units_sold":
@@ -50,6 +54,7 @@ def products(request):
         if request.GET.get("sort") == "units_sold":
             all_products = Product.objects.all().order_by(
                 "-units_sold")
+
         else:
             all_products = Product.objects.all().order_by(
                 request.GET.get("sort"))
@@ -62,8 +67,14 @@ def products(request):
 
     else:
         all_products = Product.objects.all()
+
+    paginator = Paginator(all_products, 12)
+    current_page = request.GET.get("page", 1)
+    products = paginator.get_page(current_page)
+
     context = {
         "all_products": all_products,
+        "products": products,
     }
     return render(request, "products/products.html", context)
 

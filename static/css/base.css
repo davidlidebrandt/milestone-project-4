@@ -104,7 +104,7 @@ body {
 
 /*Header*/
 
-#custom-search-group, #custom-search-group-2, #custom-search-icon-wrap, #custom-search-icon-wrap-2 {
+#custom-search-group-large, #custom-search-group-small, #custom-search-icon-wrap, #custom-search-icon-wrap-2 {
     padding: 4px;
     background-color: #ffffff;
     border: none;

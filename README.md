@@ -16,12 +16,12 @@
      alt=""
      style="height: 100px; width: 200px;" />
 
-This project intends to create a basic (fictional) e-commerce store that sells fitness equipment.
+This project intends to create a basic (fictional) store that sells fitness equipment both on the web and in physical stores.
 By providing the user with the opportunity to purchase relevant equipment through a smooth user experience 
 the store looks to attract both new and revisiting customers.
 
 
-[Link to the deployed project]()
+[Link to the deployed project](https://fitness-equipment.herokuapp.com/)
 
 # Table Of Contents
 
@@ -37,10 +37,33 @@ the store looks to attract both new and revisiting customers.
 
 ## UX
 
+The main purpose of the project is to create a fullstack website using the python Django web framework. The site is intended to mimic a 
+simple but working site for a company that sells fitness equipment both online and in physical stores. The main targeted customers would
+be people looking to buy fitness equipment for home use, which is particularly relevant in the current situation.
+
+The purpose for the developer is to showcase proficiency in working with the Django framework and building an application using the MVC 
+pattern. The project includes use of the built in Django authentication system in conjunction with the added Django allauth package for handling
+all user authentication. The project includes a fair bit of custom Python, JavaScript and CSS code which intends to showcase proficiency in
+those languages. As means of payment the Stripe platform has been integrated in to the project and on the frontend JQuery and Bootstrap has 
+been used which displays an ability to work with external libraries.
+
+As the size of the project is quite small all custom static files are hosted on the same platform as the Django project itself using the 
+WhiteNoise package. In a larger project this would not be advisable and the use of a cloud storage provider such as Amazon's S3 would be 
+more appropriate but would also require entering of credit card details as that service is not free of charge after a certain 
+threshold.
 
 
 ### Design
 
+The design of the project has been kept fairly simple with a navigation bar in the top and a footer in the bottom which looks the same across 
+all pages as well as a main window which looks similar across the pages.
+
+Some inspiration for the design of the site was taken from [Gymgrossisten](https://www.gymgrossisten.com/) ,a swedish company's site who sell supplements and fitness equipment.
+
+The two main colors used are black and a lighter green (#a5d6a7) with a darker green (#4caf50) when hovering over certain elements. The two main colors
+provides clear contrast and makes it easy to read and distinguish different elements.
+
+The font chosen for the project is Montserrat with a fallback of sans-serif, the font looks clear yet modern which fits well with the purpose of the site.
 
 
 
@@ -230,6 +253,10 @@ Bootstrap was used to provide structure and responsiveness to the site by using 
 as their m, p, fw, text-uppercase classes where heavily used throughout the project to speed up the
 front end development. A navbar and some dropdown elements where components included in the project.
 
+*[Stripe](https://stripe.com/)
+
+Stripe was used to handle all payments on the site.
+
 * [Github](https://github.com/)
 
 Github was used to store the repository.
@@ -266,7 +293,7 @@ For testing the responsiveness across different devices.
 * The CSS was run through the https://jigsaw.w3.org/css-validator/ without any errors found.
 
 * The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
-the Jinja2 templating language. Since Django is creating HTML files by using templates and injecting variables
+the Django templating language. Since Django is creating HTML files by using templates and injecting variables
 from the backend the validator gives errors that are not actually present at runtime.
 
 * The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
@@ -295,7 +322,7 @@ wide.
 The project was deployed on [Heroku](https://dashboard.heroku.com/), the following steps were taken:
 
 1. Created a requirements.txt file by typing: "pip3 freeze --local > requirements.txt" in the terminal.
-2. Created a procfile by typing echo web: "python app.py > Procfile" in the terminal.
+2. Created a procfile by typing echo web: "web: gunicorn fitness_equipment.wsgi > Procfile" in the terminal.
 3. Logged in to Heroku.
 4. Pressed the button "new" and then "create new app".
 5. Chose an app name and a region and pressed create app.
@@ -308,12 +335,9 @@ The project was deployed on [Heroku](https://dashboard.heroku.com/), the followi
 12. Pressed open app.
 
 
-
-
-
 ### Forking the project
 1. Go to and log in to https://github.com/.
-2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-3
+2. Go to the repository: https://github.com/davidlidebrandt/milestone-project-4
 3. Press the fork button located on the right side.
 4. Make your changes to the project.
 5. If you wish to merge your changes to the original project:
@@ -326,7 +350,7 @@ The project was deployed on [Heroku](https://dashboard.heroku.com/), the followi
 ### Cloning the project
 There are several ways of cloning the project, here I am going to describe how to do it using
 the URL and Git Bash.
-1. Go to the repository: https://github.com/davidlidebrandt/milestone-project-3
+1. Go to the repository: https://github.com/davidlidebrandt/milestone-project-4
 2. Click the Code button.
 3. Choose HTTPS and copy the link that is provided.
 4. Open Git Bash and navigate to the directory where you want to save the cloned project.

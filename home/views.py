@@ -9,6 +9,7 @@ def index(request):
     Renders template when URL is
     requested.
     """
+    print(request.user.id)
 
     return render(request, "home/index.html")
 

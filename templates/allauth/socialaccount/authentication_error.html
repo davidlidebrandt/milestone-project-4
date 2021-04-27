@@ -5,7 +5,12 @@
 {% block head_title %}{% trans "Social Network Login Failure" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Social Network Login Failure" %}</h1>
+<!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
+<div class="row">
+    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center form-bg">
+        <h1>{% trans "Social Network Login Failure" %}</h1>
 
-<p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+        <p>{% trans "An error occurred while attempting to login via your social network account." %}</p>
+    </div>
+</div>
 {% endblock %}

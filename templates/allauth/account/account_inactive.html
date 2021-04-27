@@ -5,7 +5,12 @@
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Account Inactive" %}</h1>
+<!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
+<div class="row">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center form-bg">
+        <h1>{% trans "Account Inactive" %}</h1>
 
-<p>{% trans "This account is inactive." %}</p>
+        <p>{% trans "This account is inactive." %}</p>
+    </div>
+</div>
 {% endblock %}

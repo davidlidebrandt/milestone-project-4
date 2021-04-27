@@ -37,15 +37,21 @@ the store looks to attract both new and revisiting customers.
 
 ## UX
 
+### Overall purpose
+
 The main purpose of the project is to create a fullstack website using the python Django web framework. The site is intended to mimic a 
 simple but working site for a company that sells fitness equipment both online and in physical stores. The main targeted customers would
 be people looking to buy fitness equipment for home use, which is particularly relevant in the current situation.
+
+### Goal of the developer
 
 The purpose for the developer is to showcase proficiency in working with the Django framework and building an application using the MVC 
 pattern. The project includes use of the built in Django authentication system in conjunction with the added Django allauth package for handling
 all user authentication. The project includes a fair bit of custom Python, JavaScript and CSS code which intends to showcase proficiency in
 those languages. As means of payment the Stripe platform has been integrated in to the project and on the frontend JQuery and Bootstrap has 
 been used which displays an ability to work with external libraries.
+
+### Static file hosting
 
 As the size of the project is quite small all custom static files are hosted on the same platform as the Django project itself using the 
 WhiteNoise package. In a larger project this would not be advisable and the use of a cloud storage provider such as Amazon's S3 would be 
@@ -202,11 +208,85 @@ The models that will be stored in the database are:
 
 ### Existing Features
 
+#### Header
 
+* A navigation bar which looks the same across all pages where users can navigate the pages on the site.
 
+* A search bar in where users can search for products.
+
+* Three different dropdowns with links to the products page, account handling and the shopping bag/shopping cart.
+
+#### Footer 
+
+* A footer with social media links and contact information.
+
+#### Index page
+
+* Displaying of discounted products.
+
+* Displaying of different categories of products.
+
+* Displaying of a few randomly selected products.
+
+* Displaying of manufacturers available.
+
+#### Find Stores page
+
+* A list of all stores with all contact details needed.
+
+#### Products page
+
+* A paginated list of products which can be sorted via a dropdown by prize or popularity.
+
+* A dropdown where users can chose to display products based on category.
+
+* Links to the individual products page for each product.
+
+#### Product page
+
+* A button for returning to view all products.
+
+* An input element with buttons where users can add or subtract the quantity of the given product to be added to the shopping bag.
+
+* An add to cart button which leads the user to the shopping cart.
+
+* A section for viewing reviews by other users as well as adding own reviews for users that are registered and logged in.
+
+#### Shopping bag
+
+* Displaying of the current products in the shopping cart.
+
+* An input element with buttons where users can add or subtract quantities of products in the cart.
+
+* A button that links to a Stripe checkout page where users can finalize the payment process.
+
+#### Stripe checkout page
+
+* A checkout page provided by Stripe where users can fill out contact and credit card details to make a payment. For logged in users
+the email field will come pre filled with the users primary email to speed up the checkout process.
+
+* Redirects to custom success/error pages after a user has made a purchase.
+
+* Confirmation emails sent to the user after a payment is confirmed and an order is created.
+
+#### Profile page 
+
+* A form for updating contact details.
+
+* Displaying of all previous orders made by that user.
+
+* Links to changing passwords and emails.
+
+#### Django allauth
+
+* All built in features such as signing up, logging in, resetting passwords, changing passwords and verification of email addresses.
+
+* Ability to sign in via Facebook.
 
 
 ### Future Features
+
+* 
 
 
 

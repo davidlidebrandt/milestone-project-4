@@ -26,13 +26,19 @@
                   <form method="POST">
                     {% csrf_token %}
                     <span>
-                      <button class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}" id="increase-bag-quantity"  type="submit">
+                      <button id="active-plus-button" class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}" id="increase-bag-quantity"  type="submit">
                         <i class="fas fa-plus-square fs-3"><span class="sr-only">Plus sign</span></i>
                       </button>
-                      <input id="product-quantity-input" class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" min="1" pattern="[0-9]|[10]">
-                      <button class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
+                      <span id="disabled-plus-button">
+                        <i class="fas fa-plus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
+                      </span>
+                      <input id="product-quantity-input" class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" pattern="[0-9]|[1][0]">
+                      <button id="active-minus-button" class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
                         <i class="fas fa-minus-square fs-3"><span class="sr-only">Minus sign</span></i>
                       </button>
+                      <span id="disabled-minus-button">
+                        <i class="fas fa-minus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
+                      </span>
                     </span>
                     </form>
                 </div>

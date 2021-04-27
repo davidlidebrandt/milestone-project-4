@@ -118,6 +118,11 @@ is needed.
 
 #### Wireframes and Mockups
 
+The original wireframes created with Adobe XD were lost due to a hardware failure, new wireframes sketched by hand 
+were added instead. The mockups are very basic but shows the basic coloring decisions made for the site.
+The mockups and wireframes are not very detailed but the general structure of the pages have been kept similar.
+A larger exception is the fact that the Stripe checkout was used instead of building a custom checkout page.
+
 * [Wireframe Mobile](static/images/wireframes-mockups/wireframe-mobile.png)
 * [Wireframe Tablet](static/images/wireframes-mockups/wireframe-tablet.png)
 * [Wireframe Desktop](static/images/wireframes-mockups/wireframe-desktop.png)
@@ -147,6 +152,8 @@ The models that will be stored in the database are:
 * Manufacturer 
 
 * Review 
+
+* UserProfile
 
 
 ### Order fields
@@ -202,6 +209,14 @@ The models that will be stored in the database are:
 * phone_number
 * open_hours
 
+### UserProfile
+
+* user: one to one field User
+* address
+* name
+
+Since all authentication is handle by the the built in Django authentication system and the Django allauth package all models for users are already handled
+by default with the only exception of the UserProfile which in essence extends the built in User model.
 
 
 ## Features
@@ -335,9 +350,13 @@ Bootstrap was used to provide structure and responsiveness to the site by using 
 as their m, p, fw, text-uppercase classes where heavily used throughout the project to speed up the
 front end development. A navbar and some dropdown elements where components included in the project.
 
-*[Stripe](https://stripe.com/)
+* [Stripe](https://stripe.com/)
 
 Stripe was used to handle all payments on the site.
+
+* [Heroku](https://id.heroku.com/login)
+
+Heroku was used to deploy and host the project.
 
 * [Github](https://github.com/)
 
@@ -392,6 +411,46 @@ wide.
 
 
 ### Answering User Stories
+
+#### Regular user 
+ 
+ * *As a user I want to easily find relevant equipment so that I can compare and purchase any products I choose.*
+
+
+ * *As a user I want to be able to see my current items in my shopping bag/chart and the total prize so that I 
+ can keep track of how much I am spending.*
+
+ * *As a user I want to be able to easily add and remove items from my shopping bag/chart so that I get exactly
+ what I want without having to restart the process.*
+
+ * *As a user I want to be notified before and after any important actions are taken so that I do not accidentally
+ perform some unwanted action.*
+
+ * *As a user I want the navigation on the site to be consistent and easy to understand so that I do not spend 
+ unnecessary time trying to access different content.*
+
+* *As a user I want the checkout and payment process to be clear and fast so that I do not spend time and effort 
+on tasks that decrease positive experience of the site.*
+
+* *As a user I want conformation of any orders and payments so that I can keep track of what I have ordered.*
+
+* *As a user I want to be able to read reviews and ratings of products from other users so that I can decide
+if it is worth buying.*
+
+* *As a user I want to be able to sign up to save my contact details for an even faster
+and smoother checkout and overall user experience.*
+
+* *As a user I want the sign up process to be fast, smooth and easy to understand so that I quickly get access to
+the features provided.*
+
+#### Logged in/Signed up user
+
+* *When signing up I want to confirm my email address to ensure my email is connected to my account.*
+
+* *As a logged in user I want to easily be able to edit my profile contact and credit card details incase that
+is needed.*
+
+* *As a logged in user I want to be able to write my own reviews and add ratings on the products on the page.*
 
 
 

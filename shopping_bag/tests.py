@@ -35,7 +35,7 @@ class TestViews(TestCase):
         test_product = Product(name="Test", description="A description",
                                image_url="", category=test_category,
                                manufacturer=test_manufacurer,
-                               quantity=10, prize=100,
+                               prize=100,
                                discount_rate=test_discount,
                                units_sold=1)
         test_product.save()
@@ -77,7 +77,7 @@ class TestViews(TestCase):
         test_product = Product(name="Test", description="A description",
                                image_url="", category=test_category,
                                manufacturer=test_manufacurer,
-                               quantity=10, prize=100,
+                               prize=100,
                                discount_rate=test_discount,
                                units_sold=1)
         test_product.save()
@@ -119,7 +119,7 @@ class TestViews(TestCase):
         test_product = Product(name="Test", description="A description",
                                image_url="", category=test_category,
                                manufacturer=test_manufacurer,
-                               quantity=10, prize=100,
+                               prize=100,
                                discount_rate=test_discount,
                                units_sold=1)
         test_product.save()

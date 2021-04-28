@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    letter-spacing: 1px;
 }
 
 #main-content, #allauth-main {
@@ -100,6 +101,14 @@ body {
 
 .custom-a:hover {
     color: #a5d6a7;
+}
+
+.margin-5-px {
+    margin: 5px;
+}
+
+.thick-text {
+    font-weight: 700;
 }
 
 /*Header*/

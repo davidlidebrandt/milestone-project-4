@@ -5,4 +5,17 @@
 
 form input {
     width: 50px;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 5px 1px #263238;
+    border: none;
+    vertical-align: top;
 }
+
+.delete-item {
+    display: none;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+

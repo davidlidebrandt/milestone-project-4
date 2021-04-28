@@ -8,8 +8,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 main-window">
-      <h1 class="text-uppercase text-center my-3">
-        Your bag
+      <h1 class="fw-bold text-center my-3">
+        Your cart
       </h1>
       <div class="row">
           {% for id, product in context.items %}
@@ -19,8 +19,8 @@
                     <img class="product-bag-image" src="{{ product.product.image_url }}" alt="{{ product.product.name }}">
                   </div>
                 <div class="col-6 col-sm-4">
-                    <p class="text-uppercase black-text">{{ product.product }}</p>
-                    <p>{{ product.product.prize }} $</p>
+                    <p class="text-uppercase thick-text black-text fst-italic">{{ product.product }}</p>
+                    <p class="thick-text">{{ product.product.prize }} $</p>
                 </div>
                 <div class="col-12 col-sm-4 text-center">
                   <form method="POST">
@@ -29,17 +29,22 @@
                       <button id="plus-button{{ product.product.id }}" class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}"  type="submit">
                         <i class="fas fa-plus-square fs-3"><span class="sr-only">Plus sign</span></i>
                       </button>
-                      <span id="disabled-plus-button{{ product.product.id }}">
+                      <span class="margin-5-px" id="disabled-plus-button{{ product.product.id }}">
                         <i class="fas fa-plus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
                       </span>
                       <input id="quantity-input{{ product.product.id }}" class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" pattern="[0-9]|[1][0]">
                       <button id="minus-button{{ product.product.id }}" class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
                         <i class="fas fa-minus-square fs-3"><span class="sr-only">Minus sign</span></i>
                       </button>
-                      <span id="disabled-minus-button{{ product.product.id }}">
+                      <span class="margin-5-px" id="disabled-minus-button{{ product.product.id }}">
                         <i class="fas fa-minus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
                       </span>
                     </span>
+                    <div class="text-center">
+                      <button class="green-button delete-item" id="delete-item{{ product.product.id }}" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
+                        Delete item
+                      </button>
+                    </div>
                     </form>
                 </div>
               </div>
@@ -51,7 +56,7 @@
       <div class="row">
         <div class="col-12">
             {% if not total_cost %}
-            <p class="text-center">Your bag is empty</p>
+            <p class="text-center">Your cart is empty</p>
             {% else %}
             <p class="text-center fw-bold my-3 text-uppercase">Total Cost:</p>
             <p class="text-center">{{ total_cost }}$</p>
@@ -77,7 +82,6 @@
 {% endblock %}
 {% block extra_js %}
 <script src="{% static 'payment/js/payment.js' %}"></script>
-<script src="{% static 'shopping_bag/js/shopping_bag.js' %}"></script>
 {% for id, product in context.items %}
 <script>
   $(document).ready(function () { 
@@ -86,6 +90,7 @@
         $("#disabled-minus-button{{ product.product.id }}").show()
         $("#minus-button{{ product.product.id }}").hide();
         $("#disabled-plus-button{{ product.product.id }}").hide()
+        $("#delete-item{{ product.product.id }}").show()
     }
     else if (val === 10) {
         $("#plus-button{{ product.product.id }}").hide();

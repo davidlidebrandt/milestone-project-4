@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'stores',
     'payment',
     'user_profile',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [

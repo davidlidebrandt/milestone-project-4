@@ -34,6 +34,9 @@ def create_checkout(request):
             for product_field in item:
                 if type(product_field) is not dict:
                     db_product = get_object_or_404(Product, id=product_field)
+                    if db_product.discount_rate:
+                        db_product.prize = int(
+                            db_product.prize * db_product.discount_rate.rate)
                     product["name"] = db_product.name
                     product["amount"] = str(db_product.prize * 100)
                 else:

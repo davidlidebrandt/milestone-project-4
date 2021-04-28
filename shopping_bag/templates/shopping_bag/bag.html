@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load static %}
+{% load mathfilters %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'shopping_bag/css/shopping_bag.css' %}">
 {% endblock %}
@@ -20,7 +21,16 @@
                   </div>
                 <div class="col-6 col-sm-4">
                     <p class="text-uppercase thick-text black-text fst-italic">{{ product.product }}</p>
-                    <p class="thick-text">{{ product.product.prize }} $</p>
+                    <p class="thick-text">
+                      {% if product.product.discount_rate %}
+                      {% with prize=product.product.prize %}
+                      <span class="text-decoration-line-through text-center mx-2">{{ product.product.prize }} $</span>
+                      {{ prize|mul:product.product.discount_rate.rate }} $
+                      {% endwith %}
+                      {% else %}
+                      {{ product.product.prize }} $
+                      {% endif %}
+                  </p>
                 </div>
                 <div class="col-12 col-sm-4 text-center">
                   <form method="POST">

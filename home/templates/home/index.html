@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 offset-1 col-md-8 offset-md-2 main-window">
-                <div class="row">
+                <div class="row margin-10-px">
                     <div id="main-image" class="col-12 center-div">
                         <div class="center-div">
                             <h2 class="custom-h1">Fitness Equipment</h2>
@@ -87,7 +87,7 @@
                         <div class="row text-center my-3">
                             {% for manufacturer in manufacturers %}
                                 <div class="col-12 my-3 text-center">
-                                   <a class="custom-a text-uppercase" href="{% url 'products' %}?manufacturer={{ manufacturer }}">{{ manufacturer }}</a>
+                                   <a class="black-button large-button text-uppercase" href="{% url 'products' %}?manufacturer={{ manufacturer }}">{{ manufacturer }}</a>
                                 </div>
                             {% endfor %}
                         </div>

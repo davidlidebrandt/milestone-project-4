@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mathfilters %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
 {% endblock %}
@@ -23,7 +24,16 @@
                 <div class="col-12 col-lg-6 order-lg-1">
                     <h4 class="text-uppercase fw-bold mt-5 text-center">{{ product.name }}</h4>
                     <p class="fst-italic text-center">{{ product.manufacturer }}</p>
-                    <p class="text-center">{{ product.prize }} $</p>
+                    <p class="text-center">
+                        {% if product.discount_rate %}
+                        {% with prize=product.prize %}
+                        <span class="text-decoration-line-through text-center">{{ product.prize }} $</span>
+                        {{ prize|mul:product.discount_rate.rate }} $
+                        {% endwith %}
+                        {% else %}
+                        {{ product.prize }} $
+                        {% endif %}
+                    </p>
                     <p class="text-center">
                         {% if rating %}
                         {% for start in rating_range %}

@@ -11,6 +11,8 @@ def view_bag(request):
 @require_http_methods(["POST"])
 def add_to_bag(request, id):
     product = get_object_or_404(Product, id=id)
+    if product.discount_rate:
+        product.prize = int(product.prize * product.discount_rate.rate)
     bag = request.session.get("shopping_bag", {})
     quantity_request = 0
     if int(request.POST.get("quantity-input")) <= 10:
@@ -40,6 +42,8 @@ def add_to_bag(request, id):
 @require_http_methods(["POST"])
 def add_to_quantity(request, id):
     product = get_object_or_404(Product, id=id)
+    if product.discount_rate:
+        product.prize = int(product.prize * product.discount_rate.rate)
     bag = request.session.get("shopping_bag", {})
     try:
         old_quantity = bag[str(id)]["quantity"]
@@ -56,6 +60,8 @@ def add_to_quantity(request, id):
 @require_http_methods(["POST"])
 def delete_from_quantity(request, id):
     product = get_object_or_404(Product, id=id)
+    if product.discount_rate:
+        product.prize = int(product.prize * product.discount_rate.rate)
     bag = request.session.get("shopping_bag", {})
     try:
         if bag[str(id)]["quantity"] <= 1:

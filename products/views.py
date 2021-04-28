@@ -20,6 +20,7 @@ def products(request):
     renders a template.
     """
     products = None
+    products_category = None
 
     if request.GET.get("category"):
         if request.GET.get("sort"):
@@ -27,6 +28,7 @@ def products(request):
                 all_products = Product.objects.filter(
                     category__name=request.GET.get(
                         "category")).order_by("-units_sold")
+
             else:
                 all_products = Product.objects.filter(
                     category__name=request.GET.get(
@@ -34,6 +36,7 @@ def products(request):
         else:
             all_products = Product.objects.filter(
                 category__name=request.GET.get("category"))
+        products_category = request.GET.get("category")
 
     elif request.GET.get("manufacturer"):
         if request.GET.get("sort"):
@@ -75,6 +78,7 @@ def products(request):
     context = {
         "all_products": all_products,
         "products": products,
+        "products_category": products_category
     }
     return render(request, "products/products.html", context)
 

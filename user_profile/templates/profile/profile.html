@@ -7,8 +7,8 @@
     <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 main-window">
-                <h3 class="text-center">Profile</h3>
+            <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 main-window">
+                <h3 class="text-center my-4 fw-bold">Profile</h3>
                 <div class="row">
                     <div class="col-12">
                         <h5>Contact details</h5>
@@ -19,20 +19,10 @@
                         </form>
                     </div>
                 </div>
-                <div class="row my-3">
-                    <div class="col-12">
-                        <h5>Orders</h5>
-                        {% if orders %}
-                        {% for order in orders %}
-                            {{ order.id }}
-                            {{ order.date }}
-                        {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row my-5">
+                <div class="row">
                     <div class="col-12 my-3">
-                        <h5>Password and email</h5>
+                        <hr>
+                        <h5 class="my-3">Password and email</h5>
                         <a class="green-button small-button text-center" href="{% url 'account_change_password' %}">
                             Change password
                         </a>
@@ -41,6 +31,43 @@
                         <a class="green-button small-button text-center" href="{% url 'account_email' %}">
                             Manage your email
                         </a>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-12">
+                        <hr>
+                        <h5 class="fw-bolder">Orders</h5>
+                        <!--Bootstrap accordion-->
+                        {% if orders %}
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            {% for order in orders %}
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="flush-heading{{ order.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ order.id }}" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    {{ order.date }}
+                                </button>
+                              </h2>
+                              <div id="flush-collapse{{ order.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ order.id }}" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <p class="text-start fst-italic fw-bold">Order id:</p>
+                                    <p class="text-start"> {{ order.id }}</p>
+                                    <p class="text-start fst-italic fw-bold">Shipping address:</p>
+                                    <p class="text-start"> {{ order.shipping_address }}</p>
+                                    <p class="text-start fst-italic fw-bold">Total amount paid:</p>
+                                    <p class="text-start">{{ order.amount_paid }} $</p>
+                                    <hr>
+                                    <h5>Products</h5>
+                                    {% for product in order_items.order.id.items %}
+                                    {% for property in product %}
+                                    {{ property.quantity }}
+                                    {% endfor %}
+                                    {% endfor %}
+                                </div>
+                              </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                          {% endif %}         
                     </div>
                 </div>
             </div>

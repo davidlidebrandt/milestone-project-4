@@ -9,7 +9,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-10 offset-1 main-window">
-            <h2 class="text-center text-uppercase my-3">Products</h2>
+            <h2 class="text-center text-uppercase fw-bold my-3">Products</h2>
+            {% if products_category and products %}
+                <h5 class="text-center my-3">{{ products_category }}</h5>
+            {% endif %}
             <div class="row">
                 <!--Dropdown from Bootstrap-->
                 <div class="col-12 col-md-6 my-3">

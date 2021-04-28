@@ -5,16 +5,23 @@
 {% endblock %}
 {% block main_content %}
 <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
-<div class="container-fluid">
     <div class="row">
-        <div class="col-10 offset-1 main-window text-center">
-            <h2 class="text-center my-3">Edit your review</h2>
-            <form id="update-review-form" action="" method="POST">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 main-window text-center">
+            <h2 class="text-center my-3 fw-bold">Edit your review</h2>
+            <form id="update-review-form" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-                <button type="submit" class="green-button large-button my-3">Update</button>
+            <div class="my-3">
+                <div><label for="{{ form.rating.id_for_label }}">Rating</label></div>
+                <div> {{ form.rating }}</div>
+            </div>
+            <div id="review-description">
+                <div><label for="{{ form.description.id_for_label }}">Description</label></div>
+                <div>{{ form.description }}</div>
+            </div>
+            <div class="my-3">
+                <button class="black-button small-button" type="submit">Submit</button>
+            </div>
             </form>
         </div>
     </div>
-</div>
 {% endblock %}

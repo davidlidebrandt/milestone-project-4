@@ -4,8 +4,8 @@
 }
 
 .product-image {
-    height: 600px;
-    width: 80%;
+    height: 500px;
+    width: 400px;
     padding: 40px;
 }
 
@@ -45,6 +45,8 @@
     border: 0.5px solid #ff8a80;
     background-color: #000000;
     color: #ffffff;
+    opacity: 0.8;
+    width: max-content;
 }
 
 #increase-quantity, #decrease-quantity:hover {
@@ -65,4 +67,8 @@
 #id_rating option {
     font-weight: 700;
     background-color: #a5d6a7;
+}
+
+#update-review-form textarea, #review-description textarea {
+    max-width: 90%;
 }

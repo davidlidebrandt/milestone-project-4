@@ -84,9 +84,9 @@
                     <div class="col-12 my-3">
                         <hr>
                         <h5 class="text-center text-uppercase fw-bolder custom-h5">Manufacturers</h5>
-                        <div class="row text-center my-3">
+                        <div class="row text-center my-4">
                             {% for manufacturer in manufacturers %}
-                                <div class="col-12 my-3 text-center">
+                                <div class="col-12 my-4 text-center">
                                    <a class="black-button large-button text-uppercase" href="{% url 'products' %}?manufacturer={{ manufacturer }}">{{ manufacturer }}</a>
                                 </div>
                             {% endfor %}

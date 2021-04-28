@@ -26,17 +26,17 @@
                   <form method="POST">
                     {% csrf_token %}
                     <span>
-                      <button id="active-plus-button" class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}" id="increase-bag-quantity"  type="submit">
+                      <button id="plus-button{{ product.product.id }}" class="no-bg-button" formaction="{% url 'add_to_quantity' id=product.product.id%}"  type="submit">
                         <i class="fas fa-plus-square fs-3"><span class="sr-only">Plus sign</span></i>
                       </button>
-                      <span id="disabled-plus-button">
+                      <span id="disabled-plus-button{{ product.product.id }}">
                         <i class="fas fa-plus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
                       </span>
-                      <input id="product-quantity-input" class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" pattern="[0-9]|[1][0]">
-                      <button id="active-minus-button" class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
+                      <input id="quantity-input{{ product.product.id }}" class="text-center" value="{{ product.quantity }}" type="text" inputmode="numeric" pattern="[0-9]|[1][0]">
+                      <button id="minus-button{{ product.product.id }}" class="no-bg-button" formaction="{% url 'delete_from_quantity' id=product.product.id%}" type="submit">
                         <i class="fas fa-minus-square fs-3"><span class="sr-only">Minus sign</span></i>
                       </button>
-                      <span id="disabled-minus-button">
+                      <span id="disabled-minus-button{{ product.product.id }}">
                         <i class="fas fa-minus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
                       </span>
                     </span>
@@ -78,4 +78,25 @@
 {% block extra_js %}
 <script src="{% static 'payment/js/payment.js' %}"></script>
 <script src="{% static 'shopping_bag/js/shopping_bag.js' %}"></script>
+{% for id, product in context.items %}
+<script>
+  $(document).ready(function () { 
+    let val = parseInt($("#quantity-input{{ product.product.id }}").val());
+    if (val === 1) {
+        $("#disabled-minus-button{{ product.product.id }}").show()
+        $("#minus-button{{ product.product.id }}").hide();
+        $("#disabled-plus-button{{ product.product.id }}").hide()
+    }
+    else if (val === 10) {
+        $("#plus-button{{ product.product.id }}").hide();
+        $("#disabled-minus-button{{ product.product.id }}").hide()
+    }
+
+    else {
+        $("#disabled-minus-button{{ product.product.id }}").hide()
+        $("#disabled-plus-button{{ product.product.id }}").hide()
+    }
+});
+</script>
+{% endfor %}
 {% endblock %}

@@ -172,6 +172,7 @@ The models that will be stored in the database are:
 * product: foreign key Product
 * order: foreign key Order
 * quantity
+* discount_rate
 
 
 ### Product fields
@@ -415,33 +416,61 @@ wide.
 #### Regular user 
  
  * *As a user I want to easily find relevant equipment so that I can compare and purchase any products I choose.*
+ 
+ On the index page relevant products, categories, manufacturers and offers are displayed with links so that any visitor 
+ quickly can start exploring the products available. A link to the products page is easily found in the header as well
+ as a search bar where users can search for any product. Upon entering a single products page ratings and reviews from
+ previous customers as well as the prize are immediately presented so that a user quickly can compare the product.
 
 
  * *As a user I want to be able to see my current items in my shopping bag/chart and the total prize so that I 
  can keep track of how much I am spending.*
 
+ By clicking the shopping car icon in the top right corner a user can quickly see the total cost for the items added.
+ The navigation bar where the cart is located looks the same across all pages which makes finding the cart very easy.
+
  * *As a user I want to be able to easily add and remove items from my shopping bag/chart so that I get exactly
  what I want without having to restart the process.*
+
+ By clicking the link to view the bag from the shopping cart the user is redirected to the shopping cart page where they
+ can add, subtract and remove the items from the bag by pressing a set of self explanatory buttons.
 
  * *As a user I want to be notified before and after any important actions are taken so that I do not accidentally
  perform some unwanted action.*
 
+ As deleting a previously made review is the most crucial moment which cannot be undone a warning modal displays where a 
+ user can confirm their action. 
+
  * *As a user I want the navigation on the site to be consistent and easy to understand so that I do not spend 
  unnecessary time trying to access different content.*
+
+ The navigation menu looks the same across all pages and are given clear names so that a user understands where they lead.
 
 * *As a user I want the checkout and payment process to be clear and fast so that I do not spend time and effort 
 on tasks that decrease positive experience of the site.*
 
+As a logged in user the email will come pre filled in the checkout process which saves a small amount of time.
+
 * *As a user I want conformation of any orders and payments so that I can keep track of what I have ordered.*
+
+Any customer will receive a confirmation email with the relevant information as soon as a payment has been confirmed and 
+an order is created. As a logged in user all purchases/orders will be saved and can be accessed from the profile page.
 
 * *As a user I want to be able to read reviews and ratings of products from other users so that I can decide
 if it is worth buying.*
 
+Ratings and reviews made by other users can be found on each products own page.
+
 * *As a user I want to be able to sign up to save my contact details for an even faster
 and smoother checkout and overall user experience.*
 
+
+
 * *As a user I want the sign up process to be fast, smooth and easy to understand so that I quickly get access to
 the features provided.*
+
+Signing up is easy and easy to find by clicking the account icon which is located in the header and can be accessed from any 
+page.
 
 #### Logged in/Signed up user
 

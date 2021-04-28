@@ -12,18 +12,24 @@ def view_bag(request):
 def add_to_bag(request, id):
     product = get_object_or_404(Product, id=id)
     bag = request.session.get("shopping_bag", {})
+    quantity_request = 0
+    if int(request.POST.get("quantity-input")) <= 10:
+        quantity_request = int(request.POST.get("quantity-input"))
+    else:
+        quantity_request = 10
+
     try:
         if str(id) in bag.keys():
-            bag[str(id)]["quantity"] += int(request.POST.get("quantity-input"))
+            if bag[str(id)]["quantity"] + quantity_request <= 10:
+                bag[str(id)]["quantity"] += quantity_request
+            else:
+                bag[str(id)]["quantity"] = 10
         else:
-            bag.update({id: {"quantity": int(
-                request.POST.get("quantity-input"))}})
+            bag.update({id: {"quantity": quantity_request}})
         if "total_cost" in bag.keys():
-            bag["total_cost"] += product.prize * int(
-                request.POST.get("quantity-input"))
+            bag["total_cost"] += product.prize * quantity_request
         else:
-            bag["total_cost"] = product.prize * int(
-                request.POST.get("quantity-input"))
+            bag["total_cost"] = product.prize * quantity_request
         request.session["shopping_bag"] = bag
         messages.success(request, "Item was added")
     except Exception as e:

@@ -28,7 +28,12 @@
 }
 
 #quantity-input {
-    width: max-content;
+    width: 50px;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    box-shadow: 1px 1px 5px 1px #263238;
+    border: none;
+    vertical-align: top;
 }
 
 #delete-review-modal {
@@ -39,4 +44,8 @@
     border-radius: 0.25rem;
     border: 0.5px solid #ff8a80;
     background-color: #ffffff;
+}
+
+#increase-quantity, #decrease-quantity:hover {
+    cursor: pointer;
 }

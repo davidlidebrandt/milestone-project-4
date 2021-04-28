@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $("#update-review-form").submit(function(event) {
     event.preventDefault();
   });
@@ -20,12 +21,35 @@ $(document).ready(function () {
     if (currentValue > 0 && currentValue < 10) {
       $("#quantity-input").val(currentValue + 1);
     }
+    $("#quantity-input").trigger("change");
   });
 
   $("#decrease-quantity").click(function () {
     currentValue = parseInt($("#quantity-input").val());
     if (currentValue > 1) {
       $("#quantity-input").val(currentValue - 1);
+    }
+    $("#quantity-input").trigger("change");
+  });
+
+  $("#quantity-input").change(function() {
+    let val =  parseInt($("#quantity-input").val());
+    
+    if(val === 1) {
+      $("#decrease-quantity").addClass("d-none");
+      $("#disabled-minus-button").removeClass("d-none");
+    }
+
+    else if(val === 10) {
+      $("#disabled-plus-button").removeClass("d-none");
+      $("#increase-quantity").addClass("d-none");
+    }
+
+    if(val > 1 && val < 10) {
+      $("#disabled-minus-button").addClass("d-none");
+      $("#decrease-quantity").removeClass("d-none");
+      $("#disabled-plus-button").addClass("d-none");
+      $("#increase-quantity").removeClass("d-none");
     }
   });
 

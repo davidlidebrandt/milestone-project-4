@@ -28,9 +28,15 @@
                     <form action="{% url 'add_to_bag' id=product.id %}" method="POST" class="text-center my-5">
                         {% csrf_token %}
                         <div>
+                            <span class="d-none" id="disabled-plus-button">
+                                <i class="fas fa-minus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
+                            </span>
                             <i id="increase-quantity" class="fas fa-plus-square fs-3"><span class="sr-only">Plus sign</span></i>
                             <input id="quantity-input" name="quantity-input" class="text-center" value="1" type="text" inputmode="numeric" pattern="[0-9]|[1][0]">
-                            <i id="decrease-quantity" class="fas fa-minus-square fs-3"><span class="sr-only">Minus Sign</span></i>
+                            <i id="decrease-quantity" class="fas fa-minus-square fs-3 d-none"><span class="sr-only">Minus Sign</span></i>
+                            <span  id="disabled-minus-button">
+                                <i class="fas fa-minus-square fs-3 text-muted"><span class="sr-only">Minus sign</span></i>
+                              </span>
                         </div>
                         <div class="mt-2">
                             <button type="submit" class="black-button large-button">Add To Cart</button>

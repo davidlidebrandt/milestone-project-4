@@ -58,14 +58,11 @@
                                     <hr>
                                     <h5>Products</h5>
                                     {% for order_item in order_items %}
-                                    {% for key, value in order_item.items %}
-                                    {% if key == "e316615f-83d7-49cc-8882-f405305dff02" %}
-                                    {{ value }}
-                                    {% else %}
-                                    {{ order.id }}
+                                    {% if order_item.order.id == order.id %}
+                                    {{ order_item.quantity }} {{ order_item }}
                                     {% endif %}
                                     {% endfor %}
-                                    {% endfor %}
+                                    
                                 </div>
                               </div>
                             </div>

@@ -10,12 +10,11 @@ def show_profile(request):
     user = get_object_or_404(User, id=request.user.id)
     user_profile_form = UserProfileForm()
     orders = Order.objects.filter(user=user)
-    order_items = {}
+    order_items = []
     for order in orders:
         print(order.id)
-        order_items[order.id] = OrderItem.objects.filter(order__id=order.id)
-        for item in order_items[order.id]:
-            print(item.quantity)
+        item = OrderItem.objects.filter(order__id=order.id)
+        order_items.append({str(order.id): item})
     try:
         user_profile_form = UserProfileForm(instance=user.userprofile)
     except Exception as e:

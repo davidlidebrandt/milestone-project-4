@@ -57,9 +57,13 @@
                                     <p class="text-start">{{ order.amount_paid }} $</p>
                                     <hr>
                                     <h5>Products</h5>
-                                    {% for product in order_items.order.id.items %}
-                                    {% for property in product %}
-                                    {{ property.quantity }}
+                                    {% for order_item in order_items %}
+                                    {% for key, value in order_item.items %}
+                                    {% if key == "e316615f-83d7-49cc-8882-f405305dff02" %}
+                                    {{ value }}
+                                    {% else %}
+                                    {{ order.id }}
+                                    {% endif %}
                                     {% endfor %}
                                     {% endfor %}
                                 </div>

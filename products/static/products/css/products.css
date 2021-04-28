@@ -43,9 +43,26 @@
     z-index: 10000;
     border-radius: 0.25rem;
     border: 0.5px solid #ff8a80;
-    background-color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #increase-quantity, #decrease-quantity:hover {
     cursor: pointer;
+}
+
+#review-description textarea, #id_rating {
+    border: none;
+    box-shadow: 1px 1px 5px 1px #263238;
+    border-radius: 0.25rem;
+}
+
+#review-description textarea:focus-visible, #id_rating:focus-visible {
+    outline: none;
+    border: 1px solid #a5d6a7;
+}
+
+#id_rating option {
+    font-weight: 700;
+    background-color: #a5d6a7;
 }

@@ -24,6 +24,15 @@
                     <h4 class="text-uppercase fw-bold mt-5 text-center">{{ product.name }}</h4>
                     <p class="fst-italic text-center">{{ product.manufacturer }}</p>
                     <p class="text-center">{{ product.prize }} $</p>
+                    <p class="text-center">
+                        {% if rating %}
+                        {% for start in rating_range %}
+                            <i class="far fa-star yellow-text"><span class="sr-only">Star</span></i>
+                        {% endfor %}
+                        {% else %}
+                            No rating yet
+                        {% endif %}
+                    </p>
                     <p class="text-center">{{ product.description }}</p>
                     <form action="{% url 'add_to_bag' id=product.id %}" method="POST" class="text-center my-5">
                         {% csrf_token %}
@@ -46,14 +55,6 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-8 offset-lg-2 mt-5">
-                    <p>
-                        <i class="far fa-star"><span class="sr-only">Star</span></i>
-                        {% if rating %}
-                            {{ rating }}
-                        {% else %}
-                            No rating yet
-                        {% endif %}
-                    </p>
                     <button id="show-reviews" class="text-decoration-underline mx-2">Reviews</button>
                     <button id="show-write-review" class="mx-2">Write a review</button>
                     <hr>
@@ -83,7 +84,7 @@
                                             <div class="col-121">
                                                 {% if request.user.id == review.by_user.id %}
                                                 <button id="delete-review-warn" class="no-bg-button custom-a fw-bold">Delete review</button>
-                                                <a class="no-bg-button custom-a" href="{% url 'update_review' review_id=review.id product_id=product.id%}">Edit review</a>
+                                                <a class="no-bg-button custom-a thick-text" href="{% url 'update_review' review_id=review.id product_id=product.id%}">Edit review</a>
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -111,19 +112,19 @@
                                 <p class="text-center">No reviews yet</p>
                             {% endif %}
                         </div>
-                        <div class="write-reviews-div col-12">
+                        <div class="write-reviews-div col-12 text-center">
                             {% if user.is_authenticated %}
                             <form method="POST" action="{% url 'post_review' id=product.id%}">
                                 {% csrf_token %}
-                                <div>
+                                <div class="my-3">
                                     <div><label for="{{ form.rating.id_for_label }}">Rating</label></div>
                                     <div> {{ form.rating }}</div>
                                 </div>
-                                <div>
+                                <div id="review-description">
                                     <div><label for="{{ form.description.id_for_label }}">Description</label></div>
                                     <div>{{ form.description }}</div>
                                 </div>
-                                <div>
+                                <div class="my-3">
                                     <button class="black-button small-button" type="submit">Submit</button>
                                 </div>
                             </form>

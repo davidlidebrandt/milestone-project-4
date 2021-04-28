@@ -55,6 +55,10 @@ body {
     text-decoration: none;
 }
 
+.yellow-text {
+    color: #fdd835;
+}
+
 .light-green-bg {
     background-color: #a5d6a7;
 }

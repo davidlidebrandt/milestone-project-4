@@ -100,6 +100,7 @@ def product_page(request, id):
         for review in reviews_list:
             count += review.rating
         rating = int(count/len(reviews_list))
+    rating_range = range(rating)
     paginator = Paginator(reviews_list, 5)
     current_page = request.GET.get("page", 1)
     reviews = paginator.get_page(current_page)
@@ -110,6 +111,7 @@ def product_page(request, id):
         "form": form,
         "reviews": reviews,
         "rating": rating,
+        "rating_range": rating_range,
     }
     return render(request, "products/product_page.html", context)
 
@@ -161,7 +163,6 @@ def delete_review(request, review_id, product_id):
     return redirect("product_page", id=product_id)
 
 
-@require_http_methods(["POST"])
 def update_review(request, review_id, product_id):
 
     """

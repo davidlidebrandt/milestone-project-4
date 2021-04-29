@@ -1,19 +1,19 @@
 # 
 
-<img src=""
-     alt=""
+<img src="static/images/wireframes-mockups/screenshot-index.png"
+     alt="Index page"
      style="height: 100px; width: 200px;" />
      
-<img src=""
-     alt=""
+<img src="static/images/wireframes-mockups/screenshot-products.png"
+     alt="Products page"
      style="height: 100px; width: 200px;" />
 
-<img src=""
-     alt=""
+<img src="static/images/wireframes-mockups/screenshot-product.png"
+     alt="Product page"
      style="height: 100px; width: 200px;" />
 
-<img src=""
-     alt=""
+<img src="static/images/wireframes-mockups/screenshot-cart.png"
+     alt="Shopping cart page"
      style="height: 100px; width: 200px;" />
 
 This project intends to create a basic (fictional) store that sells fitness equipment both on the web and in physical stores.
@@ -654,6 +654,34 @@ The project was deployed on [Heroku](https://dashboard.heroku.com/), the followi
 10. Went to settings.
 11. Added all the config vars needed for the project.
 12. Pressed open app.
+
+
+### Setting up Stripe, a PostgreSQL database and general environment variables for forking or cloning the project
+
+The first step after forking or cloning the project would be to install all dependencies needed by the system.
+If the project is opened in GitPod the command in the terminal would be: pip3 install -r requirements.txt.
+If working locally setting up a virtual environment first be recommended and after that 
+running the pip3 install -r requirements.txt command.
+
+In order for the project to work in a product environment a PostgreSQL database would need to be set up, this process might differ 
+depending upon how you choose to deploy the site but on Heroku you would:
+1. Log in to Heroku.
+2. From the dashboard click the link to the app.
+3. Go to resources.
+4. Click on the find more addons button.
+5. Click on the Heroku Postgres button.
+6. Click on install Heroku Postgres.
+7. Choose the Hobby dev free plan and choose your app in the list.
+8. Press submit form.
+
+If your using another way of hosting the project include an environment variable called "DATABASE_URL" which only exists in the production
+environment and create the connection to the database in this section in the settings.py file: if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL)
+    }
+
+
+In order for the payment and order system to work a Stripe needs to be set up.
 
 
 ### Forking the project

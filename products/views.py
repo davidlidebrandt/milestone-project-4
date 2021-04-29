@@ -21,6 +21,7 @@ def products(request):
     """
     products = None
     products_category = None
+    search = False
 
     if request.GET.get("category"):
         if request.GET.get("sort"):
@@ -67,6 +68,7 @@ def products(request):
             Q(name__contains=request.GET.get("search")) | Q(
                 description__contains=request.GET.get("search")) | Q(
                     manufacturer__name__contains=request.GET.get("search")))
+        search = True
 
     else:
         all_products = Product.objects.all()
@@ -78,7 +80,8 @@ def products(request):
     context = {
         "all_products": all_products,
         "products": products,
-        "products_category": products_category
+        "products_category": products_category,
+        "search": search,
     }
     return render(request, "products/products.html", context)
 

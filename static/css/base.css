@@ -149,6 +149,7 @@ body {
 
 #brand-name {
     margin-left: 70px;
+    font-size: smaller;
 }
 
 .navbar {
@@ -156,6 +157,7 @@ body {
 }
 
 .hamburger-icon {
+    display: block;
     height: 6px;
     width: 40px;
     margin-bottom: 5px;
@@ -193,6 +195,10 @@ body {
         position: absolute;
         top: 0;
         right: 0;
+    }
+    #brand-name {
+        margin-left: 70px;
+        font-size: large;
     }
 }
 

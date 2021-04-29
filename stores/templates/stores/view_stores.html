@@ -9,14 +9,16 @@
   <div class="row">
     <div class="col-10 offset-1 main-window">
       <div class="row">
-        <h2 class="text-center my-3">Find Stores</h2>
+        <h2 class="text-center my-4 fw-bold">Find Stores</h2>
         {% for store in stores %}
-        <div class="col-6 store-div text-uppercase">
-          <p>{{ store.city }}</p>
-          <p class="fw-bold">{{ store.name }}</p>
-          <p>Address: {{ store.address }}</p>
-          <p>Phone number: {{ store.phone_number }}</p>
-          <p>Opening hours:</p>
+        <div class="col-6 store-div text-center">
+          <p class="black-button text-uppercase text-center">{{ store.city }}</p>
+          <p class="fw-bold green-button text-uppercase text-center">{{ store.name }}</p>
+          <p class="fw-bold text-decoration-underline">Address:</p>
+          <p class="text-capitalize">{{ store.address }}</p>
+          <p class="fw-bold text-decoration-underline">Phone number:</p>
+          <p>{{ store.phone_number }}</p>
+          <p class="fw-bold text-decoration-underline">Opening hours:</p>
           <p>{{ store.open_hours }}</p>
         </div>
         {% endfor %}

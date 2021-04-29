@@ -118,8 +118,7 @@ is needed.
 
 #### Wireframes and Mockups
 
-The original wireframes created with Adobe XD were lost due to a hardware failure, new wireframes sketched by hand 
-were added instead. The mockups are very basic but shows the basic coloring decisions made for the site.
+The wireframes and mockups are very basic but shows the basic structure and coloring decisions made for the site.
 The mockups and wireframes are not very detailed but the general structure of the pages have been kept similar.
 A larger exception is the fact that the Stripe checkout was used instead of building a custom checkout page.
 

@@ -551,15 +551,63 @@ and displays the products in ordering by price from lowest to highest. Clicking 
 ordering by units sold from highest to lowest.
 ***
 
-* Using the page navigation.
+* Using the pagination buttons.
 
-**Expected:** 
+**Expected:** Pressing the next button should take the user to the next page and display next ten (or less) items. Pressing the previous button should 
+take the user to the previous page and display the ten previous product items. Pressing the first button should take the user to the first page and display
+the ten first product items, pressing the last button should take the user to the last page and display the last ten (or less) items.
 
-**Results:** 
+**Results:** Pressing the next button takes the user to the next page and displays the next ten items or less depending upon how many items are in the database. Pressing the previous button takes the user to the previous page and displays the previous ten products. Pressing the first and last buttons 
+takes the user to their respective first and last pages.
 ***
 
+#### Product page
 
+* Increasing/Decreasing the product quantity via the buttons.
 
+**Expected:** Pressing the plus button should increase the quantity up to a max of ten and then the plus button should be disabled. The minus button 
+should decrease the product quantity if more than one and when it reaches one the minus button should be disabled.
+
+**Results:** Pressing the plus button increments the quantity by one each time until the quantity is ten, at ten the plus button is disabled. The minus button decrements the quantity by one each click until the quantity is one and at that point the minus button is disabled.
+***
+
+* Adding product to the cart.
+
+**Expected:** Pressing the add to cart button should add the product with the given quantity to the bag as long as the total quantity of that specific 
+product does not exceed ten. If the added quantity plus the quantity already in the bag of that specific product exceeds ten the bag should only save
+a quantity of ten regardless of input.
+
+**Results:** If an item does not exist in the bag pressing the add to cart button with a quantity between one and ten will add that item and quantity to the bag. If an item already exists in the bag the quantity will be updated with the added quantity unless the total quantity exceeds ten and in that case the bag will store a quantity of ten regardless of any more inputs.
+***
+
+* Using the review pagination buttons.
+
+**Expected:** Pressing the next button should take the user to the next page and display next five (or less) items. Pressing the previous button should 
+take the user to the previous page and display the ten previous product items. Pressing the first button should take the user to the first page and display
+the ten first product items, pressing the last button should take the user to the last page and display the last five (or less) items.
+
+**Results:** Pressing the next button takes the user to the next page and displays the next five items or less depending upon how many items are in the database. Pressing the previous button takes the user to the previous page and displays the previous five products. Pressing the first and last buttons 
+takes the user to their respective first and last pages.
+***
+
+* Submitting a review form
+
+**Expected:**Filling out and submitting the review form as a logged in user should reload the products page, display a success message and add the review
+to the product. Leaving out any of the fields should trigger a warning and make the form not submittable.
+
+**Results:** By filling out and submitting the form as a logged in user the product page reloads, a success message is displayed and the review is added to
+the database and can be viewed on the page. By leaving out any or all of the fields in the form a warning appears and the form is not submittable.
+***
+
+* Pressing the delete review button on a previously made review.
+
+**Expected:** For any previously made reviews by the current logged in user a delete review button should appear under the name of the author of the review.
+By pressing the button a warning modal should appear and the user should have the option to either cancel the deletion or delete the review. If the user 
+presses cancel the modal should just close and no further actions taken, if a user presses delete the review should be deleted and a success message should display.
+
+**Results:** For every review previously made by the logged in user a button for deleting that review appears, when clicking the button a warning modal
+appears where the user either can cancel or actually delete the review. If the cancel button is pressed the modal closes and nothing more happens, if the delete button is pressed the page reloads, the review is deleted and a success message is displayed.
+***
 
 
 ### Answering User Stories
@@ -615,22 +663,29 @@ Ratings and reviews made by other users can be found on each products own page.
 * *As a user I want to be able to sign up to save my contact details for an even faster
 and smoother checkout and overall user experience.*
 
-
+When proceeding to the Stripe checkout payment from the bag logged in users will have the email field pre filled.
 
 * *As a user I want the sign up process to be fast, smooth and easy to understand so that I quickly get access to
 the features provided.*
 
-Signing up is easy and easy to find by clicking the account icon which is located in the header and can be accessed from any 
-page.
+Signing up is easy by entering a username, email address and password and then confirming the email by clicking the link sent. The sign up page is easy to find by clicking the account icon which is located in the header and can be accessed from any page.
 
 #### Logged in/Signed up user
 
 * *When signing up I want to confirm my email address to ensure my email is connected to my account.*
 
-* *As a logged in user I want to easily be able to edit my profile contact and credit card details incase that
+Upon registration all users are sent an email where they must confirm their email address by clicking the link sent in the mail to the email address that was entered when singing up.
+
+* *As a logged in user I want to easily be able to edit my profile contact details incase that
 is needed.*
 
+The profile page is easy to find by pressing the user icon and then account. Updating the profile is easy and only requirers a user to update 
+the details in the form and then pressing the update button.
+
 * *As a logged in user I want to be able to write my own reviews and add ratings on the products on the page.*
+
+Writing own reviews as a logged in user is easy, by navigating to single products page, scrolling down the page and pressing write a review a form
+for submitting a review is displayed. By filling out the form and pressing submit the review is added.
 
 
 

@@ -410,6 +410,157 @@ wide.
 
 * The site was tested on three different browsers: Google Chrome, Mozilla Firefox and Microsoft Edge.
 
+### Manual tests of functions and features 
+
+#### Navigation bar
+
+* Clicking logo link.
+
+**Expected:** The link should take the user to the index page.
+
+**Results:** The link leads the user to the index page, if a user is already on the index page it reloads the page.
+***
+
+* Pressing the products link/dropdown and using the links.
+
+**Expected:** Pressing the products link should expand a dropdown with som links. The links that are displayed should be one for all products and
+one for each category respectively in the database. The all products link should link to the products page and display all products, the other links
+should lead to the products page and display only products from that category.
+
+**Results:** Clicking the products link expands the dropdown, clicking the all products link takes the user to display all products on the products page.
+Pressing any of the category links takes the user to the products page and only displays products from that category.
+***
+
+* Clicking the find stores link.
+
+**Expected:** The link should take the user to the find stores page where information about all available stores are presented in separate sections.
+
+**Results:** The links leads to the find stores page where all stores and corresponding information is displayed in separate sections.
+***
+
+* Clicking the contact link.
+
+**Expected:** The link should scroll down the window to the bottom where the contact information is located. 
+
+**Results:** Clicking the link scrolls down the window and displays the footer where the contact information is located.
+***
+
+* Searching for products in the search bar.
+
+**Expected:** Any search should lead to the products page where the search results are displayed. The search should include results 
+in the name of the product, in the description of the product as well as the manufacturer. If no results are found a message should display
+saying that no results where found.
+
+**Results:** Searching for products leads to the products page, the search query finds and displays matches in the product name, description and
+manufacturer fields. When no results are found a text stating that no results were found is displayed.
+***
+
+* Clicking the user icon and following the links.
+
+**Expected:** Clicking the icon should expand a modal, if the user is currently logged out the links should be to either log in or sign up. If a 
+user is logged in the links should be for account and log out.
+
+**Results:** Clicking the link expands the modal and when the user logged out two links are presented, log in and sign up. When the user is logged in 
+two links for account and log out are presented.
+***
+
+* Following the user dropdown links.
+
+**Expected:** The log in link should take the user to the log in page, the sign up link should take the user to the sign up page, the account link should lead the user to the profile page and display the current users profile. The log out link should lead the user to the log out page where a user can log out from the account.
+
+**Results:** The log in link leads to the log in page, the sign up link leads to the sign up page, the account link leads to the profile page where the 
+current users profile is displayed. The log out link leads to the log out page where a user can log out.
+***
+
+* Clicking and following the link in the shopping cart icon.
+
+**Expected:** Clicking the shopping cart should expand a modal, when a user has not yet added anything a text should display that the cart is empty.
+If a user has added items to the cart it should display the total cost and a link to view the bag. Clicking that link should lead to the shopping
+cart page where all current items are displayed.
+
+**Results:** Clicking the icon expands the modal, when the cart is empty a text displaying the cart is empty is displayed. When the cart has items it
+displays the total cost and a link to the shopping cart, clicking the link leads the user to the shopping carts page where all current items are
+displayed.
+***
+
+#### Footer
+
+* Clicking any of the social media links.
+
+**Expected:** Clicking a icon/link should open the corresponding brands index page in new tab.
+
+**Results:** All links open the corresponding brands index page in a new tab.
+***
+
+#### Index page
+
+* Clicking any of the products in the limited offers section.
+
+**Expected:** Clicking a product should take the user to that products page.
+
+**Results:** Clicking on a product leads the user to that specific products page.
+***
+
+* Clicking any of the products in the products section.
+
+**Expected:** Clicking a product should take the user to that products page.
+
+**Results:** Clicking on a product leads the user to that specific products page.
+***
+
+* Clicking any of categories in the categories section.
+
+**Expected:** Clicking on a category link should lead the user to the products page where the chosen category of products are displayed.
+
+**Results:** Clicking on a category link leads the user to the products page and displays only products of that category.
+***
+
+* Clicking any of manufacturers in the manufacturers section.
+
+**Expected:** Clicking a manufacturers link should lead the user to the products page where products of the chosen manufacturer are displayed.
+
+**Results:** Clicking on a manufacturers link leads the user to the products page and displays only products from that manufacturer.
+***
+
+#### Products page
+
+* Clicking any of the product names/links.
+
+**Expected:** Clicking a product link should lead the user to that specific products page.
+
+**Results:** Clicking on product link takes the user to that specific product page.
+***
+
+* Using the category dropdown.
+
+**Expected:** Clicking the category button/dropdown should expand the dropdown and display all current categories in the database. Clicking any of the
+category links should display only products from that chosen category.
+
+**Results:** Clicking the category button expands the modal and displays all categories in the database. Clicking any of the links reloads the products 
+page and displays only products from that category.
+***
+
+* Using the sort by dropdown.
+
+**Expected:** Clicking the sort by button/dropdown should expand the dropdown and display link to sort by prize and popular. Clicking any of the
+category links should reload the products page and display the products in the order of what was chosen. Ordering by prize should order the results
+from lowest to highest while ordering by popular should order the items from most sold to least sold.
+
+**Results:** Clicking the sort by button expands the dropdown, two links are displayed: prize and popular. Clicking the prize link reloads the page 
+and displays the products in ordering by price from lowest to highest. Clicking the popular link reloads the page and displays the products in 
+ordering by units sold from highest to lowest.
+***
+
+* Using the page navigation.
+
+**Expected:** 
+
+**Results:** 
+***
+
+
+
+
 
 ### Answering User Stories
 

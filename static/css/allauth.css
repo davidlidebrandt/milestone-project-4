@@ -90,3 +90,8 @@
 .menu-bg a:hover {
     color: #1b5e20;
 }
+
+.social-provider-logo {
+    width: 100px;
+    height: 50px;
+}

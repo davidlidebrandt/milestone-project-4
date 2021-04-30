@@ -66,11 +66,10 @@ all pages as well as a main window which looks similar across the pages.
 
 Some inspiration for the design of the site was taken from [Gymgrossisten](https://www.gymgrossisten.com/) ,a swedish company's site who sell supplements and fitness equipment.
 
-The two main colors used are black and a lighter green (#a5d6a7) with a darker green (#4caf50) when hovering over certain elements. The two main colors
+The three main colors used are black and a lighter green (#a5d6a7) with a darker green (#4caf50) when hovering over certain elements. The main colors
 provides clear contrast and makes it easy to read and distinguish different elements.
 
 The font chosen for the project is Montserrat with a fallback of sans-serif, the font looks clear yet modern which fits well with the purpose of the site.
-
 
 
 ### User Stories
@@ -92,7 +91,7 @@ The font chosen for the project is Montserrat with a fallback of sans-serif, the
  unnecessary time trying to access different content.
 
 * As a user I want the checkout and payment process to be clear and fast so that I do not spend time and effort 
-on tasks that decrease positive experience of the site.
+on tasks that negatively affec the user experience of the site.
 
 * As a user I want conformation of any orders and payments so that I can keep track of what I have ordered.
 
@@ -119,7 +118,7 @@ is needed.
 #### Wireframes and Mockups
 
 The wireframes and mockups are very basic but shows the basic structure and coloring decisions made for the site.
-The mockups and wireframes are not very detailed but the general structure of the pages have been kept similar.
+As the mockups and wireframes are not very detailed the finished site looks quite different but the general structure of the pages have been kept similar.
 A larger exception is the fact that the Stripe checkout was used instead of building a custom checkout page.
 
 * [Wireframe Mobile](static/images/wireframes-mockups/wireframe-mobile.png)
@@ -133,8 +132,8 @@ A larger exception is the fact that the Stripe checkout was used instead of buil
 
 ## Database
 
-All models and data are stored via relational SQL databases in this project, in development the built in to Django SQlite database will
-be used and in production a PostgreSQL database will be used.
+All models and data are stored via relational SQL databases in this project, in development the built in to Django SQlite database is
+be used and in production a PostgreSQL database is used.
 
 The models that will be stored in the database are:
 
@@ -301,8 +300,13 @@ the email field will come pre filled with the users primary email to speed up th
 
 ### Future Features
 
-* 
+* A minified version of the shopping cart which can be displayed on any page where users can see, add and subtract items from it.
 
+* A more interactive stores page where users can search for stores, filter stores based on cities/areas and display an interactive map that displays the stores locations.
+
+* Ability to sort products in a more precise manner such as ascending/descending order.
+
+* Adding a custom checkout page where logged in users credit card details come pre filled.
 
 
 
@@ -395,7 +399,9 @@ For testing the responsiveness across different devices.
 
 * The HTML was run through the https://validator.w3.org/, the errors that are found are all related to
 the Django templating language. Since Django is creating HTML files by using templates and injecting variables
-from the backend the validator gives errors that are not actually present at runtime.
+from the backend the validator gives errors that are not actually present at runtime. One other warning occurs regarding the inputmode 
+not being supported in all browsers, since the input is read only and the value are changed by pressing the buttons using JavaScript the input
+filed still works in all modern versions of the tested browsers.
 
 * The JavaScript was run through the https://jshint.com/ linter, no errors found. Two warnings occur regarding 
 unused variables, these can be ignored since these functions are used and called when submitting forms.
@@ -408,6 +414,15 @@ the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test. T
 wide.
 
 * The site was tested on three different browsers: Google Chrome, Mozilla Firefox and Microsoft Edge.
+
+#### Automatic testing
+
+A fair bit of automated tests have been written for the custom Django/Python apps. The simpler tests ensures that the correct templates are being rendered,
+ that the status codes in the response to the request is correct, that the models are saved in correctly with the correct fields values and that the models 
+__str__ methods returns the correct strings. Some more advanced tests ensures that the correct messages are returned from the views and there by validating that
+the function has executed as intended. 
+
+All written test pass, a screen shot of the total test coverage is included below:
 
 ### Manual tests of functions and features 
 
@@ -607,6 +622,68 @@ presses cancel the modal should just close and no further actions taken, if a us
 **Results:** For every review previously made by the logged in user a button for deleting that review appears, when clicking the button a warning modal
 appears where the user either can cancel or actually delete the review. If the cancel button is pressed the modal closes and nothing more happens, if the delete button is pressed the page reloads, the review is deleted and a success message is displayed.
 ***
+
+* Pressing the edit review button on a previously made review.
+
+**Expected:** For any previously made reviews by the current logged in user a edit review button should appear under the name of the author of the review.
+By pressing the button the user should be taken to a different page where they can edit the review. By filling out and submitting the updated review the review should be
+updated and the user should be taken back to the products page where a success message is displayed. Attempting to submit the form with any of the fields blank should not be
+possible and should give a warning to the user.
+
+**Results:** For every review previously made by the logged in user a button for editing that review appears, when clicking the button the user is taken to another page 
+where they can edit the review. By filling out the and submitting the review the user is taken back to the products page and a success message is displayed. Attempting
+to submit the form with any of the fields not filled out fails and warns the user.
+***
+
+### Shopping bag/cart page
+
+* Increasing/decreasing product quantity
+
+**Expected:** Pressing the plus button should increase the product count by one to a max of ten items. When reaching ten the plus button should be disabled.
+Pressing the minus button should decrease the product count by one until the value is one, at that point the minus button should be disabled and a button for removing
+the product from the cart should appear.
+**Results:** Pressing the plus button increases the product count to a max of ten, at which point te plus button is disabled. Pressing the minus button decreases the 
+product count with one until the value is one at which point the minus button is disabled and the delete item button appears.
+***
+
+
+* Pressing the delete item button
+
+**Expected:** Pressing the delete item button should remove the product from the bag and display a success message. If there are no other items in the cart the page should display a text stating that the cart is empty.
+**Results:** Pressing the delete item button removes the product from the cart, when no other items are present in the cart a text stating that the cart is empty is displayed.
+***
+
+* Pressing the payment button
+
+**Expected:** Pressing the payment button should take the user to a Stripe provided checkout page where they can finalize their purchase. The total displayed in the cart should be the same as the total displayed on the the checkout page, for logged in users the email field should be pre filled with that users email address.
+**Results:** Pressing the payment button takes the user to the Stripe checkout page, the total on the checkout page is the same as the total displayed in the cart, when a
+user is logged in the email filed comes pre filled with the correct email address, when a user is not logged in this field is blank.
+***
+
+### Payment and orders
+
+* Using the Stripe checkout.
+
+**Expected:** An test payment should be possible if all fields are filled in, a credit card number of 4242 4242 4242 4242, a valid expiry date and any three digits CVC number is entered and then the pay button is pressed. Leaving out any of the fields, entering another credit card number or providing a not valid expiry date should render warnings and disable the payment button.
+**Results:** When all the fields are filled out and the credit card number is 4242 4242 4242 4242, the expiry date is valid and any three digits are entered in CVC field the pay button is enabled. When any of the fields is missing or the credit card details are not valid an error message displays and the pay button cannot be pressed.
+***
+
+* Submitting a payment
+
+**Expected:** When submitting a payment Stipe should after a successful payment redirect the user to a success page that states that the payments was successful. If an error occurs or if a user presses the return button the user should be redirected to an error page stating that an error has occurred.
+**Results:** When a payment is submitted successfully the user is redirected to the success page that displays that the payment was successful. If the back button is pressed or if a payment is aborted the user is redirected to the error page and displayed an error message. 
+
+* Depending on how Stripe handles the payment the payment may or may not come through if a payment is aborted in the middle of the process.
+***
+
+* Receiving webhooks from Stripe
+
+**Expected:** When a payments is successful Stripe should send a webhook that is received on the server, when receiving the webhook the order should be created and a confirmation email be sent to the user.
+**Results:** When a payment is successful Stripe sends a webhook to the server which creates the order and sends a confirmation of the order to the user.
+***
+
+### User profile
+
 
 
 ### Answering User Stories

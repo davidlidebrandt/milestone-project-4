@@ -128,13 +128,11 @@ def confirmation_of_payment(request):
         order_name = order.customer_name
         order_total = order.amount_paid
         order.save()
- 
+
         product_list = event["data"]["object"]["metadata"]
         product_list.pop("user_id")
 
-        message = (f"Hi {order_name}\n Your order {order_id} was successfull" +
-                   " below you will find the details of your order.\n" +
-                   f"\ntotal cost: {order_total} dollars")
+        message = ""
 
         for key, value in product_list.items():
             order = get_object_or_404(Order, id=order_id)

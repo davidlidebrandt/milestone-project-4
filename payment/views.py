@@ -61,7 +61,6 @@ def create_checkout(request):
                 )
                 return JsonResponse({'sessionId': checkout_session["id"]})
             except Exception as e:
-                print(str(e))
                 return JsonResponse({"error": str(e)})
         else:
             try:
@@ -75,7 +74,6 @@ def create_checkout(request):
                     metadata=meta_data,)
                 return JsonResponse({'sessionId': checkout_session["id"]})
             except Exception as e:
-                print(str(e))
                 return JsonResponse({"error": str(e)})
 
 

@@ -684,6 +684,25 @@ user is logged in the email filed comes pre filled with the correct email addres
 
 ### User profile
 
+* Updating the contact details
+
+**Expected:** Filling out both fields and pressing the update button should update the profile and display a success message. Leaving any of the fields blank should render an
+error message and make the form unable to submit.
+**Results:** If all fields are filled out and the update button is pressed the contact details are updated and a success message is displayed. If any of the fields are blank
+an error message displays and the form cannot be submitted. 
+***
+
+
+* Clicking the change password and manage your email buttons.
+
+**Expected:** Clicking the change password button should take the user to a separate page where they can change their password. Clicking the manage your email button should take the user to a page where they can manage their emails. 
+**Results:** Clicking the change password button takes the user to a page where they can change their password. Clicking the manage your email takes the user to a site where they can add and remove email addresses associated with the account.
+***
+
+
+#### User authentication 
+
+As the user authentication is handled by the built in Django system in conjunction with the popular Django allauth package we can be assured they are working well and do not require extensive testing. Ensuring that the system is up and running has been made and verified by signing up both manually and via Facebook and seeing that the user entities are stored in the database by viewing them in the admin panel.
 
 
 ### Answering User Stories
@@ -782,9 +801,12 @@ The project was deployed on [Heroku](https://dashboard.heroku.com/), the followi
 7. Under deployment method pressed Github.
 8. Chose the right repository in the list, pressed search and then connect.
 9. Pressed enable automatic deploys under automatic deploys.
-10. Went to settings.
-11. Added all the config vars needed for the project.
-12. Pressed open app.
+10. Click on the find more addons button.
+11. Click on the Heroku Postgres button.
+12. Click on install Heroku Postgres.
+13. Went to settings.
+14. Added all the config vars needed for the project.
+15. Pressed open app.
 
 
 ### Setting up Stripe, a PostgreSQL database and general environment variables for forking or cloning the project
@@ -812,7 +834,33 @@ environment and create the connection to the database in this section in the set
     }
 
 
-In order for the payment and order system to work a Stripe needs to be set up.
+In order for the payment and order system to work a Stripe account needs to be created, with these steps:
+
+1. Go to https://dashboard.stripe.com/register.
+2. Enter all details and press create account.
+3. Confirm your email address by following the link.
+4. Create an account by pressing the top left account button.
+5. Write name and press create account.
+6. Navigate to developers/webhooks.
+7. Click on add endpoint.
+8. Enter the base URL of your website plus "/payments/confirmation/" in the URL field.
+9. Choose checkout.session.completed in events to send and press add endpoint.
+10. Go to developers/webhooks and click on the webhook.
+11. Get the webhook signing secret by clicking click to reveal.
+12. Get your Stripe API keys from developers/Stripe API
+13 Store your webhook signing secret in the variable STRIPE_ENDPOINT_SECRET in settings.py.
+14. Store your Stripe API secret_key in the variable STRIPE_TEST_SECRET_KEY in settings.py.
+15. Add your publishable key as a string argument to the const stripe = Stripe() object in payments.js
+
+Preferably hide your STRIPE_ENDPOINT_SECRET and STRIPE_TEST_SECRET_KEY values in environment variables if the project is to be publicly displayed.
+The same goes for the rest of the settings that needs to be added to setting.py: 
+
+SECRET_KEY : a secret key used to hash passwords etc.
+EMAIL_HOST_USER : Gmail account you want to send mails from..
+EMAIL_HOST_PASSWORD = App password which can be acquired by setting up two step verification and creating an app password for your Google account
+DEFAULT_FROM_EMAIL = same Gmail account.
+
+In development add an environment variable called DEVELOPMENT to use the development database.
 
 
 ### Forking the project
@@ -834,7 +882,7 @@ the URL and Git Bash.
 2. Click the Code button.
 3. Choose HTTPS and copy the link that is provided.
 4. Open Git Bash and navigate to the directory where you want to save the cloned project.
-5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-3.git
+5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-4.git
 
 ## Credits 
 

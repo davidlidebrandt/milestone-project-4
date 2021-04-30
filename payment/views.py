@@ -132,7 +132,7 @@ def confirmation_of_payment(request):
         product_list = event["data"]["object"]["metadata"]
         product_list.pop("user_id")
 
-        message = (f"Hi {order_name}\n Your order {order.id} was successfull" +
+        message = (f"Hi {order_name}\n Your order {order_id} was successfull" +
                    " below you will find the details of your order.\n" +
                    f"\ntotal cost: {order_total} dollars")
 

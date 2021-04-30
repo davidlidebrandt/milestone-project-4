@@ -415,7 +415,7 @@ wide.
 
 * The site was tested on three different browsers: Google Chrome, Mozilla Firefox and Microsoft Edge.
 
-#### Automatic testing
+#### Automated testing
 
 A fair bit of automated tests have been written for the custom Django/Python apps. The simpler tests ensures that the correct templates are being rendered,
  that the status codes in the response to the request is correct, that the models are saved in correctly with the correct fields values and that the models 
@@ -567,11 +567,11 @@ ordering by units sold from highest to lowest.
 
 * Using the pagination buttons.
 
-**Expected:** Pressing the next button should take the user to the next page and display next ten (or less) items. Pressing the previous button should 
-take the user to the previous page and display the ten previous product items. Pressing the first button should take the user to the first page and display
-the ten first product items, pressing the last button should take the user to the last page and display the last ten (or less) items.
+**Expected:** Pressing the next button should take the user to the next page and display next twelve (or less) items. Pressing the previous button should 
+take the user to the previous page and display the twelve previous product items. Pressing the first button should take the user to the first page and display
+the twelve first product items, pressing the last button should take the user to the last page and display the last twelve (or less) items.
 
-**Results:** Pressing the next button takes the user to the next page and displays the next ten items or less depending upon how many items are in the database. Pressing the previous button takes the user to the previous page and displays the previous ten products. Pressing the first and last buttons 
+**Results:** Pressing the next button takes the user to the next page and displays the next twelve items or less depending upon how many items are in the database. Pressing the previous button takes the user to the previous page and displays the previous twelve products. Pressing the first and last buttons 
 takes the user to their respective first and last pages.
 ***
 

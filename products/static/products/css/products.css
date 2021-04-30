@@ -4,8 +4,8 @@
 }
 
 .product-image {
-    height: 500px;
-    width: 400px;
+    height: 400px;
+    width: 300px;
     padding: 40px;
 }
 
@@ -71,4 +71,14 @@
 
 #update-review-form textarea, #review-description textarea {
     max-width: 90%;
+}
+
+/*Media queries*/
+
+@media only screen and (min-width: 576px) { 
+    .product-image {
+        height: 500px;
+        width: 400px;
+        padding: 40px;
+    }
 }

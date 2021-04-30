@@ -9,3 +9,7 @@ class TestViews(TestCase):
     def test_get_non_existent_page(self):
         self.assertEquals(self.client.get("/1").status_code, 404)
         self.assertTemplateUsed(self.client.get("/1"), "home/404.html")
+
+
+    def test_allauth(self):
+        self.assertTemplateUsed(self.client.get("/accounts/confirm-email/"), "home/index.html")

@@ -155,13 +155,16 @@
 <!--Container, row, col, sr, fw, fs, p, m- classes are from Bootstrap-->
 <div class="container">
   <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-8 offset-2 col-md-4 offset-4">
       {% if messages %}
       <div class="message-container">
         {% for message in messages %}
         <div>
           {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
           <i class="fas fa-exclamation-circle fs-2 red-text"><span class="sr-only">Warning icon</span></i>
+          <script>
+            $(".message-container").css("border-color", "#ef5350")
+          </script>
           {% else %}
           <i class="fas fa-thumbs-up fs-2 green-text"><span class="sr-only">Success icon</span></i>
           {% endif %}

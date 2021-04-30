@@ -14,6 +14,10 @@ $(document).ready(function () {
     $(".close-message-container").click(function() {
         $(".message-container").hide();
     });
+
+    setTimeout(function() {
+        $(".message-container").hide();
+    }, 5000);
 });
 
 

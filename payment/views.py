@@ -8,7 +8,6 @@ from products.models import Product
 from . models import Order, OrderItem
 import stripe
 import datetime
-import uuid
 
 
 # The Stripe docs and another tutorial was uses as the base for this code.
@@ -50,8 +49,10 @@ def create_checkout(request):
         if request.user.is_authenticated:
             try:
                 checkout_session = stripe.checkout.Session.create(
-                    success_url="https://fitness-equipment.herokuapp.com/payment/success/",
-                    cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
+                    success_url=("https://fitness-equipment.herokuapp.com" +
+                                 "/payment/success/"),
+                    cancel_url=("https://fitness-equipment.herokuapp.com" +
+                                "/payment/error/"),
                     payment_method_types=["card"],
                     customer_email=customer_email,
                     shipping_address_collection={'allowed_countries': ["SE"]},
@@ -65,8 +66,10 @@ def create_checkout(request):
         else:
             try:
                 checkout_session = stripe.checkout.Session.create(
-                    success_url="https://fitness-equipment.herokuapp.com/payment/success/",
-                    cancel_url="https://fitness-equipment.herokuapp.com/payment/error/",
+                    success_url=("https://fitness-equipment.herokuapp.com" +
+                                 "/payment/success/"),
+                    cancel_url=("https://fitness-equipment.herokuapp.com" +
+                                "/payment/error/"),
                     payment_method_types=["card"],
                     shipping_address_collection={'allowed_countries': ["SE"]},
                     mode="payment",
@@ -105,7 +108,10 @@ def confirmation_of_payment(request):
         order = None
         current_date = datetime.datetime.now()
         amount_paid = int(event["data"]["object"]["amount_total"])/100
-        shipping_address = event["data"]["object"]["shipping"]["address"]
+        city = event["data"]["object"]["shipping"]["address"]["city"]
+        street = event["data"]["object"]["shipping"]["address"]["line1"]
+        code = event["data"]["object"]["shipping"]["address"]["postal_code"]
+        shipping_address = city + street + code
         customer_email = event["data"]["object"]["customer_details"]["email"]
         customer_name = event["data"]["object"]["shipping"]["name"]
         if user_id:
@@ -133,7 +139,7 @@ def confirmation_of_payment(request):
         product_list.pop("user_id")
 
         message = (f"Hi {order_name}\n Your order {order_id} was successfull" +
-                   "below you will find the details of your order.\n" +
+                   ", below you will find the details of your order.\n" +
                    f"\ntotal cost: {order_total} dollars")
 
         for key, value in product_list.items():
@@ -144,7 +150,7 @@ def confirmation_of_payment(request):
             product.save()
 
             new_item = OrderItem(product=product, order=order, quantity=value)
-            # message += f"\nProduct: {product.name}, quantity: {value}"
+            message += f"\nProduct: {product.name}, quantity: {value}"
             new_item.save()
 
         message += "\n"

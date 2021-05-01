@@ -18,7 +18,8 @@ def show_profile(request):
     orders = paginator.get_page(current_page)
 
     try:
-        user_profile_form = UserProfileForm(instance=user.userprofile)
+        user_profile = UserProfile.objects.get(user=user)
+        user_profile_form = UserProfileForm(instance=user_profile)
     except Exception as e:
         profile = UserProfile(user=request.user, name="", address="")
         profile.save()

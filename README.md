@@ -426,6 +426,10 @@ the function has executed as intended.
 
 All written test pass, a screen shot of the total test coverage is included below:
 
+<img src="static/images/wireframes-mockups/report.png"
+     alt="Test coverage report 81% total"
+     style="height: 100px; width: 200px;" />
+
 ### Manual tests of functions and features 
 
 #### Navigation bar

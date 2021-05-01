@@ -1,0 +1,219 @@
+body {
+    background: url("/static/images/dumbbell-bg.41a175b7f8d1.jpg") no-repeat center center;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    /* this part is taken from a post by user name m.spyratos to make the footer stick to the bottom: 
+    https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b  
+    */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    letter-spacing: 1px;
+}
+
+#main-content, #allauth-main {
+    /* this part is also taken from the same post as the mentioned in the body*/
+    flex: 1;
+}
+
+.main-window {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    min-height: 200px;
+    background-color: #ffffff;
+    border-radius: .25rem;
+    font-weight: 600;
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.black-text {
+    color: #000000;
+}
+
+.green-text {
+    color: #4caf50;
+}
+
+.red-text {
+    color: #ef5350;
+}
+
+.black-text:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+.light-green-text {
+    color: #a5d6a7;
+}
+
+.light-green-text:hover {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.yellow-text {
+    color: #fdd835;
+}
+
+.light-green-bg {
+    background-color: #a5d6a7;
+}
+
+
+.text-decor-none {
+    text-decoration: none;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-button, .green-button {
+    border: none;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.black-button, .green-button:hover {
+    color: #a5d6a7;
+    background-color: #000000;
+}
+
+.green-button, .black-button:hover {
+    color: #000000;
+    background-color: #a5d6a7;
+}
+
+.large-button {
+    padding: 20px;
+}
+
+.small-button {
+    padding: 10px;
+}
+
+.custom-a {
+    color: #4caf50;
+    text-decoration: underline;
+}
+
+.custom-a:hover {
+    color: #a5d6a7;
+}
+
+.margin-5-px {
+    margin: 5px;
+}
+
+.margin-10-px {
+    margin: 10px;
+}
+
+.padding-10-px {
+    padding: 10px;
+}
+
+.thick-text {
+    font-weight: 700;
+}
+
+/*Header*/
+
+#custom-search-group-large, #custom-search-group-small, #custom-search-icon-wrap, #custom-search-icon-wrap-2 {
+    padding: 4px;
+    background-color: #ffffff;
+    border: none;
+    text-align: center;
+    color: #000000;
+}
+
+#custom-search-group {
+    margin-left: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#no-show-btn, #no-show-btn-2, .no-bg-button {
+   background-color: #ffffff;
+   border: none;
+   padding: 0;
+   margin-left: 5px;
+   margin-right: 5px;
+}
+
+#brand-name {
+    margin-left: 70px;
+    font-size: smaller;
+}
+
+.navbar {
+    padding: 20px;
+}
+
+.hamburger-icon {
+    display: block;
+    height: 6px;
+    width: 40px;
+    margin-bottom: 5px;
+    background-color: #a5d6a7;
+}
+
+.shop-icons-wrap {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.message-container {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #4caf50;
+    text-align: center;
+    border-radius: 0.25rem;
+}
+
+/*Footer*/
+
+#custom-footer {
+    min-height: 200px;
+    background-color: #000000;
+}
+
+
+
+/*Media queries*/
+
+@media only screen and (min-width: 576px) {
+    .shop-icons-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    #brand-name {
+        margin-left: 70px;
+        font-size: large;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+     .shop-icons-wrap {
+         margin: 0;
+         float: right;
+     }
+}
+
+@media only screen and (min-width: 992px) {
+    #brand-name {
+        margin-left: 60px;
+    }
+}

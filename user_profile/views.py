@@ -9,6 +9,18 @@ from payment.models import Order, OrderItem
 
 
 def show_profile(request):
+
+    """
+    Tries to get the current user by the current session user id.
+    Retrives all orders from the user and all order items in the
+    database.
+    Paginates the orders via the Django Paginator class.
+    Tries to retrive the user profile and renders a profile form
+    for updating details with the previous details.
+    Otherwise creates a new profile for the user and renders an
+    empty form.
+    Renders the profile template.
+    """
     user = get_object_or_404(User, id=request.user.id)
     user_profile_form = UserProfileForm()
     order_list = Order.objects.filter(user=user).order_by("-date")
@@ -38,11 +50,19 @@ def show_profile(request):
 
 @require_http_methods(["POST"])
 def update_profile(request):
+    """
+    Tries to get the user based on the current sessions user id.
+    Tries to get the users profile.
+    Tries to update the users profile with post data sent via the
+    form.
+    Sends any success/error messages and redirects to view the profile.
+    """
     user = get_object_or_404(User, id=request.user.id)
+    user_profile = get_object_or_404(UserProfile, user=user)
     try:
-        user_profile = UserProfileForm(request.POST, instance=user.userprofile)
+        user_profile = UserProfileForm(request.POST, instance=user_profile)
     except AttributeError:
-        user_profile = UserProfileForm(request.POST)
+        messages.error(request, "Error when updating profile")
     if user_profile.is_valid():
         user_profile.save()
         messages.success(request, "Profile was updated")

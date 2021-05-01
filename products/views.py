@@ -41,7 +41,6 @@ def products(request):
 
     elif request.GET.get("manufacturer"):
         if request.GET.get("sort"):
-            print("here")
             if request.GET.get("sort") == "units_sold":
                 all_products = Product.objects.filter(
                     manufacturer__name=request.GET.get("manufacturer")

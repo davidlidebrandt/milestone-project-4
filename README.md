@@ -407,7 +407,9 @@ filed still works in all modern versions of the tested browsers.
 unused variables, these can be ignored since these functions are used and called when submitting forms.
 
 * The cornflakes(flake8) linter was installed as an extension to the development environment and validated
-the Python code throughout the project.
+the Python code throughout the project. A few warnings are present, some for lines being to long in the settings.py file but since these are not lines written
+by the developer self they have been left as they came when installing Django. Another warning is about custom Models not having an objects member, this is wrong 
+as all models by default has a Model Manager called objects. Perhaps the linter can't locate them if they are not explicitly set.
 
 * The responsiveness was tested by simulating a vide variety of devices such as phones, tablets and desktops using
 the Chrome DevTools and http://whatismyscreenresolution.net/multi-screen-test. The sites look well down to 320 pixels
@@ -783,9 +785,6 @@ Writing own reviews as a logged in user is easy, by navigating to single product
 for submitting a review is displayed. By filling out the form and pressing submit the review is added.
 
 
-
-
-
 ## Deployment
 
 ### Publishing the project
@@ -884,11 +883,12 @@ the URL and Git Bash.
 4. Open Git Bash and navigate to the directory where you want to save the cloned project.
 5. Type git clone followed by the url you copied, git clone https://github.com/davidlidebrandt/milestone-project-4.git
 
+
 ## Credits 
 
 ### Content
 
-
+All of the content was written by the developer.
 
 ### Media
 
@@ -896,10 +896,10 @@ Background image came from https://pixabay.com/sv/photos/hantel-idrott-vikter-gy
 
 Favicon image came from https://pixabay.com/sv/vectors/skivst%C3%A5ng-vikt-pump-j%C3%A4rn-fitness-3573104/ by user b0red.
 
-Main image on the index page came from https://pixabay.com/sv/photos/cross-fit-zimmer-h%C3%A4lsa-fitness-1126999/ by user GYMer_Jason 
+Main image on the index page came from https://pixabay.com/sv/photos/cross-fit-zimmer-h%C3%A4lsa-fitness-1126999/ by user GYMer_Jason.
 
-
-
+All of the product images came from https://pixabay.com/, since the products are added continually attributions to all single images 
+are not possible. All images are free to use and do not require attribution.
 
 
 ### Acknowledgments

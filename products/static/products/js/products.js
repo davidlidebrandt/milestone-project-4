@@ -57,7 +57,7 @@ $(document).ready(function () {
 
   $("#sort-prize").click(sortByPrize);
 
-  $("#sort-popular").click(sortByPopularity)
+  $("#sort-popular").click(sortByPopularity);
 });
 
 function ShowAddReviewModal() {
@@ -80,7 +80,7 @@ function showReviewModal() {
 
 function sortByPrize() {
   get_current_url = window.location.href;
-  if (get_current_url.includes("category") | get_current_url.includes("manufacturer"))  {
+  if (get_current_url.includes("category") || get_current_url.includes("manufacturer"))  {
     window.location.href = get_current_url + "&sort=prize";
   } else {
     window.location.href = get_current_url + "?sort=prize";
@@ -89,14 +89,9 @@ function sortByPrize() {
 
 function sortByPopularity() {
   get_current_url = window.location.href;
-  if (get_current_url.includes("category")| get_current_url.includes("manufacturer")) {
+  if (get_current_url.includes("category")|| get_current_url.includes("manufacturer")) {
     window.location.href = get_current_url + "&sort=units_sold";
   } else {
     window.location.href = get_current_url + "?sort=units_sold";
   }
 }
-
-
-
-
-

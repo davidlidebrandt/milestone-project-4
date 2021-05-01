@@ -30,7 +30,7 @@
 
 #main-image {
     height: 400px;
-    background: url("/static/images/dumbell-rack.jpg") no-repeat center center fixed;
+    background: url("/static/images/dumbell-rack.jpg") no-repeat center center;
     background-size: cover;
 }
 

@@ -97,19 +97,19 @@
   $(document).ready(function () { 
     let val = parseInt($("#quantity-input{{ product.product.id }}").val());
     if (val === 1) {
-        $("#disabled-minus-button{{ product.product.id }}").show()
+        $("#disabled-minus-button{{ product.product.id }}").show();
         $("#minus-button{{ product.product.id }}").hide();
-        $("#disabled-plus-button{{ product.product.id }}").hide()
-        $("#delete-item{{ product.product.id }}").show()
+        $("#disabled-plus-button{{ product.product.id }}").hide();
+        $("#delete-item{{ product.product.id }}").show();
     }
     else if (val === 10) {
         $("#plus-button{{ product.product.id }}").hide();
-        $("#disabled-minus-button{{ product.product.id }}").hide()
+        $("#disabled-minus-button{{ product.product.id }}").hide();
     }
 
     else {
-        $("#disabled-minus-button{{ product.product.id }}").hide()
-        $("#disabled-plus-button{{ product.product.id }}").hide()
+        $("#disabled-minus-button{{ product.product.id }}").hide();
+        $("#disabled-plus-button{{ product.product.id }}").hide();
     }
 });
 </script>

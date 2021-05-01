@@ -12,12 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import psycopg2
 import dj_database_url
-try:
-    import env
-except Exception:
-    "Continue"
+import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,7 +79,8 @@ ROOT_URLCONF = 'fitness_equipment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(
+            BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

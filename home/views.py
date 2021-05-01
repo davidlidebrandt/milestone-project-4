@@ -6,7 +6,7 @@ from django.template import loader
 def index(request):
 
     """
-    Renders template when URL is
+    Renders template when the URL is
     requested.
     """
 

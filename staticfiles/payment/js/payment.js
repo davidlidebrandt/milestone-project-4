@@ -3,7 +3,6 @@
 // https://testdriven.io/blog/django-stripe-tutorial/
 
 const stripe = Stripe('pk_test_51IfQReEg6TzYJMSJUwwscxw3gHeV7IasaIgvyOIGZ2RLgbm5EwmbJe6x6EmlRzqACprHd6mXYVODUl5Mw7HJJ6nw00fKMoxgT4');
-console.log(CSRF)
 $(document).ready(function () {
   $("#redirect-checkout").submit(function(e) {
     e.preventDefault();

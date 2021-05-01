@@ -7,7 +7,7 @@ $(document).ready(function () {
   $("#redirect-checkout").submit(function(e) {
     e.preventDefault();
     
-    const request = new Request("/payment/create_checkout/",  {headers: {'X-CSRFToken': CSRF }})
+    const request = new Request("/payment/create_checkout/",  {headers: {'X-CSRFToken': CSRF }});
     fetch(request, {
       method: 'POST',
       mode: 'same-origin'
@@ -24,6 +24,6 @@ $(document).ready(function () {
       .then((res) => {
         console.log(res);
       });
-  })
+  });
 
 });

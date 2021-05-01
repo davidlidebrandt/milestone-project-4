@@ -5,11 +5,26 @@ from products.models import Product
 
 
 def view_bag(request):
+
+    """
+    Renders template when URL is requested
+    """
     return render(request, "shopping_bag/bag.html")
 
 
 @require_http_methods(["POST"])
 def add_to_bag(request, id):
+
+    """
+    Tries to get the prodcut based on the id sent.
+    Checks if product is discounted.
+    Gets the bag and adds the product to the bag if
+    the total quantity is ten or less.
+    Adds product and quantity and updates total cost
+    in bag.
+    Redirects to view the bag.
+    """
+
     product = get_object_or_404(Product, id=id)
     if product.discount_rate:
         product.prize = int(product.prize * product.discount_rate.rate)
@@ -41,6 +56,16 @@ def add_to_bag(request, id):
 
 @require_http_methods(["POST"])
 def add_to_quantity(request, id):
+
+    """
+    Tries to get the prodcut based on the id sent.
+    Checks if product is discounted.
+    Gets the bag and adds the product to the bag if
+    the total quantity is ten or less.
+    Adds product and quantity and updates total cost
+    in bag.
+    Redirects to view the bag.
+    """
     product = get_object_or_404(Product, id=id)
     if product.discount_rate:
         product.prize = int(product.prize * product.discount_rate.rate)
@@ -59,6 +84,15 @@ def add_to_quantity(request, id):
 
 @require_http_methods(["POST"])
 def delete_from_quantity(request, id):
+
+    """
+    Tries to get the product based on the id sent.
+    Checks if product is discounted.
+    Gets the bag and deletes from the quantity if the
+    product count is more than one.
+    Updates the total cost for the bag.
+    Redirects to view the bag.
+    """
     product = get_object_or_404(Product, id=id)
     if product.discount_rate:
         product.prize = int(product.prize * product.discount_rate.rate)

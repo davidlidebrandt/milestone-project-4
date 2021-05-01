@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
+from django.core.paginator import Paginator
 from . forms import UserProfileForm
 from payment.models import Order, OrderItem
 
@@ -9,8 +10,11 @@ from payment.models import Order, OrderItem
 def show_profile(request):
     user = get_object_or_404(User, id=request.user.id)
     user_profile_form = UserProfileForm()
-    orders = Order.objects.filter(user=user)
+    order_list = Order.objects.filter(user=user).order_by("-date")
     order_items = OrderItem.objects.all()
+    paginator = Paginator(order_list, 5)
+    current_page = request.GET.get("page", 1)
+    orders = paginator.get_page(current_page)
 
     try:
         user_profile_form = UserProfileForm(instance=user.userprofile)

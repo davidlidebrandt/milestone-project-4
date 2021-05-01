@@ -111,7 +111,7 @@ def confirmation_of_payment(request):
         city = event["data"]["object"]["shipping"]["address"]["city"]
         street = event["data"]["object"]["shipping"]["address"]["line1"]
         code = event["data"]["object"]["shipping"]["address"]["postal_code"]
-        shipping_address = city + street + code
+        shipping_address = city + " " + street + " " + code
         customer_email = event["data"]["object"]["customer_details"]["email"]
         customer_name = event["data"]["object"]["shipping"]["name"]
         if user_id:

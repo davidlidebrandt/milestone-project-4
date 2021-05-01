@@ -118,7 +118,7 @@
                         <a class="mx-2 custom-a" href="?page=1">First</a>
                         <a class="mx-2 custom-a" href="?page={{ products.previous_page_number }}">Previous</a>
                     {% endif %}
-                    {% if reviews.has_next %}
+                    {% if products.has_next %}
                         <a class="mx-2 custom-a" href="?page={{ products.next_page_number }}">Next</a>
                         <a class="mx-2 custom-a" href="?page={{ products.paginator.num_pages }}">Last</a>
                     {% endif %}

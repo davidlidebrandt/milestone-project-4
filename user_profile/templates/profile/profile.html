@@ -52,7 +52,7 @@
                                     <p class="text-start fst-italic fw-bold">Order id:</p>
                                     <p class="text-start"> {{ order.id }}</p>
                                     <p class="text-start fst-italic fw-bold">Shipping address:</p>
-                                    <p class="text-start"> {{ order.shipping_address }}
+                                    <p class="text-start"> {{ order.shipping_address }} </p>
                                     <p class="text-start fst-italic fw-bold">Total amount paid:</p>
                                     <p class="text-start">{{ order.amount_paid }} $</p>
                                     <hr>
@@ -67,6 +67,21 @@
                               </div>
                             </div>
                             {% endfor %}
+                            <div class="row">
+                                <div class="col-12 text-center my-3">
+                                    {% if orders.has_previous %}
+                                        <a class="mx-2 custom-a" href="?page=1">First</a>
+                                        <a class="mx-2 custom-a" href="?page={{ orders.previous_page_number }}">Previous</a>
+                                    {% endif %}
+                                    {% if orders.has_next %}
+                                        <a class="mx-2 custom-a" href="?page={{ orders.next_page_number }}">Next</a>
+                                        <a class="mx-2 custom-a" href="?page={{ orders.paginator.num_pages }}">Last</a>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12 text-center my-3">
+                                    Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
+                                </div>
+                            </div>
                           </div>
                           {% endif %}         
                     </div>

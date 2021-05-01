@@ -1,7 +1,15 @@
 .store-div {
-    border-bottom: 0.5px solid #000000;
-    border-right: 0.5px solid #000000;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    
+}
+
+/*Media queries*/
+
+@media only screen and (min-width: 576px) { 
+    .store-div {
+        border-bottom: 0.5px solid #000000;
+        border-right: 0.5px solid #000000;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
 }

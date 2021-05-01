@@ -11,15 +11,18 @@
       <div class="row">
         <h2 class="text-center my-4 fw-bold">Find Stores</h2>
         {% for store in stores %}
-        <div class="col-6 store-div text-center">
-          <p class="black-button text-uppercase text-center">{{ store.city }}</p>
-          <p class="fw-bold green-button text-uppercase text-center">{{ store.name }}</p>
+        <div class="col-12 col-sm-6 store-div text-center">
+          <p class="bg-black green-text text-uppercase text-center">{{ store.city }}</p>
+          <p class="fw-bold light-green-bg text-uppercase text-center">{{ store.name }}</p>
           <p class="fw-bold text-decoration-underline">Address:</p>
           <p class="text-capitalize">{{ store.address }}</p>
           <p class="fw-bold text-decoration-underline">Phone number:</p>
           <p>{{ store.phone_number }}</p>
           <p class="fw-bold text-decoration-underline">Opening hours:</p>
           <p>{{ store.open_hours }}</p>
+        </div>
+        <div class="d-sm-none">
+          <hr>
         </div>
         {% endfor %}
       </div>

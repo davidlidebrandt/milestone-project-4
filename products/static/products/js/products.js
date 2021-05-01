@@ -80,18 +80,33 @@ function showReviewModal() {
 
 function sortByPrize() {
   get_current_url = window.location.href;
-  if (get_current_url.includes("category") || get_current_url.includes("manufacturer"))  {
-    window.location.href = get_current_url + "&sort=prize";
-  } else {
-    window.location.href = get_current_url + "?sort=prize";
+  get_base_url = window.location.protocol + "//" + window.location.hostname
+  if (get_current_url.includes("category")) {
+    category = get_current_url.split("=")[1]
+    window.location.href = get_base_url + "/products/?category=" + category + "&sort=prize";
+  } 
+  else if (get_current_url.includes("manufacturer")) {
+    manufacturer = get_current_url.split("=")[1]
+    window.location.href = get_base_url + "/products/?manufacturer=" + manufacturer + "&sort=prize";
   }
+  else {
+    window.location.href = get_base_url + "/products/" + "?sort=prize";
+  }
+
 }
 
 function sortByPopularity() {
   get_current_url = window.location.href;
-  if (get_current_url.includes("category")|| get_current_url.includes("manufacturer")) {
-    window.location.href = get_current_url + "&sort=units_sold";
-  } else {
-    window.location.href = get_current_url + "?sort=units_sold";
+  get_base_url = window.location.protocol + "//" + window.location.hostname
+  if (get_current_url.includes("category")) {
+    category = get_current_url.split("=")[1]
+    window.location.href = get_base_url + "/products/?category=" + category + "&sort=units_sold";
+  } 
+  else if (get_current_url.includes("manufacturer")) {
+    manufacturer = get_current_url.split("=")[1]
+    window.location.href = get_base_url + "/products/?manufacturer=" + manufacturer + "&sort=units_sold";
+  }
+  else {
+    window.location.href = get_base_url + "/products/" + "?sort=units_sold";
   }
 }

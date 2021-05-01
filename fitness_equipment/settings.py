@@ -14,9 +14,9 @@ from pathlib import Path
 import os
 import dj_database_url
 try:
-   import env
-except KeyError:
-    "no action"
+    import env
+except Exception:
+    "Continue"
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

@@ -72,7 +72,7 @@ def products(request):
     else:
         all_products = Product.objects.all()
 
-    paginator = Paginator(all_products, 12)
+    paginator = Paginator(all_products, 9)
     current_page = request.GET.get("page", 1)
     products = paginator.get_page(current_page)
 

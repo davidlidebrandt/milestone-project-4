@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.test import Client
 from . models import UserProfile
 
 
@@ -32,8 +33,45 @@ class TestModels(TestCase):
 
 class TestViews(TestCase):
 
-    def test_get_profile_view(self):
+    def test_show_profile_view(self):
 
-        self.assertTemplateUsed(self.client.get(
+        test_user = User(username="User", password="Averysecretpassword")
+        test_user.save()
+
+        client = Client()
+
+        client.force_login(test_user)
+
+        self.assertTemplateUsed(client.get(
             "/profile/"), "profile/profile.html")
-        self.assertEquals(self.client.get("/profile/").status_code, 200)
+        self.assertEquals(client.get("/profile/").status_code, 200)
+
+    def test_update_profile(self):
+
+        test_user = User(
+            username="User", password="Averysecretpassword", id="1")
+        test_user.save()
+
+        client = Client()
+
+        client.force_login(test_user)
+
+        get_profile = client.get("/profile/")
+
+        test_response = client.post(
+            "/profile/update_profile/",
+            {"name": "Test", "address": "Street"})
+        test_response_message = client.post(
+            "/profile/update_profile/",
+            {"name": "Test", "address": "Street"}, follow=True)
+
+        intended_message = "Profile was updated"
+        message = ""
+
+        get_stored_messages = test_response_message.context["messages"]
+        for message in get_stored_messages:
+            message = message
+
+        self.assertEquals(intended_message, message.__str__())
+        self.assertEquals(test_response.status_code, 302)
+

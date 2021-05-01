@@ -141,6 +141,19 @@ class TestViews(TestCase):
         self.assertEquals(test_response.status_code, 302)
         self.assertEquals(intended_message, message.__str__())
 
+        # Add a quantity of two
+        # Ensure the bag content contains one item after deleting one
+
+        self.client.post("/bag/add_to_bag/1/", {"quantity-input": 2})
+        test_response_message = self.client.post(
+            "/bag/delete_from_quantity/1/", follow=True)
+
+        intended_bag_content = {'1': {'quantity': 1}, 'total_cost': 70}
+        shopping_bag = self.client.session["shopping_bag"]
+
+        self.assertEquals(test_response.status_code, 302)
+        self.assertEquals(intended_bag_content, shopping_bag)
+
 
 class TestShoppingBagContext(TestCase):
 

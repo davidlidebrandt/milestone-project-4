@@ -202,7 +202,8 @@ def update_review(request, review_id, product_id):
         if request.method == "GET":
             form = PartialReviewForm(instance=review)
             context = {
-                "form": form
+                "form": form,
+                "product_id": product_id,
             }
             return render(request, "products/update_review.html", context)
         elif request.method == "POST":

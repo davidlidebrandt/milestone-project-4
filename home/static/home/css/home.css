@@ -21,11 +21,10 @@
 }
 
 .product-border {
-    border: 0.5px solid #000000;
+    border-bottom: 0.5px solid #bdbdbd;
     margin-left: 5px;
     margin-right: 5px;
-    padding: 10px;
-    border-radius: 0.25rem;
+    padding-bottom: 5px;
 }
 
 #main-image {

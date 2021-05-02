@@ -26,14 +26,14 @@ def products(request):
     if request.GET.get("category"):
         if request.GET.get("sort"):
             if request.GET.get("sort") == "units_sold":
-                all_products = Product.objects.filter(
+                all_products = list(Product.objects.filter(
                     category__name=request.GET.get(
-                        "category")).order_by("-units_sold")
+                        "category")).order_by("-units_sold"))
 
             else:
-                all_products = Product.objects.filter(
+                all_products = list(Product.objects.filter(
                     category__name=request.GET.get(
-                        "category")).order_by(request.GET.get("sort"))
+                        "category")).order_by(request.GET.get("sort")))
         else:
             all_products = Product.objects.filter(
                 category__name=request.GET.get("category"))
@@ -42,25 +42,25 @@ def products(request):
     elif request.GET.get("manufacturer"):
         if request.GET.get("sort"):
             if request.GET.get("sort") == "units_sold":
-                all_products = Product.objects.filter(
+                all_products = list(Product.objects.filter(
                     manufacturer__name=request.GET.get("manufacturer")
-                    ).order_by("-units_sold")
+                    ).order_by("-units_sold"))
             else:
-                all_products = Product.objects.filter(
+                all_products = list(Product.objects.filter(
                     manufacturer__name=request.GET.get(
-                        "manufacturer")).order_by(request.GET.get("sort"))
+                        "manufacturer")).order_by(request.GET.get("sort")))
         else:
             all_products = Product.objects.filter(
                 manufacturer__name=request.GET.get("manufacturer"))
 
     elif request.GET.get("sort"):
         if request.GET.get("sort") == "units_sold":
-            all_products = Product.objects.all().order_by(
-                "-units_sold")
+            all_products = list(Product.objects.all().order_by(
+                "-units_sold"))
 
         else:
-            all_products = Product.objects.all().order_by(
-                request.GET.get("sort"))
+            all_products = list(Product.objects.all().order_by(
+                request.GET.get("sort")))
 
     elif request.GET.get("search"):
         all_products = Product.objects.filter(

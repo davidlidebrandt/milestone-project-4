@@ -114,6 +114,87 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center my-3">
+                    {% if request.GET.category %}
+                    
+                    {% if request.GET.sort %}
+                    
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&sort={{ request.GET.sort }}&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&sort={{ request.GET.sort }}&page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&sort={{ request.GET.sort }}&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&sort={{ request.GET.sort }}&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    
+                    {% else %}
+
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    
+                    {% endif %}
+
+                    {% else %}
+                    
+                    {% if request.GET.manufacturer %}
+                    {% if request.GET.sort %}
+                    
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.manufacturer }}&sort={{ request.GET.sort }}&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.manufacturer }}&sort={{ request.GET.sort }}&page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.manufacturer }}&sort={{ request.GET.sort }}&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.manufacturer }}&sort={{ request.GET.sort }}&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    
+                    {% else %}
+
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?category={{ request.GET.category }}&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    
+                    {% endif %}
+                    {% else %}
+                    
+                    {% if request.GET.sort %}
+                    {% if request.GET.sort == "units_sold" %}
+                    
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?sort=units_sold&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?sort=units_sold&page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?sort=units_sold&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?sort=units_sold&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+                    
+                    {% else %}
+
+                    {% if products.has_previous %}
+                    <a class="mx-2 custom-a" href="?sort=prize&page=1">First</a>
+                    <a class="mx-2 custom-a" href="?sort=prize&?page={{ products.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <a class="mx-2 custom-a" href="?sort=prize&page={{ products.next_page_number }}">Next</a>
+                    <a class="mx-2 custom-a" href="?sort=prize&page={{ products.paginator.num_pages }}">Last</a>
+                    {% endif %}
+
+                    {% endif %}
+                    
+                
+                    {% else %}
                     {% if products.has_previous %}
                         <a class="mx-2 custom-a" href="?page=1">First</a>
                         <a class="mx-2 custom-a" href="?page={{ products.previous_page_number }}">Previous</a>
@@ -122,6 +203,14 @@
                         <a class="mx-2 custom-a" href="?page={{ products.next_page_number }}">Next</a>
                         <a class="mx-2 custom-a" href="?page={{ products.paginator.num_pages }}">Last</a>
                     {% endif %}
+
+                    {% endif %}
+                    
+                    {% endif %}
+
+                    {% endif %}
+    
+
                 </div>
                 <div class="col-12 text-center my-3">
                     Page {{ products.number }} of {{ products.paginator.num_pages }}.

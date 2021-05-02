@@ -36,7 +36,7 @@
     vertical-align: top;
 }
 
-#delete-review-modal {
+.delete-review {
     display: none;
     position: fixed;
     top: 100px;

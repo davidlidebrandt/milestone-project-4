@@ -5,16 +5,6 @@ $(document).ready(function () {
   });
 
 
-  $("#delete-review-warn").click(function() {
-    $("#delete-review-modal").show();
-  });
-
-
-  $("#cancel-delete-review").click(function() {
-    $("#delete-review-modal").hide();
-  });
-
-
   $("#quantity-input").val("1");
   $("#increase-quantity").click(function () {
     currentValue = parseInt($("#quantity-input").val());

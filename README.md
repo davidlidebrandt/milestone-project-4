@@ -902,7 +902,7 @@ Favicon image came from https://pixabay.com/sv/vectors/skivst%C3%A5ng-vikt-pump-
 
 Main image on the index page came from https://pixabay.com/sv/photos/cross-fit-zimmer-h%C3%A4lsa-fitness-1126999/ by user GYMer_Jason.
 
-All of the product images came from https://pixabay.com/, since the products are added continually attributions to all single images 
+All of the product and category images came from https://pixabay.com/, since the products are added continually attributions to all single images 
 are not possible. All images are free to use and do not require attribution.
 
 

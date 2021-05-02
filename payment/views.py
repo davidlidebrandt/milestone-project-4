@@ -136,7 +136,10 @@ def confirmation_of_payment(request):
         order.save()
 
         product_list = event["data"]["object"]["metadata"]
-        product_list.pop("user_id")
+        try:
+            product_list.pop("user_id")
+        except KeyError:
+            product_list = event["data"]["object"]["metadata"]
 
         message = (f"Hi {order_name}\n Your order {order_id} was successfull" +
                    ", below you will find the details of your order.\n" +

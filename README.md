@@ -16,6 +16,8 @@
      alt="Shopping cart page"
      style="height: 100px; width: 200px;" />
 
+     test
+
 This project intends to create a basic (fictional) store that sells fitness equipment both on the web and in physical stores.
 By providing the user with the opportunity to purchase relevant equipment through a smooth user experience 
 the store looks to attract both new and revisiting customers.
